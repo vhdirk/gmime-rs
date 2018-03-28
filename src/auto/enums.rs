@@ -5,3 +5,106 @@
 use ffi;
 use glib::translate::*;
 
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
+pub enum SecureMimeType {
+    CompressedData,
+    EnvelopedData,
+    SignedData,
+    CertsOnly,
+    Unknown,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+#[doc(hidden)]
+impl ToGlib for SecureMimeType {
+    type GlibType = ffi::GMimeSecureMimeType;
+
+    fn to_glib(&self) -> ffi::GMimeSecureMimeType {
+        match *self {
+            SecureMimeType::CompressedData => ffi::GMIME_SECURE_MIME_TYPE_COMPRESSED_DATA,
+            SecureMimeType::EnvelopedData => ffi::GMIME_SECURE_MIME_TYPE_ENVELOPED_DATA,
+            SecureMimeType::SignedData => ffi::GMIME_SECURE_MIME_TYPE_SIGNED_DATA,
+            SecureMimeType::CertsOnly => ffi::GMIME_SECURE_MIME_TYPE_CERTS_ONLY,
+            SecureMimeType::Unknown => ffi::GMIME_SECURE_MIME_TYPE_UNKNOWN,
+            SecureMimeType::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<ffi::GMimeSecureMimeType> for SecureMimeType {
+    fn from_glib(value: ffi::GMimeSecureMimeType) -> Self {
+        match value {
+            0 => SecureMimeType::CompressedData,
+            1 => SecureMimeType::EnvelopedData,
+            2 => SecureMimeType::SignedData,
+            3 => SecureMimeType::CertsOnly,
+            4 => SecureMimeType::Unknown,
+            value => SecureMimeType::__Unknown(value),
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
+pub enum SignatureStatus {
+    Valid,
+    Green,
+    Red,
+    KeyRevoked,
+    KeyExpired,
+    SigExpired,
+    KeyMissing,
+    CrlMissing,
+    CrlTooOld,
+    BadPolicy,
+    SysError,
+    TofuConflict,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+#[doc(hidden)]
+impl ToGlib for SignatureStatus {
+    type GlibType = ffi::GMimeSignatureStatus;
+
+    fn to_glib(&self) -> ffi::GMimeSignatureStatus {
+        match *self {
+            SignatureStatus::Valid => ffi::GMIME_SIGNATURE_STATUS_VALID,
+            SignatureStatus::Green => ffi::GMIME_SIGNATURE_STATUS_GREEN,
+            SignatureStatus::Red => ffi::GMIME_SIGNATURE_STATUS_RED,
+            SignatureStatus::KeyRevoked => ffi::GMIME_SIGNATURE_STATUS_KEY_REVOKED,
+            SignatureStatus::KeyExpired => ffi::GMIME_SIGNATURE_STATUS_KEY_EXPIRED,
+            SignatureStatus::SigExpired => ffi::GMIME_SIGNATURE_STATUS_SIG_EXPIRED,
+            SignatureStatus::KeyMissing => ffi::GMIME_SIGNATURE_STATUS_KEY_MISSING,
+            SignatureStatus::CrlMissing => ffi::GMIME_SIGNATURE_STATUS_CRL_MISSING,
+            SignatureStatus::CrlTooOld => ffi::GMIME_SIGNATURE_STATUS_CRL_TOO_OLD,
+            SignatureStatus::BadPolicy => ffi::GMIME_SIGNATURE_STATUS_BAD_POLICY,
+            SignatureStatus::SysError => ffi::GMIME_SIGNATURE_STATUS_SYS_ERROR,
+            SignatureStatus::TofuConflict => ffi::GMIME_SIGNATURE_STATUS_TOFU_CONFLICT,
+            SignatureStatus::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<ffi::GMimeSignatureStatus> for SignatureStatus {
+    fn from_glib(value: ffi::GMimeSignatureStatus) -> Self {
+        match value {
+            1 => SignatureStatus::Valid,
+            2 => SignatureStatus::Green,
+            4 => SignatureStatus::Red,
+            16 => SignatureStatus::KeyRevoked,
+            32 => SignatureStatus::KeyExpired,
+            64 => SignatureStatus::SigExpired,
+            128 => SignatureStatus::KeyMissing,
+            256 => SignatureStatus::CrlMissing,
+            512 => SignatureStatus::CrlTooOld,
+            1024 => SignatureStatus::BadPolicy,
+            2048 => SignatureStatus::SysError,
+            4096 => SignatureStatus::TofuConflict,
+            value => SignatureStatus::__Unknown(value),
+        }
+    }
+}
+
