@@ -1,0 +1,41 @@
+[package]
+name = "gmime"
+homepage = "https://github.com/vhdirk/gmime-rs"
+authors = ["Dirk Van Haerenborgh <vhdirk@gmail.com>"]
+keywords = ["gmime", "gtk-rs", "gnome"]
+readme = "README.md"
+license = "MIT"
+version = "0.4.0"
+exclude = [
+    "gir-files/*",
+]
+
+[features]
+v1_31 = ["gmime-sys/v1_31"]
+v1_32 = ["v1_31", "gmime-sys/v1_32"]
+v1_32_4 = ["v1_32", "gmime-sys/v1_32_4"]
+v1_34 = ["v1_32_4", "gmime-sys/v1_34"]
+v1_36_7 = ["v1_34", "gmime-sys/v1_36_7"]
+v1_38 = ["v1_36_7", "gmime-sys/v1_38"]
+v1_42 = ["v1_38", "gmime-sys/v1_42"]
+
+[dependencies]
+libc = "0.2"
+bitflags = "1.0"
+
+
+[dependencies.gmime-sys]
+version = "0.6.0"
+git = "https://github.com/vhdirk/gmime-sys"
+
+[dependencies.glib]
+version = "0.5.0"
+git = "https://github.com/gtk-rs/glib"
+
+[dependencies.glib-sys]
+version = "0.6.0"
+git = "https://github.com/gtk-rs/sys"
+
+[dependencies.gobject-sys]
+version = "0.6.0"
+git = "https://github.com/gtk-rs/sys"

@@ -1,0 +1,10 @@
+[options]
+girs_dir = "gir-files"
+library = "GMime"
+version = "3.0"
+target_path = "."
+work_mode = "normal"
+generate_safety_asserts = false
+min_cfg_version = "1.30"
+
+generate = ["GMime.Message"]
