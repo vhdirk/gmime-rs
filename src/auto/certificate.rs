@@ -2,6 +2,10 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use DigestAlgo;
+use PubKeyAlgo;
+use Trust;
+use Validity;
 use ffi;
 use glib::object::IsA;
 use glib::translate::*;
@@ -36,7 +40,7 @@ impl Default for Certificate {
 pub trait CertificateExt {
     fn get_created(&self) -> libc::c_long;
 
-    //fn get_digest_algo(&self) -> /*Ignored*/DigestAlgo;
+    fn get_digest_algo(&self) -> DigestAlgo;
 
     fn get_email(&self) -> Option<String>;
 
@@ -44,7 +48,7 @@ pub trait CertificateExt {
 
     fn get_fingerprint(&self) -> Option<String>;
 
-    //fn get_id_validity(&self) -> /*Ignored*/Validity;
+    fn get_id_validity(&self) -> Validity;
 
     fn get_issuer_name(&self) -> Option<String>;
 
@@ -54,15 +58,15 @@ pub trait CertificateExt {
 
     fn get_name(&self) -> Option<String>;
 
-    //fn get_pubkey_algo(&self) -> /*Ignored*/PubKeyAlgo;
+    fn get_pubkey_algo(&self) -> PubKeyAlgo;
 
-    //fn get_trust(&self) -> /*Ignored*/Trust;
+    fn get_trust(&self) -> Trust;
 
     fn get_user_id(&self) -> Option<String>;
 
     fn set_created(&self, created: libc::c_long);
 
-    //fn set_digest_algo(&self, algo: /*Ignored*/DigestAlgo);
+    fn set_digest_algo(&self, algo: DigestAlgo);
 
     fn set_email(&self, email: &str);
 
@@ -70,7 +74,7 @@ pub trait CertificateExt {
 
     fn set_fingerprint(&self, fingerprint: &str);
 
-    //fn set_id_validity(&self, validity: /*Ignored*/Validity);
+    fn set_id_validity(&self, validity: Validity);
 
     fn set_issuer_name(&self, issuer_name: &str);
 
@@ -80,9 +84,9 @@ pub trait CertificateExt {
 
     fn set_name(&self, name: &str);
 
-    //fn set_pubkey_algo(&self, algo: /*Ignored*/PubKeyAlgo);
+    fn set_pubkey_algo(&self, algo: PubKeyAlgo);
 
-    //fn set_trust(&self, trust: /*Ignored*/Trust);
+    fn set_trust(&self, trust: Trust);
 
     fn set_user_id(&self, user_id: &str);
 }
@@ -94,9 +98,11 @@ impl<O: IsA<Certificate>> CertificateExt for O {
         }
     }
 
-    //fn get_digest_algo(&self) -> /*Ignored*/DigestAlgo {
-    //    unsafe { TODO: call ffi::g_mime_certificate_get_digest_algo() }
-    //}
+    fn get_digest_algo(&self) -> DigestAlgo {
+        unsafe {
+            from_glib(ffi::g_mime_certificate_get_digest_algo(self.to_glib_none().0))
+        }
+    }
 
     fn get_email(&self) -> Option<String> {
         unsafe {
@@ -116,9 +122,11 @@ impl<O: IsA<Certificate>> CertificateExt for O {
         }
     }
 
-    //fn get_id_validity(&self) -> /*Ignored*/Validity {
-    //    unsafe { TODO: call ffi::g_mime_certificate_get_id_validity() }
-    //}
+    fn get_id_validity(&self) -> Validity {
+        unsafe {
+            from_glib(ffi::g_mime_certificate_get_id_validity(self.to_glib_none().0))
+        }
+    }
 
     fn get_issuer_name(&self) -> Option<String> {
         unsafe {
@@ -144,13 +152,17 @@ impl<O: IsA<Certificate>> CertificateExt for O {
         }
     }
 
-    //fn get_pubkey_algo(&self) -> /*Ignored*/PubKeyAlgo {
-    //    unsafe { TODO: call ffi::g_mime_certificate_get_pubkey_algo() }
-    //}
+    fn get_pubkey_algo(&self) -> PubKeyAlgo {
+        unsafe {
+            from_glib(ffi::g_mime_certificate_get_pubkey_algo(self.to_glib_none().0))
+        }
+    }
 
-    //fn get_trust(&self) -> /*Ignored*/Trust {
-    //    unsafe { TODO: call ffi::g_mime_certificate_get_trust() }
-    //}
+    fn get_trust(&self) -> Trust {
+        unsafe {
+            from_glib(ffi::g_mime_certificate_get_trust(self.to_glib_none().0))
+        }
+    }
 
     fn get_user_id(&self) -> Option<String> {
         unsafe {
@@ -164,9 +176,11 @@ impl<O: IsA<Certificate>> CertificateExt for O {
         }
     }
 
-    //fn set_digest_algo(&self, algo: /*Ignored*/DigestAlgo) {
-    //    unsafe { TODO: call ffi::g_mime_certificate_set_digest_algo() }
-    //}
+    fn set_digest_algo(&self, algo: DigestAlgo) {
+        unsafe {
+            ffi::g_mime_certificate_set_digest_algo(self.to_glib_none().0, algo.to_glib());
+        }
+    }
 
     fn set_email(&self, email: &str) {
         unsafe {
@@ -186,9 +200,11 @@ impl<O: IsA<Certificate>> CertificateExt for O {
         }
     }
 
-    //fn set_id_validity(&self, validity: /*Ignored*/Validity) {
-    //    unsafe { TODO: call ffi::g_mime_certificate_set_id_validity() }
-    //}
+    fn set_id_validity(&self, validity: Validity) {
+        unsafe {
+            ffi::g_mime_certificate_set_id_validity(self.to_glib_none().0, validity.to_glib());
+        }
+    }
 
     fn set_issuer_name(&self, issuer_name: &str) {
         unsafe {
@@ -214,13 +230,17 @@ impl<O: IsA<Certificate>> CertificateExt for O {
         }
     }
 
-    //fn set_pubkey_algo(&self, algo: /*Ignored*/PubKeyAlgo) {
-    //    unsafe { TODO: call ffi::g_mime_certificate_set_pubkey_algo() }
-    //}
+    fn set_pubkey_algo(&self, algo: PubKeyAlgo) {
+        unsafe {
+            ffi::g_mime_certificate_set_pubkey_algo(self.to_glib_none().0, algo.to_glib());
+        }
+    }
 
-    //fn set_trust(&self, trust: /*Ignored*/Trust) {
-    //    unsafe { TODO: call ffi::g_mime_certificate_set_trust() }
-    //}
+    fn set_trust(&self, trust: Trust) {
+        unsafe {
+            ffi::g_mime_certificate_set_trust(self.to_glib_none().0, trust.to_glib());
+        }
+    }
 
     fn set_user_id(&self, user_id: &str) {
         unsafe {

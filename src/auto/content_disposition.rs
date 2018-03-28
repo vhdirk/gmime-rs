@@ -2,6 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use FormatOptions;
 use ParamList;
 use ParserOptions;
 use ffi;
@@ -42,7 +43,7 @@ impl Default for ContentDisposition {
 }
 
 pub trait ContentDispositionExt {
-    //fn encode<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P) -> Option<String>;
+    fn encode<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P) -> Option<String>;
 
     fn get_disposition(&self) -> Option<String>;
 
@@ -58,9 +59,12 @@ pub trait ContentDispositionExt {
 }
 
 impl<O: IsA<ContentDisposition>> ContentDispositionExt for O {
-    //fn encode<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P) -> Option<String> {
-    //    unsafe { TODO: call ffi::g_mime_content_disposition_encode() }
-    //}
+    fn encode<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P) -> Option<String> {
+        let options = options.into();
+        unsafe {
+            from_glib_full(ffi::g_mime_content_disposition_encode(self.to_glib_none().0, options.to_glib_none_mut().0))
+        }
+    }
 
     fn get_disposition(&self) -> Option<String> {
         unsafe {

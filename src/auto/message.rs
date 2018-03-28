@@ -2,6 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use InternetAddressList;
 use Object;
 use ffi;
 use glib::object::IsA;
@@ -32,37 +33,37 @@ pub trait MessageExt {
 
     //fn foreach<P: Into<Option</*Unimplemented*/Fundamental: Pointer>>>(&self, callback: /*Unknown conversion*//*Unimplemented*/ObjectForeachFunc, user_data: P);
 
-    //fn get_addresses(&self, type_: /*Ignored*/AddressType) -> /*Ignored*/Option<InternetAddressList>;
+    //fn get_addresses(&self, type_: /*Ignored*/AddressType) -> Option<InternetAddressList>;
 
-    //fn get_all_recipients(&self) -> /*Ignored*/Option<InternetAddressList>;
+    fn get_all_recipients(&self) -> Option<InternetAddressList>;
 
-    //fn get_autocrypt_gossip_headers(&self, now: /*Ignored*/&glib::DateTime, flags: /*Ignored*/DecryptFlags, session_key: &str, error: /*Ignored*/Option<Error>) -> /*Ignored*/Option<AutocryptHeaderList>;
+    //fn get_autocrypt_gossip_headers(&self, now: /*Ignored*/&glib::DateTime, flags: DecryptFlags, session_key: &str, error: /*Ignored*/Option<Error>) -> /*Ignored*/Option<AutocryptHeaderList>;
 
     //fn get_autocrypt_gossip_headers_from_inner_part<P: IsA<Object>>(&self, now: /*Ignored*/&glib::DateTime, inner_part: &P) -> /*Ignored*/Option<AutocryptHeaderList>;
 
     //fn get_autocrypt_header(&self, now: /*Ignored*/&glib::DateTime) -> /*Ignored*/Option<AutocryptHeader>;
 
-    //fn get_bcc(&self) -> /*Ignored*/Option<InternetAddressList>;
+    fn get_bcc(&self) -> Option<InternetAddressList>;
 
     fn get_body(&self) -> Option<Object>;
 
-    //fn get_cc(&self) -> /*Ignored*/Option<InternetAddressList>;
+    fn get_cc(&self) -> Option<InternetAddressList>;
 
     //fn get_date(&self) -> /*Ignored*/Option<glib::DateTime>;
 
-    //fn get_from(&self) -> /*Ignored*/Option<InternetAddressList>;
+    fn get_from(&self) -> Option<InternetAddressList>;
 
     fn get_message_id(&self) -> Option<String>;
 
     fn get_mime_part(&self) -> Option<Object>;
 
-    //fn get_reply_to(&self) -> /*Ignored*/Option<InternetAddressList>;
+    fn get_reply_to(&self) -> Option<InternetAddressList>;
 
-    //fn get_sender(&self) -> /*Ignored*/Option<InternetAddressList>;
+    fn get_sender(&self) -> Option<InternetAddressList>;
 
     fn get_subject(&self) -> Option<String>;
 
-    //fn get_to(&self) -> /*Ignored*/Option<InternetAddressList>;
+    fn get_to(&self) -> Option<InternetAddressList>;
 
     fn partial_split_message(&self, max_size: usize) -> (Option<Message>, usize);
 
@@ -84,15 +85,17 @@ impl<O: IsA<Message>> MessageExt for O {
     //    unsafe { TODO: call ffi::g_mime_message_foreach() }
     //}
 
-    //fn get_addresses(&self, type_: /*Ignored*/AddressType) -> /*Ignored*/Option<InternetAddressList> {
+    //fn get_addresses(&self, type_: /*Ignored*/AddressType) -> Option<InternetAddressList> {
     //    unsafe { TODO: call ffi::g_mime_message_get_addresses() }
     //}
 
-    //fn get_all_recipients(&self) -> /*Ignored*/Option<InternetAddressList> {
-    //    unsafe { TODO: call ffi::g_mime_message_get_all_recipients() }
-    //}
+    fn get_all_recipients(&self) -> Option<InternetAddressList> {
+        unsafe {
+            from_glib_full(ffi::g_mime_message_get_all_recipients(self.to_glib_none().0))
+        }
+    }
 
-    //fn get_autocrypt_gossip_headers(&self, now: /*Ignored*/&glib::DateTime, flags: /*Ignored*/DecryptFlags, session_key: &str, error: /*Ignored*/Option<Error>) -> /*Ignored*/Option<AutocryptHeaderList> {
+    //fn get_autocrypt_gossip_headers(&self, now: /*Ignored*/&glib::DateTime, flags: DecryptFlags, session_key: &str, error: /*Ignored*/Option<Error>) -> /*Ignored*/Option<AutocryptHeaderList> {
     //    unsafe { TODO: call ffi::g_mime_message_get_autocrypt_gossip_headers() }
     //}
 
@@ -104,9 +107,11 @@ impl<O: IsA<Message>> MessageExt for O {
     //    unsafe { TODO: call ffi::g_mime_message_get_autocrypt_header() }
     //}
 
-    //fn get_bcc(&self) -> /*Ignored*/Option<InternetAddressList> {
-    //    unsafe { TODO: call ffi::g_mime_message_get_bcc() }
-    //}
+    fn get_bcc(&self) -> Option<InternetAddressList> {
+        unsafe {
+            from_glib_none(ffi::g_mime_message_get_bcc(self.to_glib_none().0))
+        }
+    }
 
     fn get_body(&self) -> Option<Object> {
         unsafe {
@@ -114,17 +119,21 @@ impl<O: IsA<Message>> MessageExt for O {
         }
     }
 
-    //fn get_cc(&self) -> /*Ignored*/Option<InternetAddressList> {
-    //    unsafe { TODO: call ffi::g_mime_message_get_cc() }
-    //}
+    fn get_cc(&self) -> Option<InternetAddressList> {
+        unsafe {
+            from_glib_none(ffi::g_mime_message_get_cc(self.to_glib_none().0))
+        }
+    }
 
     //fn get_date(&self) -> /*Ignored*/Option<glib::DateTime> {
     //    unsafe { TODO: call ffi::g_mime_message_get_date() }
     //}
 
-    //fn get_from(&self) -> /*Ignored*/Option<InternetAddressList> {
-    //    unsafe { TODO: call ffi::g_mime_message_get_from() }
-    //}
+    fn get_from(&self) -> Option<InternetAddressList> {
+        unsafe {
+            from_glib_none(ffi::g_mime_message_get_from(self.to_glib_none().0))
+        }
+    }
 
     fn get_message_id(&self) -> Option<String> {
         unsafe {
@@ -138,13 +147,17 @@ impl<O: IsA<Message>> MessageExt for O {
         }
     }
 
-    //fn get_reply_to(&self) -> /*Ignored*/Option<InternetAddressList> {
-    //    unsafe { TODO: call ffi::g_mime_message_get_reply_to() }
-    //}
+    fn get_reply_to(&self) -> Option<InternetAddressList> {
+        unsafe {
+            from_glib_none(ffi::g_mime_message_get_reply_to(self.to_glib_none().0))
+        }
+    }
 
-    //fn get_sender(&self) -> /*Ignored*/Option<InternetAddressList> {
-    //    unsafe { TODO: call ffi::g_mime_message_get_sender() }
-    //}
+    fn get_sender(&self) -> Option<InternetAddressList> {
+        unsafe {
+            from_glib_none(ffi::g_mime_message_get_sender(self.to_glib_none().0))
+        }
+    }
 
     fn get_subject(&self) -> Option<String> {
         unsafe {
@@ -152,9 +165,11 @@ impl<O: IsA<Message>> MessageExt for O {
         }
     }
 
-    //fn get_to(&self) -> /*Ignored*/Option<InternetAddressList> {
-    //    unsafe { TODO: call ffi::g_mime_message_get_to() }
-    //}
+    fn get_to(&self) -> Option<InternetAddressList> {
+        unsafe {
+            from_glib_none(ffi::g_mime_message_get_to(self.to_glib_none().0))
+        }
+    }
 
     fn partial_split_message(&self, max_size: usize) -> (Option<Message>, usize) {
         unsafe {

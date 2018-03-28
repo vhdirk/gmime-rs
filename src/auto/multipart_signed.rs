@@ -39,11 +39,11 @@ impl Default for MultipartSigned {
 }
 
 pub trait MultipartSignedExt {
-    //fn verify(&self, flags: /*Ignored*/VerifyFlags, error: /*Ignored*/Option<Error>) -> Option<SignatureList>;
+    //fn verify(&self, flags: VerifyFlags, error: /*Ignored*/Option<Error>) -> Option<SignatureList>;
 }
 
 impl<O: IsA<MultipartSigned>> MultipartSignedExt for O {
-    //fn verify(&self, flags: /*Ignored*/VerifyFlags, error: /*Ignored*/Option<Error>) -> Option<SignatureList> {
+    //fn verify(&self, flags: VerifyFlags, error: /*Ignored*/Option<Error>) -> Option<SignatureList> {
     //    unsafe { TODO: call ffi::g_mime_multipart_signed_verify() }
     //}
 }

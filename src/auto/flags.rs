@@ -5,3 +5,26 @@
 use ffi;
 use glib::translate::*;
 
+bitflags! {
+    pub struct DecryptFlags: u32 {
+        const NONE = 0;
+        const EXPORT_SESSION_KEY = 1;
+    }
+}
+
+#[doc(hidden)]
+impl ToGlib for DecryptFlags {
+    type GlibType = ffi::GMimeDecryptFlags;
+
+    fn to_glib(&self) -> ffi::GMimeDecryptFlags {
+        ffi::GMimeDecryptFlags::from_bits_truncate(self.bits())
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<ffi::GMimeDecryptFlags> for DecryptFlags {
+    fn from_glib(value: ffi::GMimeDecryptFlags) -> DecryptFlags {
+        DecryptFlags::from_bits_truncate(value.bits())
+    }
+}
+

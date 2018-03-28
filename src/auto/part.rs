@@ -59,13 +59,13 @@ pub trait PartExt {
 
     fn is_attachment(&self) -> bool;
 
-    //fn openpgp_decrypt<'a, P: Into<Option<&'a str>>>(&self, flags: /*Ignored*/DecryptFlags, session_key: P, error: /*Ignored*/Option<Error>) -> /*Ignored*/Option<DecryptResult>;
+    //fn openpgp_decrypt<'a, P: Into<Option<&'a str>>>(&self, flags: DecryptFlags, session_key: P, error: /*Ignored*/Option<Error>) -> Option<DecryptResult>;
 
-    //fn openpgp_encrypt<'a, P: Into<Option<&'a str>>>(&self, sign: bool, userid: P, flags: /*Ignored*/EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }, error: /*Ignored*/Option<Error>) -> bool;
+    //fn openpgp_encrypt<'a, P: Into<Option<&'a str>>>(&self, sign: bool, userid: P, flags: EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }, error: /*Ignored*/Option<Error>) -> bool;
 
     //fn openpgp_sign(&self, userid: &str, error: /*Ignored*/Option<Error>) -> bool;
 
-    //fn openpgp_verify(&self, flags: /*Ignored*/VerifyFlags, error: /*Ignored*/Option<Error>) -> Option<SignatureList>;
+    //fn openpgp_verify(&self, flags: VerifyFlags, error: /*Ignored*/Option<Error>) -> Option<SignatureList>;
 
     fn set_content(&self, content: &DataWrapper);
 
@@ -133,11 +133,11 @@ impl<O: IsA<Part>> PartExt for O {
         }
     }
 
-    //fn openpgp_decrypt<'a, P: Into<Option<&'a str>>>(&self, flags: /*Ignored*/DecryptFlags, session_key: P, error: /*Ignored*/Option<Error>) -> /*Ignored*/Option<DecryptResult> {
+    //fn openpgp_decrypt<'a, P: Into<Option<&'a str>>>(&self, flags: DecryptFlags, session_key: P, error: /*Ignored*/Option<Error>) -> Option<DecryptResult> {
     //    unsafe { TODO: call ffi::g_mime_part_openpgp_decrypt() }
     //}
 
-    //fn openpgp_encrypt<'a, P: Into<Option<&'a str>>>(&self, sign: bool, userid: P, flags: /*Ignored*/EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }, error: /*Ignored*/Option<Error>) -> bool {
+    //fn openpgp_encrypt<'a, P: Into<Option<&'a str>>>(&self, sign: bool, userid: P, flags: EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }, error: /*Ignored*/Option<Error>) -> bool {
     //    unsafe { TODO: call ffi::g_mime_part_openpgp_encrypt() }
     //}
 
@@ -145,7 +145,7 @@ impl<O: IsA<Part>> PartExt for O {
     //    unsafe { TODO: call ffi::g_mime_part_openpgp_sign() }
     //}
 
-    //fn openpgp_verify(&self, flags: /*Ignored*/VerifyFlags, error: /*Ignored*/Option<Error>) -> Option<SignatureList> {
+    //fn openpgp_verify(&self, flags: VerifyFlags, error: /*Ignored*/Option<Error>) -> Option<SignatureList> {
     //    unsafe { TODO: call ffi::g_mime_part_openpgp_verify() }
     //}
 

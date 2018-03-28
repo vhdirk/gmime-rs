@@ -27,7 +27,7 @@ impl MultipartEncrypted {
         }
     }
 
-    //pub fn encrypt<'a, P: IsA<CryptoContext>, Q: IsA<Object>, R: Into<Option<&'a str>>>(ctx: &P, entity: &Q, sign: bool, userid: R, flags: /*Ignored*/EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }, error: /*Ignored*/Option<Error>) -> Option<MultipartEncrypted> {
+    //pub fn encrypt<'a, P: IsA<CryptoContext>, Q: IsA<Object>, R: Into<Option<&'a str>>>(ctx: &P, entity: &Q, sign: bool, userid: R, flags: EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }, error: /*Ignored*/Option<Error>) -> Option<MultipartEncrypted> {
     //    unsafe { TODO: call ffi::g_mime_multipart_encrypted_encrypt() }
     //}
 }
@@ -39,11 +39,11 @@ impl Default for MultipartEncrypted {
 }
 
 pub trait MultipartEncryptedExt {
-    //fn decrypt(&self, flags: /*Ignored*/DecryptFlags, session_key: &str, result: /*Ignored*/DecryptResult, error: /*Ignored*/Option<Error>) -> Option<Object>;
+    //fn decrypt(&self, flags: DecryptFlags, session_key: &str, error: /*Ignored*/Option<Error>) -> Result<Option<Object>, DecryptResult, Error>;
 }
 
 impl<O: IsA<MultipartEncrypted>> MultipartEncryptedExt for O {
-    //fn decrypt(&self, flags: /*Ignored*/DecryptFlags, session_key: &str, result: /*Ignored*/DecryptResult, error: /*Ignored*/Option<Error>) -> Option<Object> {
+    //fn decrypt(&self, flags: DecryptFlags, session_key: &str, error: /*Ignored*/Option<Error>) -> Result<Option<Object>, DecryptResult, Error> {
     //    unsafe { TODO: call ffi::g_mime_multipart_encrypted_decrypt() }
     //}
 }

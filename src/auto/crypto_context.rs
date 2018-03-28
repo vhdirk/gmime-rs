@@ -2,6 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use DigestAlgo;
 use ffi;
 use glib::object::IsA;
 use glib::translate::*;
@@ -31,13 +32,13 @@ impl CryptoContext {
 }
 
 pub trait CryptoContextExt {
-    //fn decrypt<'a, P: Into<Option<&'a str>>, Q: IsA<Stream>, R: IsA<Stream>>(&self, flags: /*Ignored*/DecryptFlags, session_key: P, istream: &Q, ostream: &R, error: /*Ignored*/Option<Error>) -> /*Ignored*/Option<DecryptResult>;
+    //fn decrypt<'a, P: Into<Option<&'a str>>, Q: IsA<Stream>, R: IsA<Stream>>(&self, flags: DecryptFlags, session_key: P, istream: &Q, ostream: &R, error: /*Ignored*/Option<Error>) -> Option<DecryptResult>;
 
-    //fn digest_id(&self, name: &str) -> /*Ignored*/DigestAlgo;
+    fn digest_id(&self, name: &str) -> DigestAlgo;
 
-    //fn digest_name(&self, digest: /*Ignored*/DigestAlgo) -> Option<String>;
+    fn digest_name(&self, digest: DigestAlgo) -> Option<String>;
 
-    //fn encrypt<'a, P: Into<Option<&'a str>>, Q: IsA<Stream>, R: IsA<Stream>>(&self, sign: bool, userid: P, flags: /*Ignored*/EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }, istream: &Q, ostream: &R, error: /*Ignored*/Option<Error>) -> i32;
+    //fn encrypt<'a, P: Into<Option<&'a str>>, Q: IsA<Stream>, R: IsA<Stream>>(&self, sign: bool, userid: P, flags: EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }, istream: &Q, ostream: &R, error: /*Ignored*/Option<Error>) -> i32;
 
     //fn export_keys<P: IsA<Stream>>(&self, keys: &str, ostream: &P, error: /*Ignored*/Option<Error>) -> i32;
 
@@ -53,23 +54,27 @@ pub trait CryptoContextExt {
 
     //fn sign<P: IsA<Stream>, Q: IsA<Stream>>(&self, detach: bool, userid: &str, istream: &P, ostream: &Q, error: /*Ignored*/Option<Error>) -> i32;
 
-    //fn verify<'a, 'b, P: IsA<Stream>, Q: IsA<Stream> + 'a, R: Into<Option<&'a Q>>, S: IsA<Stream> + 'b, T: Into<Option<&'b S>>>(&self, flags: /*Ignored*/VerifyFlags, istream: &P, sigstream: R, ostream: T, error: /*Ignored*/Option<Error>) -> Option<SignatureList>;
+    //fn verify<'a, 'b, P: IsA<Stream>, Q: IsA<Stream> + 'a, R: Into<Option<&'a Q>>, S: IsA<Stream> + 'b, T: Into<Option<&'b S>>>(&self, flags: VerifyFlags, istream: &P, sigstream: R, ostream: T, error: /*Ignored*/Option<Error>) -> Option<SignatureList>;
 }
 
 impl<O: IsA<CryptoContext>> CryptoContextExt for O {
-    //fn decrypt<'a, P: Into<Option<&'a str>>, Q: IsA<Stream>, R: IsA<Stream>>(&self, flags: /*Ignored*/DecryptFlags, session_key: P, istream: &Q, ostream: &R, error: /*Ignored*/Option<Error>) -> /*Ignored*/Option<DecryptResult> {
+    //fn decrypt<'a, P: Into<Option<&'a str>>, Q: IsA<Stream>, R: IsA<Stream>>(&self, flags: DecryptFlags, session_key: P, istream: &Q, ostream: &R, error: /*Ignored*/Option<Error>) -> Option<DecryptResult> {
     //    unsafe { TODO: call ffi::g_mime_crypto_context_decrypt() }
     //}
 
-    //fn digest_id(&self, name: &str) -> /*Ignored*/DigestAlgo {
-    //    unsafe { TODO: call ffi::g_mime_crypto_context_digest_id() }
-    //}
+    fn digest_id(&self, name: &str) -> DigestAlgo {
+        unsafe {
+            from_glib(ffi::g_mime_crypto_context_digest_id(self.to_glib_none().0, name.to_glib_none().0))
+        }
+    }
 
-    //fn digest_name(&self, digest: /*Ignored*/DigestAlgo) -> Option<String> {
-    //    unsafe { TODO: call ffi::g_mime_crypto_context_digest_name() }
-    //}
+    fn digest_name(&self, digest: DigestAlgo) -> Option<String> {
+        unsafe {
+            from_glib_none(ffi::g_mime_crypto_context_digest_name(self.to_glib_none().0, digest.to_glib()))
+        }
+    }
 
-    //fn encrypt<'a, P: Into<Option<&'a str>>, Q: IsA<Stream>, R: IsA<Stream>>(&self, sign: bool, userid: P, flags: /*Ignored*/EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }, istream: &Q, ostream: &R, error: /*Ignored*/Option<Error>) -> i32 {
+    //fn encrypt<'a, P: Into<Option<&'a str>>, Q: IsA<Stream>, R: IsA<Stream>>(&self, sign: bool, userid: P, flags: EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }, istream: &Q, ostream: &R, error: /*Ignored*/Option<Error>) -> i32 {
     //    unsafe { TODO: call ffi::g_mime_crypto_context_encrypt() }
     //}
 
@@ -107,7 +112,7 @@ impl<O: IsA<CryptoContext>> CryptoContextExt for O {
     //    unsafe { TODO: call ffi::g_mime_crypto_context_sign() }
     //}
 
-    //fn verify<'a, 'b, P: IsA<Stream>, Q: IsA<Stream> + 'a, R: Into<Option<&'a Q>>, S: IsA<Stream> + 'b, T: Into<Option<&'b S>>>(&self, flags: /*Ignored*/VerifyFlags, istream: &P, sigstream: R, ostream: T, error: /*Ignored*/Option<Error>) -> Option<SignatureList> {
+    //fn verify<'a, 'b, P: IsA<Stream>, Q: IsA<Stream> + 'a, R: Into<Option<&'a Q>>, S: IsA<Stream> + 'b, T: Into<Option<&'b S>>>(&self, flags: VerifyFlags, istream: &P, sigstream: R, ostream: T, error: /*Ignored*/Option<Error>) -> Option<SignatureList> {
     //    unsafe { TODO: call ffi::g_mime_crypto_context_verify() }
     //}
 }

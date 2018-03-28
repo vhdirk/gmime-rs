@@ -6,6 +6,271 @@ use ffi;
 use glib::translate::*;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
+pub enum CipherAlgo {
+    Default,
+    Idea,
+    3des,
+    Cast5,
+    Blowfish,
+    Aes,
+    Aes192,
+    Aes256,
+    Twofish,
+    Camellia128,
+    Camellia192,
+    Camellia256,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+#[doc(hidden)]
+impl ToGlib for CipherAlgo {
+    type GlibType = ffi::GMimeCipherAlgo;
+
+    fn to_glib(&self) -> ffi::GMimeCipherAlgo {
+        match *self {
+            CipherAlgo::Default => ffi::GMIME_CIPHER_ALGO_DEFAULT,
+            CipherAlgo::Idea => ffi::GMIME_CIPHER_ALGO_IDEA,
+            CipherAlgo::3des => ffi::GMIME_CIPHER_ALGO_3DES,
+            CipherAlgo::Cast5 => ffi::GMIME_CIPHER_ALGO_CAST5,
+            CipherAlgo::Blowfish => ffi::GMIME_CIPHER_ALGO_BLOWFISH,
+            CipherAlgo::Aes => ffi::GMIME_CIPHER_ALGO_AES,
+            CipherAlgo::Aes192 => ffi::GMIME_CIPHER_ALGO_AES192,
+            CipherAlgo::Aes256 => ffi::GMIME_CIPHER_ALGO_AES256,
+            CipherAlgo::Twofish => ffi::GMIME_CIPHER_ALGO_TWOFISH,
+            CipherAlgo::Camellia128 => ffi::GMIME_CIPHER_ALGO_CAMELLIA128,
+            CipherAlgo::Camellia192 => ffi::GMIME_CIPHER_ALGO_CAMELLIA192,
+            CipherAlgo::Camellia256 => ffi::GMIME_CIPHER_ALGO_CAMELLIA256,
+            CipherAlgo::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<ffi::GMimeCipherAlgo> for CipherAlgo {
+    fn from_glib(value: ffi::GMimeCipherAlgo) -> Self {
+        match value {
+            0 => CipherAlgo::Default,
+            1 => CipherAlgo::Idea,
+            2 => CipherAlgo::3des,
+            3 => CipherAlgo::Cast5,
+            4 => CipherAlgo::Blowfish,
+            7 => CipherAlgo::Aes,
+            8 => CipherAlgo::Aes192,
+            9 => CipherAlgo::Aes256,
+            10 => CipherAlgo::Twofish,
+            11 => CipherAlgo::Camellia128,
+            12 => CipherAlgo::Camellia192,
+            13 => CipherAlgo::Camellia256,
+            value => CipherAlgo::__Unknown(value),
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
+pub enum DigestAlgo {
+    Default,
+    Md5,
+    Sha1,
+    Ripemd160,
+    Md2,
+    Tiger192,
+    Haval5160,
+    Sha256,
+    Sha384,
+    Sha512,
+    Sha224,
+    Md4,
+    Crc32,
+    Crc32Rfc1510,
+    Crc32Rfc2440,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+#[doc(hidden)]
+impl ToGlib for DigestAlgo {
+    type GlibType = ffi::GMimeDigestAlgo;
+
+    fn to_glib(&self) -> ffi::GMimeDigestAlgo {
+        match *self {
+            DigestAlgo::Default => ffi::GMIME_DIGEST_ALGO_DEFAULT,
+            DigestAlgo::Md5 => ffi::GMIME_DIGEST_ALGO_MD5,
+            DigestAlgo::Sha1 => ffi::GMIME_DIGEST_ALGO_SHA1,
+            DigestAlgo::Ripemd160 => ffi::GMIME_DIGEST_ALGO_RIPEMD160,
+            DigestAlgo::Md2 => ffi::GMIME_DIGEST_ALGO_MD2,
+            DigestAlgo::Tiger192 => ffi::GMIME_DIGEST_ALGO_TIGER192,
+            DigestAlgo::Haval5160 => ffi::GMIME_DIGEST_ALGO_HAVAL5160,
+            DigestAlgo::Sha256 => ffi::GMIME_DIGEST_ALGO_SHA256,
+            DigestAlgo::Sha384 => ffi::GMIME_DIGEST_ALGO_SHA384,
+            DigestAlgo::Sha512 => ffi::GMIME_DIGEST_ALGO_SHA512,
+            DigestAlgo::Sha224 => ffi::GMIME_DIGEST_ALGO_SHA224,
+            DigestAlgo::Md4 => ffi::GMIME_DIGEST_ALGO_MD4,
+            DigestAlgo::Crc32 => ffi::GMIME_DIGEST_ALGO_CRC32,
+            DigestAlgo::Crc32Rfc1510 => ffi::GMIME_DIGEST_ALGO_CRC32_RFC1510,
+            DigestAlgo::Crc32Rfc2440 => ffi::GMIME_DIGEST_ALGO_CRC32_RFC2440,
+            DigestAlgo::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<ffi::GMimeDigestAlgo> for DigestAlgo {
+    fn from_glib(value: ffi::GMimeDigestAlgo) -> Self {
+        match value {
+            0 => DigestAlgo::Default,
+            1 => DigestAlgo::Md5,
+            2 => DigestAlgo::Sha1,
+            3 => DigestAlgo::Ripemd160,
+            5 => DigestAlgo::Md2,
+            6 => DigestAlgo::Tiger192,
+            7 => DigestAlgo::Haval5160,
+            8 => DigestAlgo::Sha256,
+            9 => DigestAlgo::Sha384,
+            10 => DigestAlgo::Sha512,
+            11 => DigestAlgo::Sha224,
+            301 => DigestAlgo::Md4,
+            302 => DigestAlgo::Crc32,
+            303 => DigestAlgo::Crc32Rfc1510,
+            304 => DigestAlgo::Crc32Rfc2440,
+            value => DigestAlgo::__Unknown(value),
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
+pub enum EncryptFlags {
+    None,
+    AlwaysTrust,
+    NoCompress,
+    Symmetric,
+    ThrowKeyids,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+#[doc(hidden)]
+impl ToGlib for EncryptFlags {
+    type GlibType = ffi::GMimeEncryptFlags;
+
+    fn to_glib(&self) -> ffi::GMimeEncryptFlags {
+        match *self {
+            EncryptFlags::None => ffi::GMIME_ENCRYPT_NONE,
+            EncryptFlags::AlwaysTrust => ffi::GMIME_ENCRYPT_ALWAYS_TRUST,
+            EncryptFlags::NoCompress => ffi::GMIME_ENCRYPT_NO_COMPRESS,
+            EncryptFlags::Symmetric => ffi::GMIME_ENCRYPT_SYMMETRIC,
+            EncryptFlags::ThrowKeyids => ffi::GMIME_ENCRYPT_THROW_KEYIDS,
+            EncryptFlags::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<ffi::GMimeEncryptFlags> for EncryptFlags {
+    fn from_glib(value: ffi::GMimeEncryptFlags) -> Self {
+        match value {
+            0 => EncryptFlags::None,
+            1 => EncryptFlags::AlwaysTrust,
+            16 => EncryptFlags::NoCompress,
+            32 => EncryptFlags::Symmetric,
+            64 => EncryptFlags::ThrowKeyids,
+            value => EncryptFlags::__Unknown(value),
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
+pub enum NewLineFormat {
+    Unix,
+    Dos,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+#[doc(hidden)]
+impl ToGlib for NewLineFormat {
+    type GlibType = ffi::GMimeNewLineFormat;
+
+    fn to_glib(&self) -> ffi::GMimeNewLineFormat {
+        match *self {
+            NewLineFormat::Unix => ffi::GMIME_NEWLINE_FORMAT_UNIX,
+            NewLineFormat::Dos => ffi::GMIME_NEWLINE_FORMAT_DOS,
+            NewLineFormat::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<ffi::GMimeNewLineFormat> for NewLineFormat {
+    fn from_glib(value: ffi::GMimeNewLineFormat) -> Self {
+        match value {
+            0 => NewLineFormat::Unix,
+            1 => NewLineFormat::Dos,
+            value => NewLineFormat::__Unknown(value),
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
+pub enum PubKeyAlgo {
+    Default,
+    Rsa,
+    RsaE,
+    RsaS,
+    ElgE,
+    Dsa,
+    Ecc,
+    Elg,
+    Ecdsa,
+    Ecdh,
+    Eddsa,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+#[doc(hidden)]
+impl ToGlib for PubKeyAlgo {
+    type GlibType = ffi::GMimePubKeyAlgo;
+
+    fn to_glib(&self) -> ffi::GMimePubKeyAlgo {
+        match *self {
+            PubKeyAlgo::Default => ffi::GMIME_PUBKEY_ALGO_DEFAULT,
+            PubKeyAlgo::Rsa => ffi::GMIME_PUBKEY_ALGO_RSA,
+            PubKeyAlgo::RsaE => ffi::GMIME_PUBKEY_ALGO_RSA_E,
+            PubKeyAlgo::RsaS => ffi::GMIME_PUBKEY_ALGO_RSA_S,
+            PubKeyAlgo::ElgE => ffi::GMIME_PUBKEY_ALGO_ELG_E,
+            PubKeyAlgo::Dsa => ffi::GMIME_PUBKEY_ALGO_DSA,
+            PubKeyAlgo::Ecc => ffi::GMIME_PUBKEY_ALGO_ECC,
+            PubKeyAlgo::Elg => ffi::GMIME_PUBKEY_ALGO_ELG,
+            PubKeyAlgo::Ecdsa => ffi::GMIME_PUBKEY_ALGO_ECDSA,
+            PubKeyAlgo::Ecdh => ffi::GMIME_PUBKEY_ALGO_ECDH,
+            PubKeyAlgo::Eddsa => ffi::GMIME_PUBKEY_ALGO_EDDSA,
+            PubKeyAlgo::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<ffi::GMimePubKeyAlgo> for PubKeyAlgo {
+    fn from_glib(value: ffi::GMimePubKeyAlgo) -> Self {
+        match value {
+            0 => PubKeyAlgo::Default,
+            1 => PubKeyAlgo::Rsa,
+            2 => PubKeyAlgo::RsaE,
+            3 => PubKeyAlgo::RsaS,
+            16 => PubKeyAlgo::ElgE,
+            17 => PubKeyAlgo::Dsa,
+            18 => PubKeyAlgo::Ecc,
+            20 => PubKeyAlgo::Elg,
+            301 => PubKeyAlgo::Ecdsa,
+            302 => PubKeyAlgo::Ecdh,
+            303 => PubKeyAlgo::Eddsa,
+            value => PubKeyAlgo::__Unknown(value),
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
 pub enum SecureMimeType {
     CompressedData,
     EnvelopedData,
@@ -104,6 +369,123 @@ impl FromGlib<ffi::GMimeSignatureStatus> for SignatureStatus {
             2048 => SignatureStatus::SysError,
             4096 => SignatureStatus::TofuConflict,
             value => SignatureStatus::__Unknown(value),
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
+pub enum Trust {
+    Unknown,
+    Undefined,
+    Never,
+    Marginal,
+    Full,
+    Ultimate,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+#[doc(hidden)]
+impl ToGlib for Trust {
+    type GlibType = ffi::GMimeTrust;
+
+    fn to_glib(&self) -> ffi::GMimeTrust {
+        match *self {
+            Trust::Unknown => ffi::GMIME_TRUST_UNKNOWN,
+            Trust::Undefined => ffi::GMIME_TRUST_UNDEFINED,
+            Trust::Never => ffi::GMIME_TRUST_NEVER,
+            Trust::Marginal => ffi::GMIME_TRUST_MARGINAL,
+            Trust::Full => ffi::GMIME_TRUST_FULL,
+            Trust::Ultimate => ffi::GMIME_TRUST_ULTIMATE,
+            Trust::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<ffi::GMimeTrust> for Trust {
+    fn from_glib(value: ffi::GMimeTrust) -> Self {
+        match value {
+            0 => Trust::Unknown,
+            1 => Trust::Undefined,
+            2 => Trust::Never,
+            3 => Trust::Marginal,
+            4 => Trust::Full,
+            5 => Trust::Ultimate,
+            value => Trust::__Unknown(value),
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
+pub enum Validity {
+    Unknown,
+    Undefined,
+    Never,
+    Marginal,
+    Full,
+    Ultimate,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+#[doc(hidden)]
+impl ToGlib for Validity {
+    type GlibType = ffi::GMimeValidity;
+
+    fn to_glib(&self) -> ffi::GMimeValidity {
+        match *self {
+            Validity::Unknown => ffi::GMIME_VALIDITY_UNKNOWN,
+            Validity::Undefined => ffi::GMIME_VALIDITY_UNDEFINED,
+            Validity::Never => ffi::GMIME_VALIDITY_NEVER,
+            Validity::Marginal => ffi::GMIME_VALIDITY_MARGINAL,
+            Validity::Full => ffi::GMIME_VALIDITY_FULL,
+            Validity::Ultimate => ffi::GMIME_VALIDITY_ULTIMATE,
+            Validity::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<ffi::GMimeValidity> for Validity {
+    fn from_glib(value: ffi::GMimeValidity) -> Self {
+        match value {
+            0 => Validity::Unknown,
+            1 => Validity::Undefined,
+            2 => Validity::Never,
+            3 => Validity::Marginal,
+            4 => Validity::Full,
+            5 => Validity::Ultimate,
+            value => Validity::__Unknown(value),
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
+pub enum VerifyFlags {
+    VerifyNone,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+#[doc(hidden)]
+impl ToGlib for VerifyFlags {
+    type GlibType = ffi::GMimeVerifyFlags;
+
+    fn to_glib(&self) -> ffi::GMimeVerifyFlags {
+        match *self {
+            VerifyFlags::VerifyNone => ffi::GMIME_VERIFY_NONE,
+            VerifyFlags::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<ffi::GMimeVerifyFlags> for VerifyFlags {
+    fn from_glib(value: ffi::GMimeVerifyFlags) -> Self {
+        match value {
+            0 => VerifyFlags::VerifyNone,
+            value => VerifyFlags::__Unknown(value),
         }
     }
 }

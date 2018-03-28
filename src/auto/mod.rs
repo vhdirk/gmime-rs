@@ -10,6 +10,10 @@ mod certificate;
 pub use self::certificate::Certificate;
 pub use self::certificate::CertificateExt;
 
+mod certificate_list;
+pub use self::certificate_list::CertificateList;
+pub use self::certificate_list::CertificateListExt;
+
 mod content_disposition;
 pub use self::content_disposition::ContentDisposition;
 pub use self::content_disposition::ContentDispositionExt;
@@ -25,6 +29,10 @@ pub use self::crypto_context::CryptoContextExt;
 mod data_wrapper;
 pub use self::data_wrapper::DataWrapper;
 pub use self::data_wrapper::DataWrapperExt;
+
+mod decrypt_result;
+pub use self::decrypt_result::DecryptResult;
+pub use self::decrypt_result::DecryptResultExt;
 
 mod filter;
 pub use self::filter::Filter;
@@ -93,6 +101,14 @@ pub use self::gpg_context::GpgContext;
 mod header_list;
 pub use self::header_list::HeaderList;
 pub use self::header_list::HeaderListExt;
+
+mod internet_address;
+pub use self::internet_address::InternetAddress;
+pub use self::internet_address::InternetAddressExt;
+
+mod internet_address_list;
+pub use self::internet_address_list::InternetAddressList;
+pub use self::internet_address_list::InternetAddressListExt;
 
 mod message;
 pub use self::message::Message;
@@ -192,6 +208,9 @@ mod text_part;
 pub use self::text_part::TextPart;
 pub use self::text_part::TextPartExt;
 
+mod format_options;
+pub use self::format_options::FormatOptions;
+
 mod parser_options;
 pub use self::parser_options::ParserOptions;
 
@@ -199,17 +218,30 @@ mod part_iter;
 pub use self::part_iter::PartIter;
 
 mod enums;
+pub use self::enums::CipherAlgo;
+pub use self::enums::DigestAlgo;
+pub use self::enums::EncryptFlags;
+pub use self::enums::NewLineFormat;
+pub use self::enums::PubKeyAlgo;
 pub use self::enums::SecureMimeType;
 pub use self::enums::SignatureStatus;
+pub use self::enums::Trust;
+pub use self::enums::Validity;
+pub use self::enums::VerifyFlags;
+
+mod flags;
+pub use self::flags::DecryptFlags;
 
 #[doc(hidden)]
 pub mod traits {
     pub use super::ApplicationPkcs7MimeExt;
     pub use super::CertificateExt;
+    pub use super::CertificateListExt;
     pub use super::ContentDispositionExt;
     pub use super::ContentTypeExt;
     pub use super::CryptoContextExt;
     pub use super::DataWrapperExt;
+    pub use super::DecryptResultExt;
     pub use super::FilterExt;
     pub use super::FilterBestExt;
     pub use super::FilterChecksumExt;
@@ -220,6 +252,8 @@ pub mod traits {
     pub use super::FilterWindowsExt;
     pub use super::FilterYencExt;
     pub use super::HeaderListExt;
+    pub use super::InternetAddressExt;
+    pub use super::InternetAddressListExt;
     pub use super::MessageExt;
     pub use super::MessagePartExt;
     pub use super::MessagePartialExt;

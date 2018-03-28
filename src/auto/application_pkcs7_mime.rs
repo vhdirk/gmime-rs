@@ -28,7 +28,7 @@ impl ApplicationPkcs7Mime {
         }
     }
 
-    //pub fn encrypt<P: IsA<Object>>(entity: &P, flags: /*Ignored*/EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }, error: /*Ignored*/Option<Error>) -> Option<ApplicationPkcs7Mime> {
+    //pub fn encrypt<P: IsA<Object>>(entity: &P, flags: EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }, error: /*Ignored*/Option<Error>) -> Option<ApplicationPkcs7Mime> {
     //    unsafe { TODO: call ffi::g_mime_application_pkcs7_mime_encrypt() }
     //}
 
@@ -38,15 +38,15 @@ impl ApplicationPkcs7Mime {
 }
 
 pub trait ApplicationPkcs7MimeExt {
-    //fn decrypt(&self, flags: /*Ignored*/DecryptFlags, session_key: &str, result: /*Ignored*/&DecryptResult, error: /*Ignored*/Option<Error>) -> Option<Object>;
+    //fn decrypt(&self, flags: DecryptFlags, session_key: &str, result: &DecryptResult, error: /*Ignored*/Option<Error>) -> Option<Object>;
 
     fn get_smime_type(&self) -> SecureMimeType;
 
-    //fn verify(&self, flags: /*Ignored*/VerifyFlags, error: /*Ignored*/Option<Error>) -> Result<Option<SignatureList>, Object, Error>;
+    //fn verify(&self, flags: VerifyFlags, error: /*Ignored*/Option<Error>) -> Result<Option<SignatureList>, Object, Error>;
 }
 
 impl<O: IsA<ApplicationPkcs7Mime>> ApplicationPkcs7MimeExt for O {
-    //fn decrypt(&self, flags: /*Ignored*/DecryptFlags, session_key: &str, result: /*Ignored*/&DecryptResult, error: /*Ignored*/Option<Error>) -> Option<Object> {
+    //fn decrypt(&self, flags: DecryptFlags, session_key: &str, result: &DecryptResult, error: /*Ignored*/Option<Error>) -> Option<Object> {
     //    unsafe { TODO: call ffi::g_mime_application_pkcs7_mime_decrypt() }
     //}
 
@@ -56,7 +56,7 @@ impl<O: IsA<ApplicationPkcs7Mime>> ApplicationPkcs7MimeExt for O {
         }
     }
 
-    //fn verify(&self, flags: /*Ignored*/VerifyFlags, error: /*Ignored*/Option<Error>) -> Result<Option<SignatureList>, Object, Error> {
+    //fn verify(&self, flags: VerifyFlags, error: /*Ignored*/Option<Error>) -> Result<Option<SignatureList>, Object, Error> {
     //    unsafe { TODO: call ffi::g_mime_application_pkcs7_mime_verify() }
     //}
 }
