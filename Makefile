@@ -1,4 +1,4 @@
-GIR = gir/target/bin/gir
+GIR = gir/target/release/gir
 GIR_SRC = gir/Cargo.toml gir/Cargo.lock gir/build.rs $(shell find gir/src -name '*.rs')
 GIR_FILES = gir-files/GMime-3.0.gir
 
@@ -7,6 +7,10 @@ gir : src/auto/mod.rs
 
 src/auto/mod.rs : Gir.toml $(GIR) $(GIR_FILES)
 	$(GIR) -c Gir.toml
+
+$(GIR) : $(GIR_SRC)
+	cd gir && cargo build --release
+
 
 $(GIR_SRC) $(GIR_FILES) :
 	git submodule update --init
