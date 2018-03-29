@@ -1,0 +1,41 @@
+[build-dependencies]
+pkg-config = "0.3.7"
+
+[dependencies]
+bitflags = "1.0"
+libc = "0.2"
+
+[dependencies.gio-sys]
+git = "https://github.com/gtk-rs/sys"
+version = "^0.6.0"
+
+[dependencies.glib-sys]
+git = "https://github.com/gtk-rs/sys"
+version = "^0.6.0"
+
+[dependencies.gobject-sys]
+git = "https://github.com/gtk-rs/sys"
+version = "^0.6.0"
+
+[dev-dependencies]
+shell-words = "0.1.0"
+tempdir = "0.3"
+
+[features]
+dox = []
+v3_2 = []
+
+[lib]
+name = "gmime_sys"
+
+[package]
+authors = ["Dirk Van Haerenborgh <vhdirk@gmail.com>"]
+build = "build.rs"
+description = "FFI bindings to gmime-3.0, generated with gtk-rs' gir tool"
+homepage = "https://github.com/vhdirk/gtk-rs-sys"
+keywords = ["gmime", "glib", "ffi", "gtk-rs", "gnome"]
+license = "MIT"
+links = "gmime"
+name = "gmime-sys"
+repository = "https://github.com/vhdirk/gtk-rs-sys"
+version = "0.6.0"

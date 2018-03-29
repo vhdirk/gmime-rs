@@ -111,6 +111,10 @@ mod internet_address_mailbox;
 pub use self::internet_address_mailbox::InternetAddressMailbox;
 pub use self::internet_address_mailbox::InternetAddressMailboxExt;
 
+mod message;
+pub use self::message::Message;
+pub use self::message::MessageExt;
+
 mod message_part;
 pub use self::message_part::MessagePart;
 pub use self::message_part::MessagePartExt;
@@ -258,6 +262,7 @@ pub mod traits {
     pub use super::InternetAddressExt;
     pub use super::InternetAddressListExt;
     pub use super::InternetAddressMailboxExt;
+    pub use super::MessageExt;
     pub use super::MessagePartExt;
     pub use super::MultipartExt;
     pub use super::MultipartEncryptedExt;

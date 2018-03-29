@@ -41,7 +41,7 @@ impl Default for Parser {
 }
 
 pub trait ParserExt {
-    //fn construct_message<'a, P: Into<Option<&'a /*Ignored*/ParserOptions>>>(&self, options: P) -> /*Ignored*/Option<Message>;
+    //fn construct_message<'a, P: Into<Option<&'a /*Ignored*/ParserOptions>>>(&self, options: P) -> Option<Message>;
 
     //fn construct_part<'a, P: Into<Option<&'a /*Ignored*/ParserOptions>>>(&self, options: P) -> Option<Object>;
 
@@ -75,7 +75,7 @@ pub trait ParserExt {
 }
 
 impl<O: IsA<Parser>> ParserExt for O {
-    //fn construct_message<'a, P: Into<Option<&'a /*Ignored*/ParserOptions>>>(&self, options: P) -> /*Ignored*/Option<Message> {
+    //fn construct_message<'a, P: Into<Option<&'a /*Ignored*/ParserOptions>>>(&self, options: P) -> Option<Message> {
     //    unsafe { TODO: call ffi::g_mime_parser_construct_message() }
     //}
 
