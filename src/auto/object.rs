@@ -2,10 +2,13 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use AutocryptHeaderList;
 use ContentDisposition;
 use ContentType;
+use EncodingConstraint;
 use FormatOptions;
 use HeaderList;
+use InternetAddressList;
 use ParserOptions;
 use Stream;
 use ffi;
@@ -62,9 +65,9 @@ impl Object {
 pub trait ObjectExt {
     fn append_header(&self, header: &str, value: &str, charset: &str);
 
-    //fn encode(&self, constraint: /*Ignored*/EncodingConstraint);
+    fn encode(&self, constraint: EncodingConstraint);
 
-    //fn get_autocrypt_headers(&self, effective_date: /*Ignored*/&glib::DateTime, matchheader: &str, addresses: &InternetAddressList, keep_incomplete: bool) -> /*Ignored*/Option<AutocryptHeaderList>;
+    fn get_autocrypt_headers(&self, effective_date: &glib::DateTime, matchheader: &str, addresses: &InternetAddressList, keep_incomplete: bool) -> Option<AutocryptHeaderList>;
 
     fn get_content_disposition(&self) -> Option<ContentDisposition>;
 
@@ -114,13 +117,17 @@ impl<O: IsA<Object>> ObjectExt for O {
         }
     }
 
-    //fn encode(&self, constraint: /*Ignored*/EncodingConstraint) {
-    //    unsafe { TODO: call ffi::g_mime_object_encode() }
-    //}
+    fn encode(&self, constraint: EncodingConstraint) {
+        unsafe {
+            ffi::g_mime_object_encode(self.to_glib_none().0, constraint.to_glib());
+        }
+    }
 
-    //fn get_autocrypt_headers(&self, effective_date: /*Ignored*/&glib::DateTime, matchheader: &str, addresses: &InternetAddressList, keep_incomplete: bool) -> /*Ignored*/Option<AutocryptHeaderList> {
-    //    unsafe { TODO: call ffi::g_mime_object_get_autocrypt_headers() }
-    //}
+    fn get_autocrypt_headers(&self, effective_date: &glib::DateTime, matchheader: &str, addresses: &InternetAddressList, keep_incomplete: bool) -> Option<AutocryptHeaderList> {
+        unsafe {
+            from_glib_none(ffi::g_mime_object_get_autocrypt_headers(self.to_glib_none().0, effective_date.to_glib_none().0, matchheader.to_glib_none().0, addresses.to_glib_none().0, keep_incomplete.to_glib()))
+        }
+    }
 
     fn get_content_disposition(&self) -> Option<ContentDisposition> {
         unsafe {

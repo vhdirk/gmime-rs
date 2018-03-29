@@ -3,6 +3,7 @@
 // DO NOT EDIT
 
 use FormatOptions;
+use Header;
 use ParserOptions;
 use Stream;
 use ffi;
@@ -39,9 +40,9 @@ pub trait HeaderListExt {
 
     fn get_count(&self) -> i32;
 
-    //fn get_header(&self, name: &str) -> /*Ignored*/Option<Header>;
+    fn get_header(&self, name: &str) -> Option<Header>;
 
-    //fn get_header_at(&self, index: i32) -> /*Ignored*/Option<Header>;
+    fn get_header_at(&self, index: i32) -> Option<Header>;
 
     fn prepend(&self, name: &str, value: &str, charset: &str);
 
@@ -81,13 +82,17 @@ impl<O: IsA<HeaderList>> HeaderListExt for O {
         }
     }
 
-    //fn get_header(&self, name: &str) -> /*Ignored*/Option<Header> {
-    //    unsafe { TODO: call ffi::g_mime_header_list_get_header() }
-    //}
+    fn get_header(&self, name: &str) -> Option<Header> {
+        unsafe {
+            from_glib_none(ffi::g_mime_header_list_get_header(self.to_glib_none().0, name.to_glib_none().0))
+        }
+    }
 
-    //fn get_header_at(&self, index: i32) -> /*Ignored*/Option<Header> {
-    //    unsafe { TODO: call ffi::g_mime_header_list_get_header_at() }
-    //}
+    fn get_header_at(&self, index: i32) -> Option<Header> {
+        unsafe {
+            from_glib_none(ffi::g_mime_header_list_get_header_at(self.to_glib_none().0, index))
+        }
+    }
 
     fn prepend(&self, name: &str, value: &str, charset: &str) {
         unsafe {

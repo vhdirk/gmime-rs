@@ -28,3 +28,26 @@ impl FromGlib<ffi::GMimeDecryptFlags> for DecryptFlags {
     }
 }
 
+bitflags! {
+    pub struct FilterBestFlags: u32 {
+        const CHARSET = 1;
+        const ENCODING = 2;
+    }
+}
+
+#[doc(hidden)]
+impl ToGlib for FilterBestFlags {
+    type GlibType = ffi::GMimeFilterBestFlags;
+
+    fn to_glib(&self) -> ffi::GMimeFilterBestFlags {
+        ffi::GMimeFilterBestFlags::from_bits_truncate(self.bits())
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<ffi::GMimeFilterBestFlags> for FilterBestFlags {
+    fn from_glib(value: ffi::GMimeFilterBestFlags) -> FilterBestFlags {
+        FilterBestFlags::from_bits_truncate(value.bits())
+    }
+}
+

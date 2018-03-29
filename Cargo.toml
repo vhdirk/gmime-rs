@@ -26,7 +26,7 @@ name = "gmime"
 [dependencies]
 libc = "0.2"
 bitflags = "1.0"
-
+lazy_static = "1.0"
 
 
 [dependencies.gmime-sys]
@@ -44,3 +44,7 @@ path = "../gtk-rs-sys/glib-sys"
 [dependencies.gobject-sys]
 version = "0.6.0"
 path = "../gtk-rs-sys/gobject-sys"
+
+[dependencies.gio-sys]
+version = "0.6.0"
+path = "../gtk-rs-sys/gio-sys"

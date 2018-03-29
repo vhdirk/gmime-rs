@@ -3,7 +3,9 @@
 // DO NOT EDIT
 
 use Filter;
+use FilterGZipMode;
 use ffi;
+use glib::object::Downcast;
 use glib::object::IsA;
 use glib::translate::*;
 use glib_ffi;
@@ -20,9 +22,11 @@ glib_wrapper! {
 }
 
 impl FilterGZip {
-    //pub fn new(mode: /*Ignored*/FilterGZipMode, level: i32) -> FilterGZip {
-    //    unsafe { TODO: call ffi::g_mime_filter_gzip_new() }
-    //}
+    pub fn new(mode: FilterGZipMode, level: i32) -> FilterGZip {
+        unsafe {
+            Filter::from_glib_full(ffi::g_mime_filter_gzip_new(mode.to_glib(), level)).downcast_unchecked()
+        }
+    }
 }
 
 pub trait FilterGZipExt {

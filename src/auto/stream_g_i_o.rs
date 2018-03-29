@@ -4,6 +4,8 @@
 
 use Stream;
 use ffi;
+use gio;
+use glib::object::Downcast;
 use glib::object::IsA;
 use glib::translate::*;
 use glib_ffi;
@@ -20,13 +22,17 @@ glib_wrapper! {
 }
 
 impl StreamGIO {
-    //pub fn new<P: IsA</*Ignored*/gio::File>>(file: &P) -> StreamGIO {
-    //    unsafe { TODO: call ffi::g_mime_stream_gio_new() }
-    //}
+    pub fn new<P: IsA<gio::File>>(file: &P) -> StreamGIO {
+        unsafe {
+            Stream::from_glib_full(ffi::g_mime_stream_gio_new(file.to_glib_none().0)).downcast_unchecked()
+        }
+    }
 
-    //pub fn new_with_bounds<P: IsA</*Ignored*/gio::File>>(file: &P, start: i64, end: i64) -> StreamGIO {
-    //    unsafe { TODO: call ffi::g_mime_stream_gio_new_with_bounds() }
-    //}
+    pub fn new_with_bounds<P: IsA<gio::File>>(file: &P, start: i64, end: i64) -> StreamGIO {
+        unsafe {
+            Stream::from_glib_full(ffi::g_mime_stream_gio_new_with_bounds(file.to_glib_none().0, start, end)).downcast_unchecked()
+        }
+    }
 }
 
 pub trait StreamGIOExt {

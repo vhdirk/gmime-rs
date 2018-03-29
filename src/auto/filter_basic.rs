@@ -2,8 +2,10 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use ContentEncoding;
 use Filter;
 use ffi;
+use glib::object::Downcast;
 use glib::translate::*;
 use glib_ffi;
 use gobject_ffi;
@@ -19,7 +21,9 @@ glib_wrapper! {
 }
 
 impl FilterBasic {
-    //pub fn new(encoding: /*Ignored*/ContentEncoding, encode: bool) -> FilterBasic {
-    //    unsafe { TODO: call ffi::g_mime_filter_basic_new() }
-    //}
+    pub fn new(encoding: ContentEncoding, encode: bool) -> FilterBasic {
+        unsafe {
+            Filter::from_glib_full(ffi::g_mime_filter_basic_new(encoding.to_glib(), encode.to_glib())).downcast_unchecked()
+        }
+    }
 }

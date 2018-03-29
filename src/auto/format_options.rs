@@ -4,6 +4,7 @@
 
 use Filter;
 use NewLineFormat;
+use ParamEncodingMethod;
 use ffi;
 use glib::translate::*;
 use glib_ffi;
@@ -64,9 +65,11 @@ impl FormatOptions {
         }
     }
 
-    //pub fn get_param_encoding_method(&mut self) -> /*Ignored*/ParamEncodingMethod {
-    //    unsafe { TODO: call ffi::g_mime_format_options_get_param_encoding_method() }
-    //}
+    pub fn get_param_encoding_method(&mut self) -> ParamEncodingMethod {
+        unsafe {
+            from_glib(ffi::g_mime_format_options_get_param_encoding_method(self.to_glib_none_mut().0))
+        }
+    }
 
     pub fn is_hidden_header(&mut self, header: &str) -> bool {
         unsafe {
@@ -86,9 +89,11 @@ impl FormatOptions {
         }
     }
 
-    //pub fn set_param_encoding_method(&mut self, method: /*Ignored*/ParamEncodingMethod) {
-    //    unsafe { TODO: call ffi::g_mime_format_options_set_param_encoding_method() }
-    //}
+    pub fn set_param_encoding_method(&mut self, method: ParamEncodingMethod) {
+        unsafe {
+            ffi::g_mime_format_options_set_param_encoding_method(self.to_glib_none_mut().0, method.to_glib());
+        }
+    }
 
     pub fn get_default() -> Option<FormatOptions> {
         unsafe {

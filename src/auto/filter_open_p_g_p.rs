@@ -3,6 +3,8 @@
 // DO NOT EDIT
 
 use Filter;
+#[cfg(any(feature = "v3_2", feature = "dox"))]
+use OpenPGPData;
 use ffi;
 use glib::object::Downcast;
 use glib::object::IsA;
@@ -40,8 +42,8 @@ pub trait FilterOpenPGPExt {
     #[cfg(any(feature = "v3_2", feature = "dox"))]
     fn get_begin_offset(&self) -> i64;
 
-    //#[cfg(any(feature = "v3_2", feature = "dox"))]
-    //fn get_data_type(&self) -> /*Ignored*/OpenPGPData;
+    #[cfg(any(feature = "v3_2", feature = "dox"))]
+    fn get_data_type(&self) -> OpenPGPData;
 
     #[cfg(any(feature = "v3_2", feature = "dox"))]
     fn get_end_offset(&self) -> i64;
@@ -55,10 +57,12 @@ impl<O: IsA<FilterOpenPGP>> FilterOpenPGPExt for O {
         }
     }
 
-    //#[cfg(any(feature = "v3_2", feature = "dox"))]
-    //fn get_data_type(&self) -> /*Ignored*/OpenPGPData {
-    //    unsafe { TODO: call ffi::g_mime_filter_openpgp_get_data_type() }
-    //}
+    #[cfg(any(feature = "v3_2", feature = "dox"))]
+    fn get_data_type(&self) -> OpenPGPData {
+        unsafe {
+            from_glib(ffi::g_mime_filter_openpgp_get_data_type(self.to_glib_none().0))
+        }
+    }
 
     #[cfg(any(feature = "v3_2", feature = "dox"))]
     fn get_end_offset(&self) -> i64 {

@@ -6,6 +6,7 @@ use FormatOptions;
 use InternetAddress;
 use ParserOptions;
 use ffi;
+use glib;
 use glib::object::IsA;
 use glib::translate::*;
 use glib_ffi;
@@ -51,7 +52,7 @@ pub trait InternetAddressListExt {
 
     fn contains<P: IsA<InternetAddress>>(&self, ia: &P) -> bool;
 
-    //fn encode<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, str: /*Ignored*/&mut glib::String);
+    fn encode<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, str: &mut glib::String);
 
     fn get_address(&self, index: i32) -> Option<InternetAddress>;
 
@@ -97,9 +98,12 @@ impl<O: IsA<InternetAddressList>> InternetAddressListExt for O {
         }
     }
 
-    //fn encode<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, str: /*Ignored*/&mut glib::String) {
-    //    unsafe { TODO: call ffi::internet_address_list_encode() }
-    //}
+    fn encode<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, str: &mut glib::String) {
+        let options = options.into();
+        unsafe {
+            ffi::internet_address_list_encode(self.to_glib_none().0, options.to_glib_none_mut().0, str.to_glib_none_mut().0);
+        }
+    }
 
     fn get_address(&self, index: i32) -> Option<InternetAddress> {
         unsafe {

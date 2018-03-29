@@ -2,6 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use ContentEncoding;
 use Stream;
 use ffi;
 use glib::object::IsA;
@@ -26,9 +27,11 @@ impl DataWrapper {
         }
     }
 
-    //pub fn new_with_stream<P: IsA<Stream>>(stream: &P, encoding: /*Ignored*/ContentEncoding) -> DataWrapper {
-    //    unsafe { TODO: call ffi::g_mime_data_wrapper_new_with_stream() }
-    //}
+    pub fn new_with_stream<P: IsA<Stream>>(stream: &P, encoding: ContentEncoding) -> DataWrapper {
+        unsafe {
+            from_glib_full(ffi::g_mime_data_wrapper_new_with_stream(stream.to_glib_none().0, encoding.to_glib()))
+        }
+    }
 }
 
 impl Default for DataWrapper {
@@ -38,11 +41,11 @@ impl Default for DataWrapper {
 }
 
 pub trait DataWrapperExt {
-    //fn get_encoding(&self) -> /*Ignored*/ContentEncoding;
+    fn get_encoding(&self) -> ContentEncoding;
 
     fn get_stream(&self) -> Option<Stream>;
 
-    //fn set_encoding(&self, encoding: /*Ignored*/ContentEncoding);
+    fn set_encoding(&self, encoding: ContentEncoding);
 
     fn set_stream<P: IsA<Stream>>(&self, stream: &P);
 
@@ -50,9 +53,11 @@ pub trait DataWrapperExt {
 }
 
 impl<O: IsA<DataWrapper>> DataWrapperExt for O {
-    //fn get_encoding(&self) -> /*Ignored*/ContentEncoding {
-    //    unsafe { TODO: call ffi::g_mime_data_wrapper_get_encoding() }
-    //}
+    fn get_encoding(&self) -> ContentEncoding {
+        unsafe {
+            from_glib(ffi::g_mime_data_wrapper_get_encoding(self.to_glib_none().0))
+        }
+    }
 
     fn get_stream(&self) -> Option<Stream> {
         unsafe {
@@ -60,9 +65,11 @@ impl<O: IsA<DataWrapper>> DataWrapperExt for O {
         }
     }
 
-    //fn set_encoding(&self, encoding: /*Ignored*/ContentEncoding) {
-    //    unsafe { TODO: call ffi::g_mime_data_wrapper_set_encoding() }
-    //}
+    fn set_encoding(&self, encoding: ContentEncoding) {
+        unsafe {
+            ffi::g_mime_data_wrapper_set_encoding(self.to_glib_none().0, encoding.to_glib());
+        }
+    }
 
     fn set_stream<P: IsA<Stream>>(&self, stream: &P) {
         unsafe {

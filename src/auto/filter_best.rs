@@ -2,8 +2,12 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use ContentEncoding;
+use EncodingConstraint;
 use Filter;
+use FilterBestFlags;
 use ffi;
+use glib::object::Downcast;
 use glib::object::IsA;
 use glib::translate::*;
 use glib_ffi;
@@ -20,15 +24,17 @@ glib_wrapper! {
 }
 
 impl FilterBest {
-    //pub fn new(flags: /*Ignored*/FilterBestFlags) -> FilterBest {
-    //    unsafe { TODO: call ffi::g_mime_filter_best_new() }
-    //}
+    pub fn new(flags: FilterBestFlags) -> FilterBest {
+        unsafe {
+            Filter::from_glib_full(ffi::g_mime_filter_best_new(flags.to_glib())).downcast_unchecked()
+        }
+    }
 }
 
 pub trait FilterBestExt {
     fn charset(&self) -> Option<String>;
 
-    //fn encoding(&self, constraint: /*Ignored*/EncodingConstraint) -> /*Ignored*/ContentEncoding;
+    fn encoding(&self, constraint: EncodingConstraint) -> ContentEncoding;
 }
 
 impl<O: IsA<FilterBest>> FilterBestExt for O {
@@ -38,7 +44,9 @@ impl<O: IsA<FilterBest>> FilterBestExt for O {
         }
     }
 
-    //fn encoding(&self, constraint: /*Ignored*/EncodingConstraint) -> /*Ignored*/ContentEncoding {
-    //    unsafe { TODO: call ffi::g_mime_filter_best_encoding() }
-    //}
+    fn encoding(&self, constraint: EncodingConstraint) -> ContentEncoding {
+        unsafe {
+            from_glib(ffi::g_mime_filter_best_encoding(self.to_glib_none().0, constraint.to_glib()))
+        }
+    }
 }

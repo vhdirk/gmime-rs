@@ -2,8 +2,12 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use CryptoContext;
+use Error;
 use Multipart;
 use Object;
+use SignatureList;
+use VerifyFlags;
 use ffi;
 use glib::object::IsA;
 use glib::translate::*;
@@ -27,9 +31,13 @@ impl MultipartSigned {
         }
     }
 
-    //pub fn sign<P: IsA<CryptoContext>, Q: IsA<Object>>(ctx: &P, entity: &Q, userid: &str, error: /*Ignored*/Option<Error>) -> Option<MultipartSigned> {
-    //    unsafe { TODO: call ffi::g_mime_multipart_signed_sign() }
-    //}
+    pub fn sign<P: IsA<CryptoContext>, Q: IsA<Object>>(ctx: &P, entity: &Q, userid: &str) -> Result<Option<MultipartSigned>, Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = ffi::g_mime_multipart_signed_sign(ctx.to_glib_none().0, entity.to_glib_none().0, userid.to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+        }
+    }
 }
 
 impl Default for MultipartSigned {
@@ -39,11 +47,15 @@ impl Default for MultipartSigned {
 }
 
 pub trait MultipartSignedExt {
-    //fn verify(&self, flags: VerifyFlags, error: /*Ignored*/Option<Error>) -> Option<SignatureList>;
+    fn verify(&self, flags: VerifyFlags) -> Result<Option<SignatureList>, Error>;
 }
 
 impl<O: IsA<MultipartSigned>> MultipartSignedExt for O {
-    //fn verify(&self, flags: VerifyFlags, error: /*Ignored*/Option<Error>) -> Option<SignatureList> {
-    //    unsafe { TODO: call ffi::g_mime_multipart_signed_verify() }
-    //}
+    fn verify(&self, flags: VerifyFlags) -> Result<Option<SignatureList>, Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = ffi::g_mime_multipart_signed_verify(self.to_glib_none().0, flags.to_glib(), &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+        }
+    }
 }

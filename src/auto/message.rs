@@ -2,9 +2,15 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use AddressType;
+use AutocryptHeader;
+use AutocryptHeaderList;
+use DecryptFlags;
+use Error;
 use InternetAddressList;
 use Object;
 use ffi;
+use glib;
 use glib::object::IsA;
 use glib::translate::*;
 use glib_ffi;
@@ -29,19 +35,19 @@ impl Message {
 }
 
 pub trait MessageExt {
-    //fn add_mailbox(&self, type_: /*Ignored*/AddressType, name: &str, addr: &str);
+    fn add_mailbox(&self, type_: AddressType, name: &str, addr: &str);
 
     //fn foreach<P: Into<Option</*Unimplemented*/Fundamental: Pointer>>>(&self, callback: /*Unknown conversion*//*Unimplemented*/ObjectForeachFunc, user_data: P);
 
-    //fn get_addresses(&self, type_: /*Ignored*/AddressType) -> Option<InternetAddressList>;
+    fn get_addresses(&self, type_: AddressType) -> Option<InternetAddressList>;
 
     fn get_all_recipients(&self) -> Option<InternetAddressList>;
 
-    //fn get_autocrypt_gossip_headers(&self, now: /*Ignored*/&glib::DateTime, flags: DecryptFlags, session_key: &str, error: /*Ignored*/Option<Error>) -> /*Ignored*/Option<AutocryptHeaderList>;
+    fn get_autocrypt_gossip_headers(&self, now: &glib::DateTime, flags: DecryptFlags, session_key: &str) -> Result<AutocryptHeaderList, Error>;
 
-    //fn get_autocrypt_gossip_headers_from_inner_part<P: IsA<Object>>(&self, now: /*Ignored*/&glib::DateTime, inner_part: &P) -> /*Ignored*/Option<AutocryptHeaderList>;
+    fn get_autocrypt_gossip_headers_from_inner_part<P: IsA<Object>>(&self, now: &glib::DateTime, inner_part: &P) -> Option<AutocryptHeaderList>;
 
-    //fn get_autocrypt_header(&self, now: /*Ignored*/&glib::DateTime) -> /*Ignored*/Option<AutocryptHeader>;
+    fn get_autocrypt_header(&self, now: &glib::DateTime) -> Option<AutocryptHeader>;
 
     fn get_bcc(&self) -> Option<InternetAddressList>;
 
@@ -49,7 +55,7 @@ pub trait MessageExt {
 
     fn get_cc(&self) -> Option<InternetAddressList>;
 
-    //fn get_date(&self) -> /*Ignored*/Option<glib::DateTime>;
+    fn get_date(&self) -> Option<glib::DateTime>;
 
     fn get_from(&self) -> Option<InternetAddressList>;
 
@@ -67,7 +73,7 @@ pub trait MessageExt {
 
     fn partial_split_message(&self, max_size: usize) -> (Option<Message>, usize);
 
-    //fn set_date(&self, date: /*Ignored*/&glib::DateTime);
+    fn set_date(&self, date: &glib::DateTime);
 
     fn set_message_id(&self, message_id: &str);
 
@@ -77,17 +83,21 @@ pub trait MessageExt {
 }
 
 impl<O: IsA<Message>> MessageExt for O {
-    //fn add_mailbox(&self, type_: /*Ignored*/AddressType, name: &str, addr: &str) {
-    //    unsafe { TODO: call ffi::g_mime_message_add_mailbox() }
-    //}
+    fn add_mailbox(&self, type_: AddressType, name: &str, addr: &str) {
+        unsafe {
+            ffi::g_mime_message_add_mailbox(self.to_glib_none().0, type_.to_glib(), name.to_glib_none().0, addr.to_glib_none().0);
+        }
+    }
 
     //fn foreach<P: Into<Option</*Unimplemented*/Fundamental: Pointer>>>(&self, callback: /*Unknown conversion*//*Unimplemented*/ObjectForeachFunc, user_data: P) {
     //    unsafe { TODO: call ffi::g_mime_message_foreach() }
     //}
 
-    //fn get_addresses(&self, type_: /*Ignored*/AddressType) -> Option<InternetAddressList> {
-    //    unsafe { TODO: call ffi::g_mime_message_get_addresses() }
-    //}
+    fn get_addresses(&self, type_: AddressType) -> Option<InternetAddressList> {
+        unsafe {
+            from_glib_none(ffi::g_mime_message_get_addresses(self.to_glib_none().0, type_.to_glib()))
+        }
+    }
 
     fn get_all_recipients(&self) -> Option<InternetAddressList> {
         unsafe {
@@ -95,17 +105,25 @@ impl<O: IsA<Message>> MessageExt for O {
         }
     }
 
-    //fn get_autocrypt_gossip_headers(&self, now: /*Ignored*/&glib::DateTime, flags: DecryptFlags, session_key: &str, error: /*Ignored*/Option<Error>) -> /*Ignored*/Option<AutocryptHeaderList> {
-    //    unsafe { TODO: call ffi::g_mime_message_get_autocrypt_gossip_headers() }
-    //}
+    fn get_autocrypt_gossip_headers(&self, now: &glib::DateTime, flags: DecryptFlags, session_key: &str) -> Result<AutocryptHeaderList, Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = ffi::g_mime_message_get_autocrypt_gossip_headers(self.to_glib_none().0, now.to_glib_none().0, flags.to_glib(), session_key.to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+        }
+    }
 
-    //fn get_autocrypt_gossip_headers_from_inner_part<P: IsA<Object>>(&self, now: /*Ignored*/&glib::DateTime, inner_part: &P) -> /*Ignored*/Option<AutocryptHeaderList> {
-    //    unsafe { TODO: call ffi::g_mime_message_get_autocrypt_gossip_headers_from_inner_part() }
-    //}
+    fn get_autocrypt_gossip_headers_from_inner_part<P: IsA<Object>>(&self, now: &glib::DateTime, inner_part: &P) -> Option<AutocryptHeaderList> {
+        unsafe {
+            from_glib_full(ffi::g_mime_message_get_autocrypt_gossip_headers_from_inner_part(self.to_glib_none().0, now.to_glib_none().0, inner_part.to_glib_none().0))
+        }
+    }
 
-    //fn get_autocrypt_header(&self, now: /*Ignored*/&glib::DateTime) -> /*Ignored*/Option<AutocryptHeader> {
-    //    unsafe { TODO: call ffi::g_mime_message_get_autocrypt_header() }
-    //}
+    fn get_autocrypt_header(&self, now: &glib::DateTime) -> Option<AutocryptHeader> {
+        unsafe {
+            from_glib_full(ffi::g_mime_message_get_autocrypt_header(self.to_glib_none().0, now.to_glib_none().0))
+        }
+    }
 
     fn get_bcc(&self) -> Option<InternetAddressList> {
         unsafe {
@@ -125,9 +143,11 @@ impl<O: IsA<Message>> MessageExt for O {
         }
     }
 
-    //fn get_date(&self) -> /*Ignored*/Option<glib::DateTime> {
-    //    unsafe { TODO: call ffi::g_mime_message_get_date() }
-    //}
+    fn get_date(&self) -> Option<glib::DateTime> {
+        unsafe {
+            from_glib_full(ffi::g_mime_message_get_date(self.to_glib_none().0))
+        }
+    }
 
     fn get_from(&self) -> Option<InternetAddressList> {
         unsafe {
@@ -179,9 +199,11 @@ impl<O: IsA<Message>> MessageExt for O {
         }
     }
 
-    //fn set_date(&self, date: /*Ignored*/&glib::DateTime) {
-    //    unsafe { TODO: call ffi::g_mime_message_set_date() }
-    //}
+    fn set_date(&self, date: &glib::DateTime) {
+        unsafe {
+            ffi::g_mime_message_set_date(self.to_glib_none().0, date.to_glib_none().0);
+        }
+    }
 
     fn set_message_id(&self, message_id: &str) {
         unsafe {

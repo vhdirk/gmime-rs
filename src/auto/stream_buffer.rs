@@ -3,7 +3,10 @@
 // DO NOT EDIT
 
 use Stream;
+use StreamBufferMode;
 use ffi;
+use glib::object::Downcast;
+use glib::object::IsA;
 use glib::translate::*;
 use glib_ffi;
 use gobject_ffi;
@@ -19,7 +22,9 @@ glib_wrapper! {
 }
 
 impl StreamBuffer {
-    //pub fn new<P: IsA<Stream>>(source: &P, mode: /*Ignored*/StreamBufferMode) -> StreamBuffer {
-    //    unsafe { TODO: call ffi::g_mime_stream_buffer_new() }
-    //}
+    pub fn new<P: IsA<Stream>>(source: &P, mode: StreamBufferMode) -> StreamBuffer {
+        unsafe {
+            Stream::from_glib_full(ffi::g_mime_stream_buffer_new(source.to_glib_none().0, mode.to_glib())).downcast_unchecked()
+        }
+    }
 }

@@ -4,6 +4,7 @@
 
 use Stream;
 use ffi;
+use glib;
 use glib::object::Downcast;
 use glib::object::IsA;
 use glib::translate::*;
@@ -34,9 +35,11 @@ impl StreamMem {
         }
     }
 
-    //pub fn new_with_byte_array(array: /*Ignored*/&glib::ByteArray) -> StreamMem {
-    //    unsafe { TODO: call ffi::g_mime_stream_mem_new_with_byte_array() }
-    //}
+    pub fn new_with_byte_array(array: &glib::ByteArray) -> StreamMem {
+        unsafe {
+            Stream::from_glib_full(ffi::g_mime_stream_mem_new_with_byte_array(array.to_glib_none().0)).downcast_unchecked()
+        }
+    }
 }
 
 impl Default for StreamMem {
@@ -46,19 +49,21 @@ impl Default for StreamMem {
 }
 
 pub trait StreamMemExt {
-    //fn get_byte_array(&self) -> /*Ignored*/Option<glib::ByteArray>;
+    fn get_byte_array(&self) -> Option<glib::ByteArray>;
 
     fn get_owner(&self) -> bool;
 
-    //fn set_byte_array(&self, array: /*Ignored*/&glib::ByteArray);
+    fn set_byte_array(&self, array: &glib::ByteArray);
 
     fn set_owner(&self, owner: bool);
 }
 
 impl<O: IsA<StreamMem>> StreamMemExt for O {
-    //fn get_byte_array(&self) -> /*Ignored*/Option<glib::ByteArray> {
-    //    unsafe { TODO: call ffi::g_mime_stream_mem_get_byte_array() }
-    //}
+    fn get_byte_array(&self) -> Option<glib::ByteArray> {
+        unsafe {
+            from_glib_none(ffi::g_mime_stream_mem_get_byte_array(self.to_glib_none().0))
+        }
+    }
 
     fn get_owner(&self) -> bool {
         unsafe {
@@ -66,9 +71,11 @@ impl<O: IsA<StreamMem>> StreamMemExt for O {
         }
     }
 
-    //fn set_byte_array(&self, array: /*Ignored*/&glib::ByteArray) {
-    //    unsafe { TODO: call ffi::g_mime_stream_mem_set_byte_array() }
-    //}
+    fn set_byte_array(&self, array: &glib::ByteArray) {
+        unsafe {
+            ffi::g_mime_stream_mem_set_byte_array(self.to_glib_none().0, array.to_glib_none().0);
+        }
+    }
 
     fn set_owner(&self, owner: bool) {
         unsafe {

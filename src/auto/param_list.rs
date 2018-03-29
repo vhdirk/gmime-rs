@@ -2,8 +2,11 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use FormatOptions;
+use Param;
 use ParserOptions;
 use ffi;
+use glib;
 use glib::object::IsA;
 use glib::translate::*;
 use glib_ffi;
@@ -42,11 +45,11 @@ impl Default for ParamList {
 pub trait ParamListExt {
     fn clear(&self);
 
-    //fn encode(&self, options: &mut FormatOptions, fold: bool, str: /*Ignored*/&mut glib::String);
+    fn encode(&self, options: &mut FormatOptions, fold: bool, str: &mut glib::String);
 
-    //fn get_parameter(&self, name: &str) -> /*Ignored*/Option<Param>;
+    fn get_parameter(&self, name: &str) -> Option<Param>;
 
-    //fn get_parameter_at(&self, index: i32) -> /*Ignored*/Option<Param>;
+    fn get_parameter_at(&self, index: i32) -> Option<Param>;
 
     fn length(&self) -> i32;
 
@@ -64,17 +67,23 @@ impl<O: IsA<ParamList>> ParamListExt for O {
         }
     }
 
-    //fn encode(&self, options: &mut FormatOptions, fold: bool, str: /*Ignored*/&mut glib::String) {
-    //    unsafe { TODO: call ffi::g_mime_param_list_encode() }
-    //}
+    fn encode(&self, options: &mut FormatOptions, fold: bool, str: &mut glib::String) {
+        unsafe {
+            ffi::g_mime_param_list_encode(self.to_glib_none().0, options.to_glib_none_mut().0, fold.to_glib(), str.to_glib_none_mut().0);
+        }
+    }
 
-    //fn get_parameter(&self, name: &str) -> /*Ignored*/Option<Param> {
-    //    unsafe { TODO: call ffi::g_mime_param_list_get_parameter() }
-    //}
+    fn get_parameter(&self, name: &str) -> Option<Param> {
+        unsafe {
+            from_glib_none(ffi::g_mime_param_list_get_parameter(self.to_glib_none().0, name.to_glib_none().0))
+        }
+    }
 
-    //fn get_parameter_at(&self, index: i32) -> /*Ignored*/Option<Param> {
-    //    unsafe { TODO: call ffi::g_mime_param_list_get_parameter_at() }
-    //}
+    fn get_parameter_at(&self, index: i32) -> Option<Param> {
+        unsafe {
+            from_glib_none(ffi::g_mime_param_list_get_parameter_at(self.to_glib_none().0, index))
+        }
+    }
 
     fn length(&self) -> i32 {
         unsafe {

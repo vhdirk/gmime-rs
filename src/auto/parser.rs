@@ -2,6 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use Format;
 use Message;
 use Object;
 use ParserOptions;
@@ -49,7 +50,7 @@ pub trait ParserExt {
 
     fn eos(&self) -> bool;
 
-    //fn get_format(&self) -> /*Ignored*/Format;
+    fn get_format(&self) -> Format;
 
     fn get_headers_begin(&self) -> i64;
 
@@ -65,7 +66,7 @@ pub trait ParserExt {
 
     fn init_with_stream<P: IsA<Stream>>(&self, stream: &P);
 
-    //fn set_format(&self, format: /*Ignored*/Format);
+    fn set_format(&self, format: Format);
 
     //fn set_header_regex<P: Into<Option</*Unimplemented*/Fundamental: Pointer>>>(&self, regex: &str, header_cb: /*Unknown conversion*//*Unimplemented*/ParserHeaderRegexFunc, user_data: P);
 
@@ -97,9 +98,11 @@ impl<O: IsA<Parser>> ParserExt for O {
         }
     }
 
-    //fn get_format(&self) -> /*Ignored*/Format {
-    //    unsafe { TODO: call ffi::g_mime_parser_get_format() }
-    //}
+    fn get_format(&self) -> Format {
+        unsafe {
+            from_glib(ffi::g_mime_parser_get_format(self.to_glib_none().0))
+        }
+    }
 
     fn get_headers_begin(&self) -> i64 {
         unsafe {
@@ -143,9 +146,11 @@ impl<O: IsA<Parser>> ParserExt for O {
         }
     }
 
-    //fn set_format(&self, format: /*Ignored*/Format) {
-    //    unsafe { TODO: call ffi::g_mime_parser_set_format() }
-    //}
+    fn set_format(&self, format: Format) {
+        unsafe {
+            ffi::g_mime_parser_set_format(self.to_glib_none().0, format.to_glib());
+        }
+    }
 
     //fn set_header_regex<P: Into<Option</*Unimplemented*/Fundamental: Pointer>>>(&self, regex: &str, header_cb: /*Unknown conversion*//*Unimplemented*/ParserHeaderRegexFunc, user_data: P) {
     //    unsafe { TODO: call ffi::g_mime_parser_set_header_regex() }

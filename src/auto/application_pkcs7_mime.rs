@@ -2,9 +2,14 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use DecryptFlags;
+use DecryptResult;
+use Error;
 use Object;
 use Part;
 use SecureMimeType;
+use SignatureList;
+use VerifyFlags;
 use ffi;
 use glib::object::IsA;
 use glib::translate::*;
@@ -28,27 +33,35 @@ impl ApplicationPkcs7Mime {
         }
     }
 
-    //pub fn encrypt<P: IsA<Object>>(entity: &P, flags: EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }, error: /*Ignored*/Option<Error>) -> Option<ApplicationPkcs7Mime> {
+    //pub fn encrypt<P: IsA<Object>>(entity: &P, flags: EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }) -> Result<Option<ApplicationPkcs7Mime>, Error> {
     //    unsafe { TODO: call ffi::g_mime_application_pkcs7_mime_encrypt() }
     //}
 
-    //pub fn sign<P: IsA<Object>>(entity: &P, userid: &str, error: /*Ignored*/Option<Error>) -> Option<ApplicationPkcs7Mime> {
-    //    unsafe { TODO: call ffi::g_mime_application_pkcs7_mime_sign() }
-    //}
+    pub fn sign<P: IsA<Object>>(entity: &P, userid: &str) -> Result<Option<ApplicationPkcs7Mime>, Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = ffi::g_mime_application_pkcs7_mime_sign(entity.to_glib_none().0, userid.to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+        }
+    }
 }
 
 pub trait ApplicationPkcs7MimeExt {
-    //fn decrypt(&self, flags: DecryptFlags, session_key: &str, result: &DecryptResult, error: /*Ignored*/Option<Error>) -> Option<Object>;
+    fn decrypt(&self, flags: DecryptFlags, session_key: &str, result: &DecryptResult) -> Result<Option<Object>, Error>;
 
     fn get_smime_type(&self) -> SecureMimeType;
 
-    //fn verify(&self, flags: VerifyFlags, error: /*Ignored*/Option<Error>) -> Result<Option<SignatureList>, Object, Error>;
+    fn verify(&self, flags: VerifyFlags) -> Result<(Option<SignatureList>, Object), Error>;
 }
 
 impl<O: IsA<ApplicationPkcs7Mime>> ApplicationPkcs7MimeExt for O {
-    //fn decrypt(&self, flags: DecryptFlags, session_key: &str, result: &DecryptResult, error: /*Ignored*/Option<Error>) -> Option<Object> {
-    //    unsafe { TODO: call ffi::g_mime_application_pkcs7_mime_decrypt() }
-    //}
+    fn decrypt(&self, flags: DecryptFlags, session_key: &str, result: &DecryptResult) -> Result<Option<Object>, Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = ffi::g_mime_application_pkcs7_mime_decrypt(self.to_glib_none().0, flags.to_glib(), session_key.to_glib_none().0, result.to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+        }
+    }
 
     fn get_smime_type(&self) -> SecureMimeType {
         unsafe {
@@ -56,7 +69,12 @@ impl<O: IsA<ApplicationPkcs7Mime>> ApplicationPkcs7MimeExt for O {
         }
     }
 
-    //fn verify(&self, flags: VerifyFlags, error: /*Ignored*/Option<Error>) -> Result<Option<SignatureList>, Object, Error> {
-    //    unsafe { TODO: call ffi::g_mime_application_pkcs7_mime_verify() }
-    //}
+    fn verify(&self, flags: VerifyFlags) -> Result<(Option<SignatureList>, Object), Error> {
+        unsafe {
+            let mut entity = ptr::null_mut();
+            let mut error = ptr::null_mut();
+            let ret = ffi::g_mime_application_pkcs7_mime_verify(self.to_glib_none().0, flags.to_glib(), &mut entity, &mut error);
+            if error.is_null() { Ok((from_glib_full(ret), from_glib_full(entity))) } else { Err(from_glib_full(error)) }
+        }
+    }
 }

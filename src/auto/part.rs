@@ -2,8 +2,16 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use ContentEncoding;
 use DataWrapper;
+use DecryptFlags;
+use DecryptResult;
+use EncodingConstraint;
+use Error;
 use Object;
+use OpenPGPData;
+use SignatureList;
+use VerifyFlags;
 use ffi;
 use glib::object::IsA;
 use glib::translate::*;
@@ -41,13 +49,13 @@ impl Default for Part {
 }
 
 pub trait PartExt {
-    //fn get_best_content_encoding(&self, constraint: /*Ignored*/EncodingConstraint) -> /*Ignored*/ContentEncoding;
+    fn get_best_content_encoding(&self, constraint: EncodingConstraint) -> ContentEncoding;
 
     fn get_content(&self) -> Option<DataWrapper>;
 
     fn get_content_description(&self) -> Option<String>;
 
-    //fn get_content_encoding(&self) -> /*Ignored*/ContentEncoding;
+    fn get_content_encoding(&self) -> ContentEncoding;
 
     fn get_content_location(&self) -> Option<String>;
 
@@ -55,23 +63,23 @@ pub trait PartExt {
 
     fn get_filename(&self) -> Option<String>;
 
-    //fn get_openpgp_data(&self) -> /*Ignored*/OpenPGPData;
+    fn get_openpgp_data(&self) -> OpenPGPData;
 
     fn is_attachment(&self) -> bool;
 
-    //fn openpgp_decrypt<'a, P: Into<Option<&'a str>>>(&self, flags: DecryptFlags, session_key: P, error: /*Ignored*/Option<Error>) -> Option<DecryptResult>;
+    fn openpgp_decrypt<'a, P: Into<Option<&'a str>>>(&self, flags: DecryptFlags, session_key: P) -> Result<Option<DecryptResult>, Error>;
 
-    //fn openpgp_encrypt<'a, P: Into<Option<&'a str>>>(&self, sign: bool, userid: P, flags: EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }, error: /*Ignored*/Option<Error>) -> bool;
+    //fn openpgp_encrypt<'a, P: Into<Option<&'a str>>>(&self, sign: bool, userid: P, flags: EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }) -> Result<(), Error>;
 
-    //fn openpgp_sign(&self, userid: &str, error: /*Ignored*/Option<Error>) -> bool;
+    fn openpgp_sign(&self, userid: &str) -> Result<(), Error>;
 
-    //fn openpgp_verify(&self, flags: VerifyFlags, error: /*Ignored*/Option<Error>) -> Option<SignatureList>;
+    fn openpgp_verify(&self, flags: VerifyFlags) -> Result<Option<SignatureList>, Error>;
 
     fn set_content(&self, content: &DataWrapper);
 
     fn set_content_description(&self, description: &str);
 
-    //fn set_content_encoding(&self, encoding: /*Ignored*/ContentEncoding);
+    fn set_content_encoding(&self, encoding: ContentEncoding);
 
     fn set_content_location(&self, content_location: &str);
 
@@ -79,15 +87,17 @@ pub trait PartExt {
 
     fn set_filename(&self, filename: &str);
 
-    //fn set_openpgp_data(&self, data: /*Ignored*/OpenPGPData);
+    fn set_openpgp_data(&self, data: OpenPGPData);
 
     fn verify_content_md5(&self) -> bool;
 }
 
 impl<O: IsA<Part>> PartExt for O {
-    //fn get_best_content_encoding(&self, constraint: /*Ignored*/EncodingConstraint) -> /*Ignored*/ContentEncoding {
-    //    unsafe { TODO: call ffi::g_mime_part_get_best_content_encoding() }
-    //}
+    fn get_best_content_encoding(&self, constraint: EncodingConstraint) -> ContentEncoding {
+        unsafe {
+            from_glib(ffi::g_mime_part_get_best_content_encoding(self.to_glib_none().0, constraint.to_glib()))
+        }
+    }
 
     fn get_content(&self) -> Option<DataWrapper> {
         unsafe {
@@ -101,9 +111,11 @@ impl<O: IsA<Part>> PartExt for O {
         }
     }
 
-    //fn get_content_encoding(&self) -> /*Ignored*/ContentEncoding {
-    //    unsafe { TODO: call ffi::g_mime_part_get_content_encoding() }
-    //}
+    fn get_content_encoding(&self) -> ContentEncoding {
+        unsafe {
+            from_glib(ffi::g_mime_part_get_content_encoding(self.to_glib_none().0))
+        }
+    }
 
     fn get_content_location(&self) -> Option<String> {
         unsafe {
@@ -123,9 +135,11 @@ impl<O: IsA<Part>> PartExt for O {
         }
     }
 
-    //fn get_openpgp_data(&self) -> /*Ignored*/OpenPGPData {
-    //    unsafe { TODO: call ffi::g_mime_part_get_openpgp_data() }
-    //}
+    fn get_openpgp_data(&self) -> OpenPGPData {
+        unsafe {
+            from_glib(ffi::g_mime_part_get_openpgp_data(self.to_glib_none().0))
+        }
+    }
 
     fn is_attachment(&self) -> bool {
         unsafe {
@@ -133,21 +147,35 @@ impl<O: IsA<Part>> PartExt for O {
         }
     }
 
-    //fn openpgp_decrypt<'a, P: Into<Option<&'a str>>>(&self, flags: DecryptFlags, session_key: P, error: /*Ignored*/Option<Error>) -> Option<DecryptResult> {
-    //    unsafe { TODO: call ffi::g_mime_part_openpgp_decrypt() }
-    //}
+    fn openpgp_decrypt<'a, P: Into<Option<&'a str>>>(&self, flags: DecryptFlags, session_key: P) -> Result<Option<DecryptResult>, Error> {
+        let session_key = session_key.into();
+        let session_key = session_key.to_glib_none();
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = ffi::g_mime_part_openpgp_decrypt(self.to_glib_none().0, flags.to_glib(), session_key.0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+        }
+    }
 
-    //fn openpgp_encrypt<'a, P: Into<Option<&'a str>>>(&self, sign: bool, userid: P, flags: EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }, error: /*Ignored*/Option<Error>) -> bool {
+    //fn openpgp_encrypt<'a, P: Into<Option<&'a str>>>(&self, sign: bool, userid: P, flags: EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }) -> Result<(), Error> {
     //    unsafe { TODO: call ffi::g_mime_part_openpgp_encrypt() }
     //}
 
-    //fn openpgp_sign(&self, userid: &str, error: /*Ignored*/Option<Error>) -> bool {
-    //    unsafe { TODO: call ffi::g_mime_part_openpgp_sign() }
-    //}
+    fn openpgp_sign(&self, userid: &str) -> Result<(), Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let _ = ffi::g_mime_part_openpgp_sign(self.to_glib_none().0, userid.to_glib_none().0, &mut error);
+            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
+        }
+    }
 
-    //fn openpgp_verify(&self, flags: VerifyFlags, error: /*Ignored*/Option<Error>) -> Option<SignatureList> {
-    //    unsafe { TODO: call ffi::g_mime_part_openpgp_verify() }
-    //}
+    fn openpgp_verify(&self, flags: VerifyFlags) -> Result<Option<SignatureList>, Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = ffi::g_mime_part_openpgp_verify(self.to_glib_none().0, flags.to_glib(), &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+        }
+    }
 
     fn set_content(&self, content: &DataWrapper) {
         unsafe {
@@ -161,9 +189,11 @@ impl<O: IsA<Part>> PartExt for O {
         }
     }
 
-    //fn set_content_encoding(&self, encoding: /*Ignored*/ContentEncoding) {
-    //    unsafe { TODO: call ffi::g_mime_part_set_content_encoding() }
-    //}
+    fn set_content_encoding(&self, encoding: ContentEncoding) {
+        unsafe {
+            ffi::g_mime_part_set_content_encoding(self.to_glib_none().0, encoding.to_glib());
+        }
+    }
 
     fn set_content_location(&self, content_location: &str) {
         unsafe {
@@ -183,9 +213,11 @@ impl<O: IsA<Part>> PartExt for O {
         }
     }
 
-    //fn set_openpgp_data(&self, data: /*Ignored*/OpenPGPData) {
-    //    unsafe { TODO: call ffi::g_mime_part_set_openpgp_data() }
-    //}
+    fn set_openpgp_data(&self, data: OpenPGPData) {
+        unsafe {
+            ffi::g_mime_part_set_openpgp_data(self.to_glib_none().0, data.to_glib());
+        }
+    }
 
     fn verify_content_md5(&self) -> bool {
         unsafe {

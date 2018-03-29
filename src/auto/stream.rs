@@ -2,7 +2,9 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use SeekWhence;
 use ffi;
+use glib;
 use glib::object::IsA;
 use glib::translate::*;
 use glib_ffi;
@@ -21,7 +23,7 @@ glib_wrapper! {
 pub trait StreamExt {
     fn buffer_gets(&self, buf: &str, max: usize) -> isize;
 
-    //fn buffer_readln(&self, buffer: /*Ignored*/&glib::ByteArray);
+    fn buffer_readln(&self, buffer: &glib::ByteArray);
 
     fn close(&self) -> i32;
 
@@ -39,7 +41,7 @@ pub trait StreamExt {
 
     fn reset(&self) -> i32;
 
-    //fn seek(&self, offset: i64, whence: /*Ignored*/SeekWhence) -> i64;
+    fn seek(&self, offset: i64, whence: SeekWhence) -> i64;
 
     fn set_bounds(&self, start: i64, end: i64);
 
@@ -63,9 +65,11 @@ impl<O: IsA<Stream>> StreamExt for O {
         }
     }
 
-    //fn buffer_readln(&self, buffer: /*Ignored*/&glib::ByteArray) {
-    //    unsafe { TODO: call ffi::g_mime_stream_buffer_readln() }
-    //}
+    fn buffer_readln(&self, buffer: &glib::ByteArray) {
+        unsafe {
+            ffi::g_mime_stream_buffer_readln(self.to_glib_none().0, buffer.to_glib_none().0);
+        }
+    }
 
     fn close(&self) -> i32 {
         unsafe {
@@ -114,9 +118,11 @@ impl<O: IsA<Stream>> StreamExt for O {
         }
     }
 
-    //fn seek(&self, offset: i64, whence: /*Ignored*/SeekWhence) -> i64 {
-    //    unsafe { TODO: call ffi::g_mime_stream_seek() }
-    //}
+    fn seek(&self, offset: i64, whence: SeekWhence) -> i64 {
+        unsafe {
+            ffi::g_mime_stream_seek(self.to_glib_none().0, offset, whence.to_glib())
+        }
+    }
 
     fn set_bounds(&self, start: i64, end: i64) {
         unsafe {

@@ -2,6 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use Error;
 use Stream;
 use ffi;
 use glib::object::Downcast;
@@ -33,9 +34,13 @@ impl StreamFs {
         }
     }
 
-    //pub fn open(path: &str, flags: i32, mode: i32, error: /*Ignored*/Option<Error>) -> Option<Stream> {
-    //    unsafe { TODO: call ffi::g_mime_stream_fs_open() }
-    //}
+    pub fn open(path: &str, flags: i32, mode: i32) -> Result<Stream, Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = ffi::g_mime_stream_fs_open(path.to_glib_none().0, flags, mode, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+        }
+    }
 }
 
 pub trait StreamFsExt {

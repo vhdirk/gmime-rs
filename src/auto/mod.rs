@@ -6,6 +6,14 @@ mod application_pkcs7_mime;
 pub use self::application_pkcs7_mime::ApplicationPkcs7Mime;
 pub use self::application_pkcs7_mime::ApplicationPkcs7MimeExt;
 
+mod autocrypt_header;
+pub use self::autocrypt_header::AutocryptHeader;
+pub use self::autocrypt_header::AutocryptHeaderExt;
+
+mod autocrypt_header_list;
+pub use self::autocrypt_header_list::AutocryptHeaderList;
+pub use self::autocrypt_header_list::AutocryptHeaderListExt;
+
 mod certificate;
 pub use self::certificate::Certificate;
 pub use self::certificate::CertificateExt;
@@ -61,11 +69,8 @@ pub use self::filter_enriched::FilterEnriched;
 mod filter_from;
 pub use self::filter_from::FilterFrom;
 
-#[cfg(any(feature = "v3_2", feature = "dox"))]
 mod filter_g_zip;
-#[cfg(any(feature = "v3_2", feature = "dox"))]
 pub use self::filter_g_zip::FilterGZip;
-#[cfg(any(feature = "v3_2", feature = "dox"))]
 pub use self::filter_g_zip::FilterGZipExt;
 
 mod filter_h_t_m_l;
@@ -98,6 +103,10 @@ pub use self::filter_yenc::FilterYencExt;
 mod gpg_context;
 pub use self::gpg_context::GpgContext;
 
+mod header;
+pub use self::header::Header;
+pub use self::header::HeaderExt;
+
 mod header_list;
 pub use self::header_list::HeaderList;
 pub use self::header_list::HeaderListExt;
@@ -109,6 +118,10 @@ pub use self::internet_address::InternetAddressExt;
 mod internet_address_list;
 pub use self::internet_address_list::InternetAddressList;
 pub use self::internet_address_list::InternetAddressListExt;
+
+mod internet_address_mailbox;
+pub use self::internet_address_mailbox::InternetAddressMailbox;
+pub use self::internet_address_mailbox::InternetAddressMailboxExt;
 
 mod message;
 pub use self::message::Message;
@@ -137,6 +150,10 @@ pub use self::multipart_signed::MultipartSignedExt;
 mod object;
 pub use self::object::Object;
 pub use self::object::ObjectExt;
+
+mod param;
+pub use self::param::Param;
+pub use self::param::ParamExt;
 
 mod param_list;
 pub use self::param_list::ParamList;
@@ -218,23 +235,38 @@ mod part_iter;
 pub use self::part_iter::PartIter;
 
 mod enums;
+pub use self::enums::AddressType;
+pub use self::enums::AutocryptPreferEncrypt;
 pub use self::enums::CipherAlgo;
+pub use self::enums::ContentEncoding;
 pub use self::enums::DigestAlgo;
+pub use self::enums::EncodingConstraint;
 pub use self::enums::EncryptFlags;
+pub use self::enums::FilterFromMode;
+pub use self::enums::FilterGZipMode;
+pub use self::enums::Format;
 pub use self::enums::NewLineFormat;
+pub use self::enums::OpenPGPData;
+pub use self::enums::ParamEncodingMethod;
 pub use self::enums::PubKeyAlgo;
+pub use self::enums::RfcComplianceMode;
 pub use self::enums::SecureMimeType;
+pub use self::enums::SeekWhence;
 pub use self::enums::SignatureStatus;
+pub use self::enums::StreamBufferMode;
 pub use self::enums::Trust;
 pub use self::enums::Validity;
 pub use self::enums::VerifyFlags;
 
 mod flags;
 pub use self::flags::DecryptFlags;
+pub use self::flags::FilterBestFlags;
 
 #[doc(hidden)]
 pub mod traits {
     pub use super::ApplicationPkcs7MimeExt;
+    pub use super::AutocryptHeaderExt;
+    pub use super::AutocryptHeaderListExt;
     pub use super::CertificateExt;
     pub use super::CertificateListExt;
     pub use super::ContentDispositionExt;
@@ -245,15 +277,16 @@ pub mod traits {
     pub use super::FilterExt;
     pub use super::FilterBestExt;
     pub use super::FilterChecksumExt;
-    #[cfg(any(feature = "v3_2", feature = "dox"))]
     pub use super::FilterGZipExt;
     #[cfg(any(feature = "v3_2", feature = "dox"))]
     pub use super::FilterOpenPGPExt;
     pub use super::FilterWindowsExt;
     pub use super::FilterYencExt;
+    pub use super::HeaderExt;
     pub use super::HeaderListExt;
     pub use super::InternetAddressExt;
     pub use super::InternetAddressListExt;
+    pub use super::InternetAddressMailboxExt;
     pub use super::MessageExt;
     pub use super::MessagePartExt;
     pub use super::MessagePartialExt;
@@ -261,6 +294,7 @@ pub mod traits {
     pub use super::MultipartEncryptedExt;
     pub use super::MultipartSignedExt;
     pub use super::ObjectExt;
+    pub use super::ParamExt;
     pub use super::ParamListExt;
     pub use super::ParserExt;
     pub use super::PartExt;

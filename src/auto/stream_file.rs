@@ -2,6 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
+use Error;
 use Stream;
 use ffi;
 use glib::object::IsA;
@@ -28,9 +29,13 @@ impl StreamFile {
     //    unsafe { TODO: call ffi::g_mime_stream_file_new_with_bounds() }
     //}
 
-    //pub fn open(path: &str, mode: &str, error: /*Ignored*/Option<Error>) -> Option<Stream> {
-    //    unsafe { TODO: call ffi::g_mime_stream_file_open() }
-    //}
+    pub fn open(path: &str, mode: &str) -> Result<Stream, Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = ffi::g_mime_stream_file_open(path.to_glib_none().0, mode.to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+        }
+    }
 }
 
 pub trait StreamFileExt {

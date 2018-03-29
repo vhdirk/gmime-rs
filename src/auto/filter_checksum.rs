@@ -4,6 +4,8 @@
 
 use Filter;
 use ffi;
+use glib;
+use glib::object::Downcast;
 use glib::object::IsA;
 use glib::translate::*;
 use glib_ffi;
@@ -20,9 +22,11 @@ glib_wrapper! {
 }
 
 impl FilterChecksum {
-    //pub fn new(type_: /*Ignored*/glib::ChecksumType) -> FilterChecksum {
-    //    unsafe { TODO: call ffi::g_mime_filter_checksum_new() }
-    //}
+    pub fn new(type_: glib::ChecksumType) -> FilterChecksum {
+        unsafe {
+            Filter::from_glib_full(ffi::g_mime_filter_checksum_new(type_.to_glib())).downcast_unchecked()
+        }
+    }
 }
 
 pub trait FilterChecksumExt {

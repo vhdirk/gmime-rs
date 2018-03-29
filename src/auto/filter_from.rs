@@ -3,7 +3,9 @@
 // DO NOT EDIT
 
 use Filter;
+use FilterFromMode;
 use ffi;
+use glib::object::Downcast;
 use glib::translate::*;
 use glib_ffi;
 use gobject_ffi;
@@ -19,7 +21,9 @@ glib_wrapper! {
 }
 
 impl FilterFrom {
-    //pub fn new(mode: /*Ignored*/FilterFromMode) -> FilterFrom {
-    //    unsafe { TODO: call ffi::g_mime_filter_from_new() }
-    //}
+    pub fn new(mode: FilterFromMode) -> FilterFrom {
+        unsafe {
+            Filter::from_glib_full(ffi::g_mime_filter_from_new(mode.to_glib())).downcast_unchecked()
+        }
+    }
 }
