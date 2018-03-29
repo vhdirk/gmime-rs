@@ -2,8 +2,6 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
-use DecryptFlags;
-use DecryptResult;
 use DigestAlgo;
 use Error;
 use SignatureList;
@@ -38,7 +36,7 @@ impl CryptoContext {
 }
 
 pub trait CryptoContextExt {
-    fn decrypt<'a, P: Into<Option<&'a str>>, Q: IsA<Stream>, R: IsA<Stream>>(&self, flags: DecryptFlags, session_key: P, istream: &Q, ostream: &R) -> Result<DecryptResult, Error>;
+    //fn decrypt<'a, P: Into<Option<&'a str>>, Q: IsA<Stream>, R: IsA<Stream>>(&self, flags: DecryptFlags, session_key: P, istream: &Q, ostream: &R) -> Result</*Ignored*/DecryptResult, Error>;
 
     fn digest_id(&self, name: &str) -> DigestAlgo;
 
@@ -64,15 +62,9 @@ pub trait CryptoContextExt {
 }
 
 impl<O: IsA<CryptoContext>> CryptoContextExt for O {
-    fn decrypt<'a, P: Into<Option<&'a str>>, Q: IsA<Stream>, R: IsA<Stream>>(&self, flags: DecryptFlags, session_key: P, istream: &Q, ostream: &R) -> Result<DecryptResult, Error> {
-        let session_key = session_key.into();
-        let session_key = session_key.to_glib_none();
-        unsafe {
-            let mut error = ptr::null_mut();
-            let ret = ffi::g_mime_crypto_context_decrypt(self.to_glib_none().0, flags.to_glib(), session_key.0, istream.to_glib_none().0, ostream.to_glib_none().0, &mut error);
-            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
-        }
-    }
+    //fn decrypt<'a, P: Into<Option<&'a str>>, Q: IsA<Stream>, R: IsA<Stream>>(&self, flags: DecryptFlags, session_key: P, istream: &Q, ostream: &R) -> Result</*Ignored*/DecryptResult, Error> {
+    //    unsafe { TODO: call ffi::g_mime_crypto_context_decrypt() }
+    //}
 
     fn digest_id(&self, name: &str) -> DigestAlgo {
         unsafe {

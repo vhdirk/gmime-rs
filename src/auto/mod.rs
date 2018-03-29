@@ -6,10 +6,6 @@ mod application_pkcs7_mime;
 pub use self::application_pkcs7_mime::ApplicationPkcs7Mime;
 pub use self::application_pkcs7_mime::ApplicationPkcs7MimeExt;
 
-mod autocrypt_header;
-pub use self::autocrypt_header::AutocryptHeader;
-pub use self::autocrypt_header::AutocryptHeaderExt;
-
 mod autocrypt_header_list;
 pub use self::autocrypt_header_list::AutocryptHeaderList;
 pub use self::autocrypt_header_list::AutocryptHeaderListExt;
@@ -38,10 +34,6 @@ mod data_wrapper;
 pub use self::data_wrapper::DataWrapper;
 pub use self::data_wrapper::DataWrapperExt;
 
-mod decrypt_result;
-pub use self::decrypt_result::DecryptResult;
-pub use self::decrypt_result::DecryptResultExt;
-
 mod filter;
 pub use self::filter::Filter;
 pub use self::filter::FilterExt;
@@ -55,10 +47,6 @@ pub use self::filter_best::FilterBestExt;
 
 mod filter_charset;
 pub use self::filter_charset::FilterCharset;
-
-mod filter_checksum;
-pub use self::filter_checksum::FilterChecksum;
-pub use self::filter_checksum::FilterChecksumExt;
 
 mod filter_dos2_unix;
 pub use self::filter_dos2_unix::FilterDos2Unix;
@@ -123,17 +111,9 @@ mod internet_address_mailbox;
 pub use self::internet_address_mailbox::InternetAddressMailbox;
 pub use self::internet_address_mailbox::InternetAddressMailboxExt;
 
-mod message;
-pub use self::message::Message;
-pub use self::message::MessageExt;
-
 mod message_part;
 pub use self::message_part::MessagePart;
 pub use self::message_part::MessagePartExt;
-
-mod message_partial;
-pub use self::message_partial::MessagePartial;
-pub use self::message_partial::MessagePartialExt;
 
 mod multipart;
 pub use self::multipart::Multipart;
@@ -225,12 +205,6 @@ mod text_part;
 pub use self::text_part::TextPart;
 pub use self::text_part::TextPartExt;
 
-mod format_options;
-pub use self::format_options::FormatOptions;
-
-mod parser_options;
-pub use self::parser_options::ParserOptions;
-
 mod part_iter;
 pub use self::part_iter::PartIter;
 
@@ -265,7 +239,6 @@ pub use self::flags::FilterBestFlags;
 #[doc(hidden)]
 pub mod traits {
     pub use super::ApplicationPkcs7MimeExt;
-    pub use super::AutocryptHeaderExt;
     pub use super::AutocryptHeaderListExt;
     pub use super::CertificateExt;
     pub use super::CertificateListExt;
@@ -273,10 +246,8 @@ pub mod traits {
     pub use super::ContentTypeExt;
     pub use super::CryptoContextExt;
     pub use super::DataWrapperExt;
-    pub use super::DecryptResultExt;
     pub use super::FilterExt;
     pub use super::FilterBestExt;
-    pub use super::FilterChecksumExt;
     pub use super::FilterGZipExt;
     #[cfg(any(feature = "v3_2", feature = "dox"))]
     pub use super::FilterOpenPGPExt;
@@ -287,9 +258,7 @@ pub mod traits {
     pub use super::InternetAddressExt;
     pub use super::InternetAddressListExt;
     pub use super::InternetAddressMailboxExt;
-    pub use super::MessageExt;
     pub use super::MessagePartExt;
-    pub use super::MessagePartialExt;
     pub use super::MultipartExt;
     pub use super::MultipartEncryptedExt;
     pub use super::MultipartSignedExt;

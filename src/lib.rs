@@ -8,14 +8,28 @@ extern crate gio_sys as gio_ffi;
 #[macro_use]
 extern crate glib;
 #[macro_use]
+extern crate gio;
+#[macro_use]
 extern crate bitflags;
+
 #[macro_use]
 extern crate lazy_static;
 
 extern crate libc;
 
 
-pub use glib::Error;
+pub use glib::{
+    Bytes,
+    Error,
+    Variant,
+    VariantType,
+    IOCondition,
+    SeekType,
+    Source,
+    Priority,
+    DateTime,
+    ChecksumType
+};
 
 pub use gio::File;
 

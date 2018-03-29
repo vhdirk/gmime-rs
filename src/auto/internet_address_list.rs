@@ -2,11 +2,8 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
-use FormatOptions;
 use InternetAddress;
-use ParserOptions;
 use ffi;
-use glib;
 use glib::object::IsA;
 use glib::translate::*;
 use glib_ffi;
@@ -29,12 +26,9 @@ impl InternetAddressList {
         }
     }
 
-    pub fn parse<'a, P: Into<Option<&'a ParserOptions>>>(options: P, str: &str) -> Option<InternetAddressList> {
-        let options = options.into();
-        unsafe {
-            from_glib_full(ffi::internet_address_list_parse(options.to_glib_none_mut().0, str.to_glib_none().0))
-        }
-    }
+    //pub fn parse<'a, P: Into<Option<&'a /*Ignored*/ParserOptions>>>(options: P, str: &str) -> Option<InternetAddressList> {
+    //    unsafe { TODO: call ffi::internet_address_list_parse() }
+    //}
 }
 
 impl Default for InternetAddressList {
@@ -52,7 +46,7 @@ pub trait InternetAddressListExt {
 
     fn contains<P: IsA<InternetAddress>>(&self, ia: &P) -> bool;
 
-    fn encode<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, str: &mut glib::String);
+    //fn encode<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, str: /*Ignored*/&mut glib::String);
 
     fn get_address(&self, index: i32) -> Option<InternetAddress>;
 
@@ -70,7 +64,7 @@ pub trait InternetAddressListExt {
 
     fn set_address<P: IsA<InternetAddress>>(&self, index: i32, ia: &P);
 
-    fn to_string<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, encode: bool) -> String;
+    //fn to_string<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, encode: bool) -> String;
 }
 
 impl<O: IsA<InternetAddressList>> InternetAddressListExt for O {
@@ -98,12 +92,9 @@ impl<O: IsA<InternetAddressList>> InternetAddressListExt for O {
         }
     }
 
-    fn encode<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, str: &mut glib::String) {
-        let options = options.into();
-        unsafe {
-            ffi::internet_address_list_encode(self.to_glib_none().0, options.to_glib_none_mut().0, str.to_glib_none_mut().0);
-        }
-    }
+    //fn encode<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, str: /*Ignored*/&mut glib::String) {
+    //    unsafe { TODO: call ffi::internet_address_list_encode() }
+    //}
 
     fn get_address(&self, index: i32) -> Option<InternetAddress> {
         unsafe {
@@ -153,10 +144,7 @@ impl<O: IsA<InternetAddressList>> InternetAddressListExt for O {
         }
     }
 
-    fn to_string<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, encode: bool) -> String {
-        let options = options.into();
-        unsafe {
-            from_glib_full(ffi::internet_address_list_to_string(self.to_glib_none().0, options.to_glib_none_mut().0, encode.to_glib()))
-        }
-    }
+    //fn to_string<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, encode: bool) -> String {
+    //    unsafe { TODO: call ffi::internet_address_list_to_string() }
+    //}
 }

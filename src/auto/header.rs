@@ -2,8 +2,6 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
-use FormatOptions;
-use Stream;
 use ffi;
 use glib::object::IsA;
 use glib::translate::*;
@@ -21,19 +19,19 @@ glib_wrapper! {
 }
 
 pub trait HeaderExt {
-    fn format_addrlist<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String>;
+    //fn format_addrlist<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String>;
 
-    fn format_content_disposition<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String>;
+    //fn format_content_disposition<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String>;
 
-    fn format_content_type<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String>;
+    //fn format_content_type<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String>;
 
-    fn format_default<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String>;
+    //fn format_default<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String>;
 
-    fn format_message_id<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String>;
+    //fn format_message_id<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String>;
 
-    fn format_received<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String>;
+    //fn format_received<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String>;
 
-    fn format_references<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String>;
+    //fn format_references<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String>;
 
     fn get_name(&self) -> Option<String>;
 
@@ -47,60 +45,39 @@ pub trait HeaderExt {
 
     fn set_raw_value(&self, raw_value: &str);
 
-    fn set_value<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, value: &str, charset: &str);
+    //fn set_value<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, value: &str, charset: &str);
 
-    fn write_to_stream<'a, P: Into<Option<&'a FormatOptions>>, Q: IsA<Stream>>(&self, options: P, stream: &Q) -> isize;
+    //fn write_to_stream<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>, Q: IsA<Stream>>(&self, options: P, stream: &Q) -> isize;
 }
 
 impl<O: IsA<Header>> HeaderExt for O {
-    fn format_addrlist<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String> {
-        let options = options.into();
-        unsafe {
-            from_glib_full(ffi::g_mime_header_format_addrlist(self.to_glib_none().0, options.to_glib_none_mut().0, value.to_glib_none().0, charset.to_glib_none().0))
-        }
-    }
+    //fn format_addrlist<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String> {
+    //    unsafe { TODO: call ffi::g_mime_header_format_addrlist() }
+    //}
 
-    fn format_content_disposition<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String> {
-        let options = options.into();
-        unsafe {
-            from_glib_full(ffi::g_mime_header_format_content_disposition(self.to_glib_none().0, options.to_glib_none_mut().0, value.to_glib_none().0, charset.to_glib_none().0))
-        }
-    }
+    //fn format_content_disposition<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String> {
+    //    unsafe { TODO: call ffi::g_mime_header_format_content_disposition() }
+    //}
 
-    fn format_content_type<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String> {
-        let options = options.into();
-        unsafe {
-            from_glib_full(ffi::g_mime_header_format_content_type(self.to_glib_none().0, options.to_glib_none_mut().0, value.to_glib_none().0, charset.to_glib_none().0))
-        }
-    }
+    //fn format_content_type<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String> {
+    //    unsafe { TODO: call ffi::g_mime_header_format_content_type() }
+    //}
 
-    fn format_default<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String> {
-        let options = options.into();
-        unsafe {
-            from_glib_full(ffi::g_mime_header_format_default(self.to_glib_none().0, options.to_glib_none_mut().0, value.to_glib_none().0, charset.to_glib_none().0))
-        }
-    }
+    //fn format_default<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String> {
+    //    unsafe { TODO: call ffi::g_mime_header_format_default() }
+    //}
 
-    fn format_message_id<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String> {
-        let options = options.into();
-        unsafe {
-            from_glib_full(ffi::g_mime_header_format_message_id(self.to_glib_none().0, options.to_glib_none_mut().0, value.to_glib_none().0, charset.to_glib_none().0))
-        }
-    }
+    //fn format_message_id<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String> {
+    //    unsafe { TODO: call ffi::g_mime_header_format_message_id() }
+    //}
 
-    fn format_received<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String> {
-        let options = options.into();
-        unsafe {
-            from_glib_full(ffi::g_mime_header_format_received(self.to_glib_none().0, options.to_glib_none_mut().0, value.to_glib_none().0, charset.to_glib_none().0))
-        }
-    }
+    //fn format_received<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String> {
+    //    unsafe { TODO: call ffi::g_mime_header_format_received() }
+    //}
 
-    fn format_references<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String> {
-        let options = options.into();
-        unsafe {
-            from_glib_full(ffi::g_mime_header_format_references(self.to_glib_none().0, options.to_glib_none_mut().0, value.to_glib_none().0, charset.to_glib_none().0))
-        }
-    }
+    //fn format_references<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, value: &str, charset: &str) -> Option<String> {
+    //    unsafe { TODO: call ffi::g_mime_header_format_references() }
+    //}
 
     fn get_name(&self) -> Option<String> {
         unsafe {
@@ -138,17 +115,11 @@ impl<O: IsA<Header>> HeaderExt for O {
         }
     }
 
-    fn set_value<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, value: &str, charset: &str) {
-        let options = options.into();
-        unsafe {
-            ffi::g_mime_header_set_value(self.to_glib_none().0, options.to_glib_none_mut().0, value.to_glib_none().0, charset.to_glib_none().0);
-        }
-    }
+    //fn set_value<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, value: &str, charset: &str) {
+    //    unsafe { TODO: call ffi::g_mime_header_set_value() }
+    //}
 
-    fn write_to_stream<'a, P: Into<Option<&'a FormatOptions>>, Q: IsA<Stream>>(&self, options: P, stream: &Q) -> isize {
-        let options = options.into();
-        unsafe {
-            ffi::g_mime_header_write_to_stream(self.to_glib_none().0, options.to_glib_none_mut().0, stream.to_glib_none().0)
-        }
-    }
+    //fn write_to_stream<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>, Q: IsA<Stream>>(&self, options: P, stream: &Q) -> isize {
+    //    unsafe { TODO: call ffi::g_mime_header_write_to_stream() }
+    //}
 }

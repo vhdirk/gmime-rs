@@ -2,8 +2,6 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
-use DecryptFlags;
-use DecryptResult;
 use Error;
 use Object;
 use Part;
@@ -47,7 +45,7 @@ impl ApplicationPkcs7Mime {
 }
 
 pub trait ApplicationPkcs7MimeExt {
-    fn decrypt(&self, flags: DecryptFlags, session_key: &str, result: &DecryptResult) -> Result<Option<Object>, Error>;
+    //fn decrypt(&self, flags: DecryptFlags, session_key: &str, result: /*Ignored*/&DecryptResult) -> Result<Option<Object>, Error>;
 
     fn get_smime_type(&self) -> SecureMimeType;
 
@@ -55,13 +53,9 @@ pub trait ApplicationPkcs7MimeExt {
 }
 
 impl<O: IsA<ApplicationPkcs7Mime>> ApplicationPkcs7MimeExt for O {
-    fn decrypt(&self, flags: DecryptFlags, session_key: &str, result: &DecryptResult) -> Result<Option<Object>, Error> {
-        unsafe {
-            let mut error = ptr::null_mut();
-            let ret = ffi::g_mime_application_pkcs7_mime_decrypt(self.to_glib_none().0, flags.to_glib(), session_key.to_glib_none().0, result.to_glib_none().0, &mut error);
-            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
-        }
-    }
+    //fn decrypt(&self, flags: DecryptFlags, session_key: &str, result: /*Ignored*/&DecryptResult) -> Result<Option<Object>, Error> {
+    //    unsafe { TODO: call ffi::g_mime_application_pkcs7_mime_decrypt() }
+    //}
 
     fn get_smime_type(&self) -> SecureMimeType {
         unsafe {

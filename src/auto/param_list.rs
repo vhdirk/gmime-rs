@@ -2,11 +2,8 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
-use FormatOptions;
 use Param;
-use ParserOptions;
 use ffi;
-use glib;
 use glib::object::IsA;
 use glib::translate::*;
 use glib_ffi;
@@ -29,11 +26,9 @@ impl ParamList {
         }
     }
 
-    pub fn parse(options: &mut ParserOptions, str: &str) -> Option<ParamList> {
-        unsafe {
-            from_glib_full(ffi::g_mime_param_list_parse(options.to_glib_none_mut().0, str.to_glib_none().0))
-        }
-    }
+    //pub fn parse(options: /*Ignored*/&mut ParserOptions, str: &str) -> Option<ParamList> {
+    //    unsafe { TODO: call ffi::g_mime_param_list_parse() }
+    //}
 }
 
 impl Default for ParamList {
@@ -45,7 +40,7 @@ impl Default for ParamList {
 pub trait ParamListExt {
     fn clear(&self);
 
-    fn encode(&self, options: &mut FormatOptions, fold: bool, str: &mut glib::String);
+    //fn encode(&self, options: /*Ignored*/&mut FormatOptions, fold: bool, str: /*Ignored*/&mut glib::String);
 
     fn get_parameter(&self, name: &str) -> Option<Param>;
 
@@ -67,11 +62,9 @@ impl<O: IsA<ParamList>> ParamListExt for O {
         }
     }
 
-    fn encode(&self, options: &mut FormatOptions, fold: bool, str: &mut glib::String) {
-        unsafe {
-            ffi::g_mime_param_list_encode(self.to_glib_none().0, options.to_glib_none_mut().0, fold.to_glib(), str.to_glib_none_mut().0);
-        }
-    }
+    //fn encode(&self, options: /*Ignored*/&mut FormatOptions, fold: bool, str: /*Ignored*/&mut glib::String) {
+    //    unsafe { TODO: call ffi::g_mime_param_list_encode() }
+    //}
 
     fn get_parameter(&self, name: &str) -> Option<Param> {
         unsafe {

@@ -2,9 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ 33386b3)
 // DO NOT EDIT
 
-use AutocryptHeader;
 use InternetAddressList;
-use InternetAddressMailbox;
 use ffi;
 use glib::object::IsA;
 use glib::translate::*;
@@ -36,25 +34,23 @@ impl Default for AutocryptHeaderList {
 }
 
 pub trait AutocryptHeaderListExt {
-    fn add(&self, header: &AutocryptHeader);
+    //fn add(&self, header: /*Ignored*/&AutocryptHeader);
 
     fn add_missing_addresses(&self, addresses: &InternetAddressList) -> u32;
 
     fn get_count(&self) -> u32;
 
-    fn get_header_at(&self, index: u32) -> Option<AutocryptHeader>;
+    //fn get_header_at(&self, index: u32) -> /*Ignored*/Option<AutocryptHeader>;
 
-    fn get_header_for_address(&self, mailbox: &InternetAddressMailbox) -> Option<AutocryptHeader>;
+    //fn get_header_for_address(&self, mailbox: &InternetAddressMailbox) -> /*Ignored*/Option<AutocryptHeader>;
 
     fn remove_incomplete(&self);
 }
 
 impl<O: IsA<AutocryptHeaderList>> AutocryptHeaderListExt for O {
-    fn add(&self, header: &AutocryptHeader) {
-        unsafe {
-            ffi::g_mime_autocrypt_header_list_add(self.to_glib_none().0, header.to_glib_none().0);
-        }
-    }
+    //fn add(&self, header: /*Ignored*/&AutocryptHeader) {
+    //    unsafe { TODO: call ffi::g_mime_autocrypt_header_list_add() }
+    //}
 
     fn add_missing_addresses(&self, addresses: &InternetAddressList) -> u32 {
         unsafe {
@@ -68,17 +64,13 @@ impl<O: IsA<AutocryptHeaderList>> AutocryptHeaderListExt for O {
         }
     }
 
-    fn get_header_at(&self, index: u32) -> Option<AutocryptHeader> {
-        unsafe {
-            from_glib_none(ffi::g_mime_autocrypt_header_list_get_header_at(self.to_glib_none().0, index))
-        }
-    }
+    //fn get_header_at(&self, index: u32) -> /*Ignored*/Option<AutocryptHeader> {
+    //    unsafe { TODO: call ffi::g_mime_autocrypt_header_list_get_header_at() }
+    //}
 
-    fn get_header_for_address(&self, mailbox: &InternetAddressMailbox) -> Option<AutocryptHeader> {
-        unsafe {
-            from_glib_none(ffi::g_mime_autocrypt_header_list_get_header_for_address(self.to_glib_none().0, mailbox.to_glib_none().0))
-        }
-    }
+    //fn get_header_for_address(&self, mailbox: &InternetAddressMailbox) -> /*Ignored*/Option<AutocryptHeader> {
+    //    unsafe { TODO: call ffi::g_mime_autocrypt_header_list_get_header_for_address() }
+    //}
 
     fn remove_incomplete(&self) {
         unsafe {

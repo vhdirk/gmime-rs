@@ -3,7 +3,6 @@
 // DO NOT EDIT
 
 use AddressType;
-use AutocryptHeader;
 use AutocryptHeaderList;
 use DecryptFlags;
 use Error;
@@ -47,7 +46,7 @@ pub trait MessageExt {
 
     fn get_autocrypt_gossip_headers_from_inner_part<P: IsA<Object>>(&self, now: &glib::DateTime, inner_part: &P) -> Option<AutocryptHeaderList>;
 
-    fn get_autocrypt_header(&self, now: &glib::DateTime) -> Option<AutocryptHeader>;
+    //fn get_autocrypt_header(&self, now: &glib::DateTime) -> /*Ignored*/Option<AutocryptHeader>;
 
     fn get_bcc(&self) -> Option<InternetAddressList>;
 
@@ -119,11 +118,9 @@ impl<O: IsA<Message>> MessageExt for O {
         }
     }
 
-    fn get_autocrypt_header(&self, now: &glib::DateTime) -> Option<AutocryptHeader> {
-        unsafe {
-            from_glib_full(ffi::g_mime_message_get_autocrypt_header(self.to_glib_none().0, now.to_glib_none().0))
-        }
-    }
+    //fn get_autocrypt_header(&self, now: &glib::DateTime) -> /*Ignored*/Option<AutocryptHeader> {
+    //    unsafe { TODO: call ffi::g_mime_message_get_autocrypt_header() }
+    //}
 
     fn get_bcc(&self) -> Option<InternetAddressList> {
         unsafe {

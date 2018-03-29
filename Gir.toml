@@ -22,7 +22,7 @@ generate = ["GMime.Stream",
             "GMime.FilterBasic",
             "GMime.FilterBest",
             "GMime.FilterCharset",
-            "GMime.FilterChecksum",
+            # "GMime.FilterChecksum",
             "GMime.FilterDos2Unix",
             "GMime.FilterEnriched",
             "GMime.FilterFrom",
@@ -42,22 +42,20 @@ generate = ["GMime.Stream",
             "GMime.HeaderList",
             "GMime.ContentType",
             "GMime.ContentDisposition",
-            "GMime.ContentEncoding",
-            "GMime.EncodingConstraint",
             "GMime.OpenPGPData",
             "GMime.Object",
             "GMime.ObjectForeachFunc",
-            "GMime.Message",
+            # "GMime.Message",
+            "GMime.MessagePart",
+            # "GMime.MessagePartial",
             "GMime.Part",
             "GMime.TextPart",
             "GMime.Multipart",
             "GMime.MultipartEncrypted",
             "GMime.MultipartSigned",
             "GMime.ApplicationPkcs7Mime",
-            "GMime.MessagePart",
-            "GMime.MessagePartial",
             "GMime.PartIter",
-            "GMime.ParserOptions",
+            # "GMime.ParserOptions",
             "GMime.Parser",
             "GMime.RfcComplianceMode",
             "GMime.Certificate",
@@ -77,20 +75,19 @@ generate = ["GMime.Stream",
             "GMime.InternetAddressMailbox",
             "GMime.AddressType",
             "GMime.Format",
-            "GMime.FormatOptions",
+            # "GMime.FormatOptions",
             "GMime.EncryptFlags",
             "GMime.DecryptFlags",
             "GMime.VerifyFlags",
-            "GMime.DecryptResult",
+            # "GMime.DecryptResult",
             "GMime.NewLineFormat",
-            "GMime.CipherAlgo",
             "GMime.DigestAlgo",
             "GMime.PubKeyAlgo",
             "GMime.Trust",
             "GMime.Validity",
             "GMime.SeekWhence",
             "GMime.StreamBufferMode",
-            "GMime.AutocryptHeader",
+            # "GMime.AutocryptHeader",
             "GMime.AutocryptHeaderList",
             "GMime.AutocryptPreferEncrypt"
             ]
@@ -104,12 +101,39 @@ manual = [
     "GLib.SeekType",
     "GLib.Source",
     "GLib.Priority",
-    "GLib.ByteArray",
-    "GLib.String",
     "GLib.DateTime",
     "GLib.ChecksumType",
     "Gio.File",
-    "GMime.CryptoContextNewFunc",
-    "GMime.ParserHeaderRegexFunc",
-    "GMime.ParserWarningFunc"
+    # "GMime.CryptoContextNewFunc",
+    # "GMime.ParserHeaderRegexFunc",
+    # "GMime.ParserWarningFunc"
 ]
+
+
+
+[[object]]
+name = "GMime.CipherAlgo"
+status = "generate"
+    [[object.member]]
+    name = "3des"
+    alias = true
+
+[[object]]
+name = "GMime.ContentEncoding"
+status = "generate"
+    [[object.member]]
+    name = "7bit"
+    alias = true
+    [[object.member]]
+    name = "8bit"
+    alias = true
+
+[[object]]
+name = "GMime.EncodingConstraint"
+status = "generate"
+    [[object.member]]
+    name = "7bit"
+    alias = true
+    [[object.member]]
+    name = "8bit"
+    alias = true

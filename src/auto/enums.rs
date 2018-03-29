@@ -85,7 +85,6 @@ impl FromGlib<ffi::GMimeAutocryptPreferEncrypt> for AutocryptPreferEncrypt {
 pub enum CipherAlgo {
     Default,
     Idea,
-    3des,
     Cast5,
     Blowfish,
     Aes,
@@ -107,7 +106,6 @@ impl ToGlib for CipherAlgo {
         match *self {
             CipherAlgo::Default => ffi::GMIME_CIPHER_ALGO_DEFAULT,
             CipherAlgo::Idea => ffi::GMIME_CIPHER_ALGO_IDEA,
-            CipherAlgo::3des => ffi::GMIME_CIPHER_ALGO_3DES,
             CipherAlgo::Cast5 => ffi::GMIME_CIPHER_ALGO_CAST5,
             CipherAlgo::Blowfish => ffi::GMIME_CIPHER_ALGO_BLOWFISH,
             CipherAlgo::Aes => ffi::GMIME_CIPHER_ALGO_AES,
@@ -128,7 +126,6 @@ impl FromGlib<ffi::GMimeCipherAlgo> for CipherAlgo {
         match value {
             0 => CipherAlgo::Default,
             1 => CipherAlgo::Idea,
-            2 => CipherAlgo::3des,
             3 => CipherAlgo::Cast5,
             4 => CipherAlgo::Blowfish,
             7 => CipherAlgo::Aes,
@@ -146,8 +143,6 @@ impl FromGlib<ffi::GMimeCipherAlgo> for CipherAlgo {
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
 pub enum ContentEncoding {
     Default,
-    7bit,
-    8bit,
     Binary,
     Base64,
     Quotedprintable,
@@ -163,8 +158,6 @@ impl ToGlib for ContentEncoding {
     fn to_glib(&self) -> ffi::GMimeContentEncoding {
         match *self {
             ContentEncoding::Default => ffi::GMIME_CONTENT_ENCODING_DEFAULT,
-            ContentEncoding::7bit => ffi::GMIME_CONTENT_ENCODING_7BIT,
-            ContentEncoding::8bit => ffi::GMIME_CONTENT_ENCODING_8BIT,
             ContentEncoding::Binary => ffi::GMIME_CONTENT_ENCODING_BINARY,
             ContentEncoding::Base64 => ffi::GMIME_CONTENT_ENCODING_BASE64,
             ContentEncoding::Quotedprintable => ffi::GMIME_CONTENT_ENCODING_QUOTEDPRINTABLE,
@@ -179,8 +172,6 @@ impl FromGlib<ffi::GMimeContentEncoding> for ContentEncoding {
     fn from_glib(value: ffi::GMimeContentEncoding) -> Self {
         match value {
             0 => ContentEncoding::Default,
-            1 => ContentEncoding::7bit,
-            2 => ContentEncoding::8bit,
             3 => ContentEncoding::Binary,
             4 => ContentEncoding::Base64,
             5 => ContentEncoding::Quotedprintable,
@@ -263,8 +254,6 @@ impl FromGlib<ffi::GMimeDigestAlgo> for DigestAlgo {
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
 pub enum EncodingConstraint {
-    7bit,
-    8bit,
     Binary,
     #[doc(hidden)]
     __Unknown(i32),
@@ -276,8 +265,6 @@ impl ToGlib for EncodingConstraint {
 
     fn to_glib(&self) -> ffi::GMimeEncodingConstraint {
         match *self {
-            EncodingConstraint::7bit => ffi::GMIME_ENCODING_CONSTRAINT_7BIT,
-            EncodingConstraint::8bit => ffi::GMIME_ENCODING_CONSTRAINT_8BIT,
             EncodingConstraint::Binary => ffi::GMIME_ENCODING_CONSTRAINT_BINARY,
             EncodingConstraint::__Unknown(value) => value
         }
@@ -288,8 +275,6 @@ impl ToGlib for EncodingConstraint {
 impl FromGlib<ffi::GMimeEncodingConstraint> for EncodingConstraint {
     fn from_glib(value: ffi::GMimeEncodingConstraint) -> Self {
         match value {
-            0 => EncodingConstraint::7bit,
-            1 => EncodingConstraint::8bit,
             2 => EncodingConstraint::Binary,
             value => EncodingConstraint::__Unknown(value),
         }

@@ -4,8 +4,6 @@
 
 use ContentEncoding;
 use DataWrapper;
-use DecryptFlags;
-use DecryptResult;
 use EncodingConstraint;
 use Error;
 use Object;
@@ -67,7 +65,7 @@ pub trait PartExt {
 
     fn is_attachment(&self) -> bool;
 
-    fn openpgp_decrypt<'a, P: Into<Option<&'a str>>>(&self, flags: DecryptFlags, session_key: P) -> Result<Option<DecryptResult>, Error>;
+    //fn openpgp_decrypt<'a, P: Into<Option<&'a str>>>(&self, flags: DecryptFlags, session_key: P) -> Result</*Ignored*/Option<DecryptResult>, Error>;
 
     //fn openpgp_encrypt<'a, P: Into<Option<&'a str>>>(&self, sign: bool, userid: P, flags: EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }) -> Result<(), Error>;
 
@@ -147,15 +145,9 @@ impl<O: IsA<Part>> PartExt for O {
         }
     }
 
-    fn openpgp_decrypt<'a, P: Into<Option<&'a str>>>(&self, flags: DecryptFlags, session_key: P) -> Result<Option<DecryptResult>, Error> {
-        let session_key = session_key.into();
-        let session_key = session_key.to_glib_none();
-        unsafe {
-            let mut error = ptr::null_mut();
-            let ret = ffi::g_mime_part_openpgp_decrypt(self.to_glib_none().0, flags.to_glib(), session_key.0, &mut error);
-            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
-        }
-    }
+    //fn openpgp_decrypt<'a, P: Into<Option<&'a str>>>(&self, flags: DecryptFlags, session_key: P) -> Result</*Ignored*/Option<DecryptResult>, Error> {
+    //    unsafe { TODO: call ffi::g_mime_part_openpgp_decrypt() }
+    //}
 
     //fn openpgp_encrypt<'a, P: Into<Option<&'a str>>>(&self, sign: bool, userid: P, flags: EncryptFlags, recipients: /*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 0, id: 28 }) -> Result<(), Error> {
     //    unsafe { TODO: call ffi::g_mime_part_openpgp_encrypt() }

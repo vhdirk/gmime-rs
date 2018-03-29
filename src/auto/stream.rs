@@ -4,7 +4,6 @@
 
 use SeekWhence;
 use ffi;
-use glib;
 use glib::object::IsA;
 use glib::translate::*;
 use glib_ffi;
@@ -23,7 +22,7 @@ glib_wrapper! {
 pub trait StreamExt {
     fn buffer_gets(&self, buf: &str, max: usize) -> isize;
 
-    fn buffer_readln(&self, buffer: &glib::ByteArray);
+    //fn buffer_readln(&self, buffer: /*Ignored*/&glib::ByteArray);
 
     fn close(&self) -> i32;
 
@@ -65,11 +64,9 @@ impl<O: IsA<Stream>> StreamExt for O {
         }
     }
 
-    fn buffer_readln(&self, buffer: &glib::ByteArray) {
-        unsafe {
-            ffi::g_mime_stream_buffer_readln(self.to_glib_none().0, buffer.to_glib_none().0);
-        }
-    }
+    //fn buffer_readln(&self, buffer: /*Ignored*/&glib::ByteArray) {
+    //    unsafe { TODO: call ffi::g_mime_stream_buffer_readln() }
+    //}
 
     fn close(&self) -> i32 {
         unsafe {
