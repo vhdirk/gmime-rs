@@ -102,8 +102,8 @@ manual = [
     "GLib.DateTime",
     "GLib.ChecksumType",
     "Gio.File",
-    "GMime.Message",
-    "GMime.MessagePartial"
+    "GMime.Message", # partial_split_message has wrong annotations
+    "GMime.MessagePartial" # reconstruct_message has wrong annotations
     # "GMime.CryptoContextNewFunc",
     # "GMime.ParserHeaderRegexFunc",
     # "GMime.ParserWarningFunc"
