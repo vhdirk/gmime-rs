@@ -2,6 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ b215ee8)
 // DO NOT EDIT
 
+use Message;
 use Object;
 use ffi;
 use glib::object::IsA;
@@ -26,23 +27,29 @@ impl MessagePart {
         }
     }
 
-    //pub fn new_with_message(subtype: &str, message: /*Ignored*/&Message) -> MessagePart {
-    //    unsafe { TODO: call ffi::g_mime_message_part_new_with_message() }
-    //}
+    pub fn new_with_message(subtype: &str, message: &Message) -> MessagePart {
+        unsafe {
+            from_glib_full(ffi::g_mime_message_part_new_with_message(subtype.to_glib_none().0, message.to_glib_none().0))
+        }
+    }
 }
 
 pub trait MessagePartExt {
-    //fn get_message(&self) -> /*Ignored*/Option<Message>;
+    fn get_message(&self) -> Option<Message>;
 
-    //fn set_message(&self, message: /*Ignored*/&Message);
+    fn set_message(&self, message: &Message);
 }
 
 impl<O: IsA<MessagePart>> MessagePartExt for O {
-    //fn get_message(&self) -> /*Ignored*/Option<Message> {
-    //    unsafe { TODO: call ffi::g_mime_message_part_get_message() }
-    //}
+    fn get_message(&self) -> Option<Message> {
+        unsafe {
+            from_glib_none(ffi::g_mime_message_part_get_message(self.to_glib_none().0))
+        }
+    }
 
-    //fn set_message(&self, message: /*Ignored*/&Message) {
-    //    unsafe { TODO: call ffi::g_mime_message_part_set_message() }
-    //}
+    fn set_message(&self, message: &Message) {
+        unsafe {
+            ffi::g_mime_message_part_set_message(self.to_glib_none().0, message.to_glib_none().0);
+        }
+    }
 }

@@ -46,7 +46,7 @@ generate = ["GMime.Stream",
             "GMime.Object",
             "GMime.ObjectForeachFunc",
             # "GMime.Message",
-            "GMime.MessagePart",
+            # "GMime.MessagePart",
             # "GMime.MessagePartial",
             "GMime.Part",
             "GMime.TextPart",
@@ -137,3 +137,25 @@ status = "generate"
     [[object.member]]
     name = "8bit"
     alias = true
+
+
+[[object]]
+name = "GMime.Message"
+status = "generate"
+
+   [[object.function]]
+   name = "partial_split_message"
+   ignore = true
+
+
+[[object]]
+name = "GMime.MessagePartial"
+status = "generate"
+
+    [[object.function]]
+    name = "reconstruct_message"
+    ignore = true
+
+[[object]]
+name = "GMime.MessagePart"
+status = "generate"
