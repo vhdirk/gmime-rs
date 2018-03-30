@@ -10,7 +10,6 @@ use glib::object::IsA;
 use glib::translate::*;
 use glib_ffi;
 use gobject_ffi;
-use std::cmp;
 use std::mem;
 use std::ptr;
 
@@ -42,33 +41,8 @@ impl Default for AutocryptHeader {
     }
 }
 
-impl PartialEq for AutocryptHeader {
-    #[inline]
-    fn eq(&self, other: &Self) -> bool {
-        AutocryptHeaderExt::compare(self, other) == 0
-    }
-}
-
-impl Eq for AutocryptHeader {}
-
-impl PartialOrd for AutocryptHeader {
-    #[inline]
-    fn partial_cmp(&self, other: &Self) -> Option<cmp::Ordering> {
-        AutocryptHeaderExt::compare(self, other).partial_cmp(&0)
-    }
-}
-
-impl Ord for AutocryptHeader {
-    #[inline]
-    fn cmp(&self, other: &Self) -> cmp::Ordering {
-        AutocryptHeaderExt::compare(self, other).cmp(&0)
-    }
-}
-
 pub trait AutocryptHeaderExt {
     fn clone(&self, src: &AutocryptHeader);
-
-    fn compare(&self, ah2: &AutocryptHeader) -> i32;
 
     fn get_address(&self) -> Option<InternetAddressMailbox>;
 
@@ -99,12 +73,6 @@ impl<O: IsA<AutocryptHeader>> AutocryptHeaderExt for O {
     fn clone(&self, src: &AutocryptHeader) {
         unsafe {
             ffi::g_mime_autocrypt_header_clone(self.to_glib_none().0, src.to_glib_none().0);
-        }
-    }
-
-    fn compare(&self, ah2: &AutocryptHeader) -> i32 {
-        unsafe {
-            ffi::g_mime_autocrypt_header_compare(self.to_glib_none().0, ah2.to_glib_none().0)
         }
     }
 

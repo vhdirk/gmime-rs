@@ -6,6 +6,10 @@ mod application_pkcs7_mime;
 pub use self::application_pkcs7_mime::ApplicationPkcs7Mime;
 pub use self::application_pkcs7_mime::ApplicationPkcs7MimeExt;
 
+mod autocrypt_header;
+pub use self::autocrypt_header::AutocryptHeader;
+pub use self::autocrypt_header::AutocryptHeaderExt;
+
 mod autocrypt_header_list;
 pub use self::autocrypt_header_list::AutocryptHeaderList;
 pub use self::autocrypt_header_list::AutocryptHeaderListExt;
@@ -251,6 +255,7 @@ pub use self::flags::FilterBestFlags;
 #[doc(hidden)]
 pub mod traits {
     pub use super::ApplicationPkcs7MimeExt;
+    pub use super::AutocryptHeaderExt;
     pub use super::AutocryptHeaderListExt;
     pub use super::CertificateExt;
     pub use super::CertificateListExt;

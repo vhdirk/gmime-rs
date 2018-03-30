@@ -147,7 +147,12 @@ status = "generate"
    # wrong array definition
    name = "partial_split_message"
    ignore = true
+       [[object.function.parameter]]
+       name = "message"
+       nullable = false
 
+       [object.function.return]
+       nullable = false
 
 [[object]]
 name = "GMime.MessagePartial"
@@ -165,4 +170,14 @@ status = "generate"
     [[object.function]]
     # wrong array definition
     name = "decrypt"
+    ignore = true
+
+
+[[object]]
+name = "GMime.AutocryptHeader"
+status = "generate"
+
+    [[object.function]]
+    name = "compare"
+    # conflicting implementations
     ignore = true
