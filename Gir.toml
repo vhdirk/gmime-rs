@@ -46,16 +46,16 @@ generate = ["GMime.Stream",
             "GMime.Object",
             "GMime.ObjectForeachFunc",
             # "GMime.Message",
-            # "GMime.MessagePart",
+            "GMime.MessagePart",
             # "GMime.MessagePartial",
             "GMime.Part",
             "GMime.TextPart",
             "GMime.Multipart",
             "GMime.MultipartEncrypted",
             "GMime.MultipartSigned",
-            "GMime.ApplicationPkcs7Mime",
+            #"GMime.ApplicationPkcs7Mime",
             "GMime.PartIter",
-            # "GMime.ParserOptions",
+            #"GMime.ParserOptions",
             "GMime.Parser",
             "GMime.RfcComplianceMode",
             "GMime.Certificate",
@@ -79,7 +79,7 @@ generate = ["GMime.Stream",
             "GMime.EncryptFlags",
             "GMime.DecryptFlags",
             "GMime.VerifyFlags",
-            # "GMime.DecryptResult",
+            "GMime.DecryptResult",
             "GMime.NewLineFormat",
             "GMime.DigestAlgo",
             "GMime.PubKeyAlgo",
@@ -144,6 +144,7 @@ name = "GMime.Message"
 status = "generate"
 
    [[object.function]]
+   # wrong array definition
    name = "partial_split_message"
    ignore = true
 
@@ -153,9 +154,15 @@ name = "GMime.MessagePartial"
 status = "generate"
 
     [[object.function]]
+    # wrong array definition
     name = "reconstruct_message"
     ignore = true
 
 [[object]]
-name = "GMime.MessagePart"
+name = "GMime.ApplicationPkcs7Mime"
 status = "generate"
+
+    [[object.function]]
+    # wrong array definition
+    name = "decrypt"
+    ignore = true

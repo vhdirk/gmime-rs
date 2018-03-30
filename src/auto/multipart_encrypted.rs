@@ -2,6 +2,9 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ b215ee8)
 // DO NOT EDIT
 
+use DecryptFlags;
+use DecryptResult;
+use Error;
 use Multipart;
 use Object;
 use ffi;
@@ -39,11 +42,16 @@ impl Default for MultipartEncrypted {
 }
 
 pub trait MultipartEncryptedExt {
-    //fn decrypt(&self, flags: DecryptFlags, session_key: &str, result: /*Ignored*/DecryptResult) -> Result<Option<Object>, Error>;
+    fn decrypt(&self, flags: DecryptFlags, session_key: &str) -> Result<(Option<Object>, DecryptResult), Error>;
 }
 
 impl<O: IsA<MultipartEncrypted>> MultipartEncryptedExt for O {
-    //fn decrypt(&self, flags: DecryptFlags, session_key: &str, result: /*Ignored*/DecryptResult) -> Result<Option<Object>, Error> {
-    //    unsafe { TODO: call ffi::g_mime_multipart_encrypted_decrypt() }
-    //}
+    fn decrypt(&self, flags: DecryptFlags, session_key: &str) -> Result<(Option<Object>, DecryptResult), Error> {
+        unsafe {
+            let mut result = ptr::null_mut();
+            let mut error = ptr::null_mut();
+            let ret = ffi::g_mime_multipart_encrypted_decrypt(self.to_glib_none().0, flags.to_glib(), session_key.to_glib_none().0, &mut result, &mut error);
+            if error.is_null() { Ok((from_glib_full(ret), from_glib_full(result))) } else { Err(from_glib_full(error)) }
+        }
+    }
 }

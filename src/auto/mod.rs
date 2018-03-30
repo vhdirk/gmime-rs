@@ -34,6 +34,10 @@ mod data_wrapper;
 pub use self::data_wrapper::DataWrapper;
 pub use self::data_wrapper::DataWrapperExt;
 
+mod decrypt_result;
+pub use self::decrypt_result::DecryptResult;
+pub use self::decrypt_result::DecryptResultExt;
+
 mod filter;
 pub use self::filter::Filter;
 pub use self::filter::FilterExt;
@@ -254,6 +258,7 @@ pub mod traits {
     pub use super::ContentTypeExt;
     pub use super::CryptoContextExt;
     pub use super::DataWrapperExt;
+    pub use super::DecryptResultExt;
     pub use super::FilterExt;
     pub use super::FilterBestExt;
     pub use super::FilterGZipExt;

@@ -45,18 +45,12 @@ impl ApplicationPkcs7Mime {
 }
 
 pub trait ApplicationPkcs7MimeExt {
-    //fn decrypt(&self, flags: DecryptFlags, session_key: &str, result: /*Ignored*/&DecryptResult) -> Result<Option<Object>, Error>;
-
     fn get_smime_type(&self) -> SecureMimeType;
 
     fn verify(&self, flags: VerifyFlags) -> Result<(Option<SignatureList>, Object), Error>;
 }
 
 impl<O: IsA<ApplicationPkcs7Mime>> ApplicationPkcs7MimeExt for O {
-    //fn decrypt(&self, flags: DecryptFlags, session_key: &str, result: /*Ignored*/&DecryptResult) -> Result<Option<Object>, Error> {
-    //    unsafe { TODO: call ffi::g_mime_application_pkcs7_mime_decrypt() }
-    //}
-
     fn get_smime_type(&self) -> SecureMimeType {
         unsafe {
             from_glib(ffi::g_mime_application_pkcs7_mime_get_smime_type(self.to_glib_none().0))
