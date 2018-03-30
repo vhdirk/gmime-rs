@@ -9,7 +9,6 @@ use DecryptFlags;
 use Error;
 use InternetAddressList;
 use Object;
-use MessagePartial;
 use ffi;
 use glib;
 use glib::object::IsA;
@@ -195,8 +194,7 @@ impl<O: IsA<Message>> MessageExt for O {
     fn split(&self, max_size: usize) -> Vec<Message> {
         unsafe {
             let mut n_parts = mem::uninitialized();
-            let mut parts = ptr::null_mut();
-            parts = ffi::g_mime_message_partial_split_message(self.to_glib_none().0, max_size, &mut n_parts);
+            let parts = ffi::g_mime_message_partial_split_message(self.to_glib_none().0, max_size, &mut n_parts);
             FromGlibContainer::from_glib_full_num(parts, n_parts as usize)
         }
     }
