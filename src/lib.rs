@@ -38,3 +38,9 @@ pub use gio::File;
 #[cfg_attr(feature = "cargo-clippy", allow(useless_transmute))]
 mod auto;
 pub use auto::*;
+
+mod message;
+pub use message::*;
+
+mod message_partial;
+pub use message_partial::*;

@@ -2,6 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ b215ee8)
 // DO NOT EDIT
 
+use Message;
 use Object;
 use Part;
 use ffi;
@@ -24,6 +25,12 @@ impl MessagePartial {
     pub fn new(id: &str, number: i32, total: i32) -> MessagePartial {
         unsafe {
             from_glib_full(ffi::g_mime_message_partial_new(id.to_glib_none().0, number, total))
+        }
+    }
+
+    pub fn reconstruct_message(partials: &Vec<MessagePartial>) -> Option<Message> {
+        unsafe {
+            from_glib_full(ffi::g_mime_message_partial_reconstruct_message(partials.to_glib_none().0, partials.len()))
         }
     }
 }

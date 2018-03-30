@@ -119,17 +119,9 @@ mod internet_address_mailbox;
 pub use self::internet_address_mailbox::InternetAddressMailbox;
 pub use self::internet_address_mailbox::InternetAddressMailboxExt;
 
-mod message;
-pub use self::message::Message;
-pub use self::message::MessageExt;
-
 mod message_part;
 pub use self::message_part::MessagePart;
 pub use self::message_part::MessagePartExt;
-
-mod message_partial;
-pub use self::message_partial::MessagePartial;
-pub use self::message_partial::MessagePartialExt;
 
 mod multipart;
 pub use self::multipart::Multipart;
@@ -276,9 +268,7 @@ pub mod traits {
     pub use super::InternetAddressExt;
     pub use super::InternetAddressListExt;
     pub use super::InternetAddressMailboxExt;
-    pub use super::MessageExt;
     pub use super::MessagePartExt;
-    pub use super::MessagePartialExt;
     pub use super::MultipartExt;
     pub use super::MultipartEncryptedExt;
     pub use super::MultipartSignedExt;

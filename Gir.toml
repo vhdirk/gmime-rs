@@ -104,6 +104,8 @@ manual = [
     "GLib.DateTime",
     "GLib.ChecksumType",
     "Gio.File",
+    "GMime.Message",
+    "GMime.MessagePartial"
     # "GMime.CryptoContextNewFunc",
     # "GMime.ParserHeaderRegexFunc",
     # "GMime.ParserWarningFunc"
@@ -139,29 +141,6 @@ status = "generate"
     alias = true
 
 
-[[object]]
-name = "GMime.Message"
-status = "generate"
-
-   [[object.function]]
-   # wrong array definition
-   name = "partial_split_message"
-   ignore = true
-       [[object.function.parameter]]
-       name = "message"
-       nullable = false
-
-       [object.function.return]
-       nullable = false
-
-[[object]]
-name = "GMime.MessagePartial"
-status = "generate"
-
-    [[object.function]]
-    # wrong array definition
-    name = "reconstruct_message"
-    ignore = true
 
 [[object]]
 name = "GMime.ApplicationPkcs7Mime"
