@@ -28,4 +28,4 @@ keywords = ["gmime", "glib", "ffi", "gtk-rs", "gnome"]
 license = "MIT"
 links = "gmime"
 name = "gmime-sys"
-version = "0.6.1"
+version = "0.6.2"
