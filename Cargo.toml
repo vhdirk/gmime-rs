@@ -4,6 +4,7 @@ description = "Bindings for gmime-3.0"
 homepage = "https://github.com/vhdirk/gmime-rs"
 authors = ["Dirk Van Haerenborgh <vhdirk@gmail.com>"]
 keywords = ["gmime", "gtk-rs", "gnome"]
+categories = ["email", "parsing", "encoding", "cryptography"]
 license = "MIT"
 version = "0.0.4"
 exclude = [
