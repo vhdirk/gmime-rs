@@ -48,8 +48,6 @@ generate = ["GMime.Stream",
             "GMime.MultipartSigned",
             #"GMime.ApplicationPkcs7Mime",
             "GMime.PartIter",
-            #"GMime.ParserOptions",
-            "GMime.Parser",
             "GMime.RfcComplianceMode",
             "GMime.Certificate",
             "GMime.CertificateList",
@@ -98,7 +96,7 @@ manual = [
     "GMime.DigestAlgo", # enum items start with digit
     "GMime.ContentEncoding",  # enum items start with digit
     "GMime.EncodingConstraint",  # enum items start with digit
-    
+
     # "GMime.CryptoContextNewFunc",
     # "GMime.ParserHeaderRegexFunc",
     # "GMime.ParserWarningFunc"
@@ -129,21 +127,23 @@ status = "generate"
 name = "GMime.ContentDisposition"
 status = "generate"
     [[object.function]]
-    name = "encode"
+    pattern = "(encode|parse)"
         [[object.function.parameter]]
         # optional and thus immutable
         name = "options"
         const = true
+        nullable = true
 
 [[object]]
 name = "GMime.ContentType"
 status = "generate"
     [[object.function]]
-    name = "encode"
+    pattern = "(encode|parse)"
         [[object.function.parameter]]
         # optional and thus immutable
         name = "options"
         const = true
+        nullable = true
 
 [[object]]
 name = "GMime.Header"
@@ -154,16 +154,18 @@ status = "generate"
         # optional and thus immutable
         name = "options"
         const = true
+        nullable = true
 
 [[object]]
 name = "GMime.HeaderList"
 status = "generate"
     [[object.function]]
-    pattern = "(to_string|write_to_stream)"
+    pattern = "(to_string|write_to_stream|new)"
         [[object.function.parameter]]
         # optional and thus immutable
         name = "options"
         const = true
+        nullable = true
 
 [[object]]
 name = "GMime.InternetAddress"
@@ -174,24 +176,44 @@ status = "generate"
         # optional and thus immutable
         name = "options"
         const = true
+        nullable = true
 
 [[object]]
 name = "GMime.InternetAddressList"
 status = "generate"
     [[object.function]]
-    name = "to_string"
+    pattern = "(to_string|parse)"
         [[object.function.parameter]]
         # optional and thus immutable
         name = "options"
         const = true
-
+        nullable = true
 
 [[object]]
 name = "GMime.Object"
 status = "generate"
     [[object.function]]
-    pattern = "(to_string|write_to_stream|get_headers)"
+    pattern = "(new|new_type|to_string|write_to_stream|get_headers)"
         [[object.function.parameter]]
         # optional and thus immutable
         name = "options"
         const = true
+        nullable = true
+
+[[object]]
+name = "GMime.Parser"
+status = "generate"
+    [[object.function]]
+    pattern = "construct_(part|message)"
+        [[object.function.parameter]]
+        # optional and thus immutable
+        name = "options"
+        const = true
+        nullable = true
+
+[[object]]
+name = "GMime.ParserOptions"
+status = "generate"
+    [[object.function]]
+    name = "set_fallback_charsets"
+    ignore = true

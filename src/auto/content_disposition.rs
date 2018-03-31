@@ -4,6 +4,7 @@
 
 use FormatOptions;
 use ParamList;
+use ParserOptions;
 use ffi;
 use glib::object::IsA;
 use glib::translate::*;
@@ -27,9 +28,12 @@ impl ContentDisposition {
         }
     }
 
-    //pub fn parse<'a, P: Into<Option<&'a /*Ignored*/ParserOptions>>>(options: P, str: &str) -> Option<ContentDisposition> {
-    //    unsafe { TODO: call ffi::g_mime_content_disposition_parse() }
-    //}
+    pub fn parse<'a, P: Into<Option<&'a ParserOptions>>>(options: P, str: &str) -> Option<ContentDisposition> {
+        let options = options.into();
+        unsafe {
+            from_glib_full(ffi::g_mime_content_disposition_parse(mut_override(options.to_glib_none().0), str.to_glib_none().0))
+        }
+    }
 }
 
 impl Default for ContentDisposition {

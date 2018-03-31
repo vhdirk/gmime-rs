@@ -4,6 +4,7 @@
 
 use FormatOptions;
 use InternetAddress;
+use ParserOptions;
 use ffi;
 use glib::object::IsA;
 use glib::translate::*;
@@ -27,9 +28,12 @@ impl InternetAddressList {
         }
     }
 
-    //pub fn parse<'a, P: Into<Option<&'a /*Ignored*/ParserOptions>>>(options: P, str: &str) -> Option<InternetAddressList> {
-    //    unsafe { TODO: call ffi::internet_address_list_parse() }
-    //}
+    pub fn parse<'a, P: Into<Option<&'a ParserOptions>>>(options: P, str: &str) -> Option<InternetAddressList> {
+        let options = options.into();
+        unsafe {
+            from_glib_full(ffi::internet_address_list_parse(mut_override(options.to_glib_none().0), str.to_glib_none().0))
+        }
+    }
 }
 
 impl Default for InternetAddressList {

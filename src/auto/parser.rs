@@ -3,6 +3,9 @@
 // DO NOT EDIT
 
 use Format;
+use Message;
+use Object;
+use ParserOptions;
 use Stream;
 use ffi;
 use glib::object::IsA;
@@ -41,9 +44,9 @@ impl Default for Parser {
 }
 
 pub trait ParserExt {
-    //fn construct_message<'a, P: Into<Option<&'a /*Ignored*/ParserOptions>>>(&self, options: P) -> Option<Message>;
+    fn construct_message<'a, P: Into<Option<&'a ParserOptions>>>(&self, options: P) -> Option<Message>;
 
-    //fn construct_part<'a, P: Into<Option<&'a /*Ignored*/ParserOptions>>>(&self, options: P) -> Option<Object>;
+    fn construct_part<'a, P: Into<Option<&'a ParserOptions>>>(&self, options: P) -> Option<Object>;
 
     fn eos(&self) -> bool;
 
@@ -75,13 +78,19 @@ pub trait ParserExt {
 }
 
 impl<O: IsA<Parser>> ParserExt for O {
-    //fn construct_message<'a, P: Into<Option<&'a /*Ignored*/ParserOptions>>>(&self, options: P) -> Option<Message> {
-    //    unsafe { TODO: call ffi::g_mime_parser_construct_message() }
-    //}
+    fn construct_message<'a, P: Into<Option<&'a ParserOptions>>>(&self, options: P) -> Option<Message> {
+        let options = options.into();
+        unsafe {
+            from_glib_full(ffi::g_mime_parser_construct_message(self.to_glib_none().0, mut_override(options.to_glib_none().0)))
+        }
+    }
 
-    //fn construct_part<'a, P: Into<Option<&'a /*Ignored*/ParserOptions>>>(&self, options: P) -> Option<Object> {
-    //    unsafe { TODO: call ffi::g_mime_parser_construct_part() }
-    //}
+    fn construct_part<'a, P: Into<Option<&'a ParserOptions>>>(&self, options: P) -> Option<Object> {
+        let options = options.into();
+        unsafe {
+            from_glib_full(ffi::g_mime_parser_construct_part(self.to_glib_none().0, mut_override(options.to_glib_none().0)))
+        }
+    }
 
     fn eos(&self) -> bool {
         unsafe {

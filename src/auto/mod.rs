@@ -216,6 +216,9 @@ pub use self::text_part::TextPartExt;
 mod format_options;
 pub use self::format_options::FormatOptions;
 
+mod parser_options;
+pub use self::parser_options::ParserOptions;
+
 mod part_iter;
 pub use self::part_iter::PartIter;
 

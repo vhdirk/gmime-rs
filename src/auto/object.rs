@@ -9,6 +9,7 @@ use EncodingConstraint;
 use FormatOptions;
 use HeaderList;
 use InternetAddressList;
+use ParserOptions;
 use Stream;
 use ffi;
 use glib;
@@ -28,13 +29,19 @@ glib_wrapper! {
 }
 
 impl Object {
-    //pub fn new<'a, P: Into<Option<&'a /*Ignored*/ParserOptions>>>(options: P, content_type: &ContentType) -> Object {
-    //    unsafe { TODO: call ffi::g_mime_object_new() }
-    //}
+    pub fn new<'a, P: Into<Option<&'a ParserOptions>>>(options: P, content_type: &ContentType) -> Object {
+        let options = options.into();
+        unsafe {
+            from_glib_full(ffi::g_mime_object_new(mut_override(options.to_glib_none().0), content_type.to_glib_none().0))
+        }
+    }
 
-    //pub fn new_type<'a, P: Into<Option<&'a /*Ignored*/ParserOptions>>>(options: P, type_: &str, subtype: &str) -> Object {
-    //    unsafe { TODO: call ffi::g_mime_object_new_type() }
-    //}
+    pub fn new_type<'a, P: Into<Option<&'a ParserOptions>>>(options: P, type_: &str, subtype: &str) -> Object {
+        let options = options.into();
+        unsafe {
+            from_glib_full(ffi::g_mime_object_new_type(mut_override(options.to_glib_none().0), type_.to_glib_none().0, subtype.to_glib_none().0))
+        }
+    }
 
     pub fn register_type(type_: &str, subtype: &str, object_type: glib::types::Type) {
         unsafe {

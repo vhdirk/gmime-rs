@@ -3,6 +3,7 @@
 // DO NOT EDIT
 
 use Param;
+use ParserOptions;
 use ffi;
 use glib::object::IsA;
 use glib::translate::*;
@@ -26,9 +27,11 @@ impl ParamList {
         }
     }
 
-    //pub fn parse(options: /*Ignored*/&mut ParserOptions, str: &str) -> Option<ParamList> {
-    //    unsafe { TODO: call ffi::g_mime_param_list_parse() }
-    //}
+    pub fn parse(options: &mut ParserOptions, str: &str) -> Option<ParamList> {
+        unsafe {
+            from_glib_full(ffi::g_mime_param_list_parse(options.to_glib_none_mut().0, str.to_glib_none().0))
+        }
+    }
 }
 
 impl Default for ParamList {

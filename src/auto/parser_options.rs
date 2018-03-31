@@ -79,12 +79,6 @@ impl ParserOptions {
         }
     }
 
-    pub fn set_fallback_charsets(&mut self, charsets: &str) {
-        unsafe {
-            ffi::g_mime_parser_options_set_fallback_charsets(self.to_glib_none_mut().0, charsets.to_glib_none().0);
-        }
-    }
-
     pub fn set_parameter_compliance_mode(&mut self, mode: RfcComplianceMode) {
         unsafe {
             ffi::g_mime_parser_options_set_parameter_compliance_mode(self.to_glib_none_mut().0, mode.to_glib());

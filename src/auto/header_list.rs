@@ -4,6 +4,7 @@
 
 use FormatOptions;
 use Header;
+use ParserOptions;
 use Stream;
 use ffi;
 use glib::object::IsA;
@@ -22,9 +23,12 @@ glib_wrapper! {
 }
 
 impl HeaderList {
-    //pub fn new<'a, P: Into<Option<&'a /*Ignored*/ParserOptions>>>(options: P) -> HeaderList {
-    //    unsafe { TODO: call ffi::g_mime_header_list_new() }
-    //}
+    pub fn new<'a, P: Into<Option<&'a ParserOptions>>>(options: P) -> HeaderList {
+        let options = options.into();
+        unsafe {
+            from_glib_full(ffi::g_mime_header_list_new(mut_override(options.to_glib_none().0)))
+        }
+    }
 }
 
 pub trait HeaderListExt {
