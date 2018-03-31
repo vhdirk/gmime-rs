@@ -96,6 +96,7 @@ manual = [
     "GMime.DigestAlgo", # enum items start with digit
     "GMime.ContentEncoding",  # enum items start with digit
     "GMime.EncodingConstraint",  # enum items start with digit
+    "GMime.ParserOptions" # incompatibel function definition
 
     # "GMime.CryptoContextNewFunc",
     # "GMime.ParserHeaderRegexFunc",
@@ -210,10 +211,3 @@ status = "generate"
         name = "options"
         const = true
         nullable = true
-
-[[object]]
-name = "GMime.ParserOptions"
-status = "generate"
-    [[object.function]]
-    name = "set_fallback_charsets"
-    ignore = true

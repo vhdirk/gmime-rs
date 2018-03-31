@@ -46,3 +46,6 @@ pub use message::*;
 
 mod message_partial;
 pub use message_partial::*;
+
+mod parser_options;
+pub use parser_options::*;
