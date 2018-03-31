@@ -7,7 +7,6 @@ extern crate gio_sys as gio_ffi;
 
 #[macro_use]
 extern crate glib;
-#[macro_use]
 extern crate gio;
 #[macro_use]
 extern crate bitflags;
