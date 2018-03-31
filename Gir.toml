@@ -79,7 +79,6 @@ generate = ["GMime.Stream",
             "GMime.VerifyFlags",
             "GMime.DecryptResult",
             "GMime.NewLineFormat",
-            "GMime.DigestAlgo",
             "GMime.PubKeyAlgo",
             "GMime.Trust",
             "GMime.Validity",
@@ -87,7 +86,8 @@ generate = ["GMime.Stream",
             "GMime.StreamBufferMode",
             # "GMime.AutocryptHeader",
             "GMime.AutocryptHeaderList",
-            "GMime.AutocryptPreferEncrypt"
+            "GMime.AutocryptPreferEncrypt",
+
             ]
 
 manual = [
@@ -103,40 +103,14 @@ manual = [
     "GLib.ChecksumType",
     "Gio.File",
     "GMime.Message", # partial_split_message has wrong annotations
-    "GMime.MessagePartial" # reconstruct_message has wrong annotations
+    "GMime.MessagePartial", # reconstruct_message has wrong annotations
+    "GMime.DigestAlgo", # enum items start with digit
+    "GMime.ContentEncoding",  # enum items start with digit
+    "GMime.EncodingConstraint"  # enum items start with digit
     # "GMime.CryptoContextNewFunc",
     # "GMime.ParserHeaderRegexFunc",
     # "GMime.ParserWarningFunc"
 ]
-
-
-
-[[object]]
-name = "GMime.CipherAlgo"
-status = "generate"
-    [[object.member]]
-    name = "3des"
-    alias = true
-
-[[object]]
-name = "GMime.ContentEncoding"
-status = "generate"
-    [[object.member]]
-    name = "7bit"
-    alias = true
-    [[object.member]]
-    name = "8bit"
-    alias = true
-
-[[object]]
-name = "GMime.EncodingConstraint"
-status = "generate"
-    [[object.member]]
-    name = "7bit"
-    alias = true
-    [[object.member]]
-    name = "8bit"
-    alias = true
 
 
 

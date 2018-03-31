@@ -3,7 +3,6 @@
 // DO NOT EDIT
 
 use CertificateList;
-use CipherAlgo;
 use DigestAlgo;
 use SignatureList;
 use ffi;
@@ -37,7 +36,7 @@ impl Default for DecryptResult {
 }
 
 pub trait DecryptResultExt {
-    fn get_cipher(&self) -> CipherAlgo;
+    //fn get_cipher(&self) -> /*Ignored*/CipherAlgo;
 
     fn get_mdc(&self) -> DigestAlgo;
 
@@ -47,7 +46,7 @@ pub trait DecryptResultExt {
 
     fn get_signatures(&self) -> Option<SignatureList>;
 
-    fn set_cipher(&self, cipher: CipherAlgo);
+    //fn set_cipher(&self, cipher: /*Ignored*/CipherAlgo);
 
     fn set_mdc(&self, mdc: DigestAlgo);
 
@@ -59,11 +58,9 @@ pub trait DecryptResultExt {
 }
 
 impl<O: IsA<DecryptResult>> DecryptResultExt for O {
-    fn get_cipher(&self) -> CipherAlgo {
-        unsafe {
-            from_glib(ffi::g_mime_decrypt_result_get_cipher(self.to_glib_none().0))
-        }
-    }
+    //fn get_cipher(&self) -> /*Ignored*/CipherAlgo {
+    //    unsafe { TODO: call ffi::g_mime_decrypt_result_get_cipher() }
+    //}
 
     fn get_mdc(&self) -> DigestAlgo {
         unsafe {
@@ -89,11 +86,9 @@ impl<O: IsA<DecryptResult>> DecryptResultExt for O {
         }
     }
 
-    fn set_cipher(&self, cipher: CipherAlgo) {
-        unsafe {
-            ffi::g_mime_decrypt_result_set_cipher(self.to_glib_none().0, cipher.to_glib());
-        }
-    }
+    //fn set_cipher(&self, cipher: /*Ignored*/CipherAlgo) {
+    //    unsafe { TODO: call ffi::g_mime_decrypt_result_set_cipher() }
+    //}
 
     fn set_mdc(&self, mdc: DigestAlgo) {
         unsafe {

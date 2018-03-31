@@ -38,6 +38,9 @@ pub use gio::File;
 mod auto;
 pub use auto::*;
 
+mod enums;
+pub use enums::*;
+
 mod message;
 pub use message::*;
 
