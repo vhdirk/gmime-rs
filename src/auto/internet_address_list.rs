@@ -2,6 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ b215ee8)
 // DO NOT EDIT
 
+use FormatOptions;
 use InternetAddress;
 use ffi;
 use glib::object::IsA;
@@ -46,7 +47,7 @@ pub trait InternetAddressListExt {
 
     fn contains<P: IsA<InternetAddress>>(&self, ia: &P) -> bool;
 
-    //fn encode<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, str: /*Ignored*/&mut glib::String);
+    //fn encode<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, str: /*Ignored*/&mut glib::String);
 
     fn get_address(&self, index: i32) -> Option<InternetAddress>;
 
@@ -64,7 +65,7 @@ pub trait InternetAddressListExt {
 
     fn set_address<P: IsA<InternetAddress>>(&self, index: i32, ia: &P);
 
-    //fn to_string<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, encode: bool) -> String;
+    fn to_string<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, encode: bool) -> String;
 }
 
 impl<O: IsA<InternetAddressList>> InternetAddressListExt for O {
@@ -92,7 +93,7 @@ impl<O: IsA<InternetAddressList>> InternetAddressListExt for O {
         }
     }
 
-    //fn encode<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, str: /*Ignored*/&mut glib::String) {
+    //fn encode<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, str: /*Ignored*/&mut glib::String) {
     //    unsafe { TODO: call ffi::internet_address_list_encode() }
     //}
 
@@ -144,7 +145,10 @@ impl<O: IsA<InternetAddressList>> InternetAddressListExt for O {
         }
     }
 
-    //fn to_string<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, encode: bool) -> String {
-    //    unsafe { TODO: call ffi::internet_address_list_to_string() }
-    //}
+    fn to_string<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, encode: bool) -> String {
+        let options = options.into();
+        unsafe {
+            from_glib_full(ffi::internet_address_list_to_string(self.to_glib_none().0, mut_override(options.to_glib_none().0), encode.to_glib()))
+        }
+    }
 }

@@ -38,12 +38,7 @@ generate = ["GMime.Stream",
             "GMime.FilterYenc",
             "GMime.FilterBestFlags",
             "GMime.DataWrapper",
-            "GMime.Header",
-            "GMime.HeaderList",
-            "GMime.ContentType",
-            "GMime.ContentDisposition",
             "GMime.OpenPGPData",
-            "GMime.Object",
             "GMime.ObjectForeachFunc",
             "GMime.MessagePart",
             "GMime.Part",
@@ -68,12 +63,9 @@ generate = ["GMime.Stream",
             "GMime.Param",
             "GMime.ParamEncodingMethod",
             "GMime.ParamList",
-            "GMime.InternetAddressList",
-            "GMime.InternetAddress",
             "GMime.InternetAddressMailbox",
             "GMime.AddressType",
             "GMime.Format",
-            # "GMime.FormatOptions",
             "GMime.EncryptFlags",
             "GMime.DecryptFlags",
             "GMime.VerifyFlags",
@@ -84,10 +76,9 @@ generate = ["GMime.Stream",
             "GMime.Validity",
             "GMime.SeekWhence",
             "GMime.StreamBufferMode",
-            # "GMime.AutocryptHeader",
             "GMime.AutocryptHeaderList",
             "GMime.AutocryptPreferEncrypt",
-
+            "GMime.FormatOptions",
             ]
 
 manual = [
@@ -106,7 +97,8 @@ manual = [
     "GMime.MessagePartial", # reconstruct_message has wrong annotations
     "GMime.DigestAlgo", # enum items start with digit
     "GMime.ContentEncoding",  # enum items start with digit
-    "GMime.EncodingConstraint"  # enum items start with digit
+    "GMime.EncodingConstraint",  # enum items start with digit
+    
     # "GMime.CryptoContextNewFunc",
     # "GMime.ParserHeaderRegexFunc",
     # "GMime.ParserWarningFunc"
@@ -132,3 +124,74 @@ status = "generate"
     name = "compare"
     # conflicting implementations
     ignore = true
+
+[[object]]
+name = "GMime.ContentDisposition"
+status = "generate"
+    [[object.function]]
+    name = "encode"
+        [[object.function.parameter]]
+        # optional and thus immutable
+        name = "options"
+        const = true
+
+[[object]]
+name = "GMime.ContentType"
+status = "generate"
+    [[object.function]]
+    name = "encode"
+        [[object.function.parameter]]
+        # optional and thus immutable
+        name = "options"
+        const = true
+
+[[object]]
+name = "GMime.Header"
+status = "generate"
+    [[object.function]]
+    pattern = "(format_.+|write_to_stream|set_value)"
+        [[object.function.parameter]]
+        # optional and thus immutable
+        name = "options"
+        const = true
+
+[[object]]
+name = "GMime.HeaderList"
+status = "generate"
+    [[object.function]]
+    pattern = "(to_string|write_to_stream)"
+        [[object.function.parameter]]
+        # optional and thus immutable
+        name = "options"
+        const = true
+
+[[object]]
+name = "GMime.InternetAddress"
+status = "generate"
+    [[object.function]]
+    name = "to_string"
+        [[object.function.parameter]]
+        # optional and thus immutable
+        name = "options"
+        const = true
+
+[[object]]
+name = "GMime.InternetAddressList"
+status = "generate"
+    [[object.function]]
+    name = "to_string"
+        [[object.function.parameter]]
+        # optional and thus immutable
+        name = "options"
+        const = true
+
+
+[[object]]
+name = "GMime.Object"
+status = "generate"
+    [[object.function]]
+    pattern = "(to_string|write_to_stream|get_headers)"
+        [[object.function.parameter]]
+        # optional and thus immutable
+        name = "options"
+        const = true

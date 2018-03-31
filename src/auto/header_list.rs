@@ -2,7 +2,9 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ b215ee8)
 // DO NOT EDIT
 
+use FormatOptions;
 use Header;
+use Stream;
 use ffi;
 use glib::object::IsA;
 use glib::translate::*;
@@ -46,9 +48,9 @@ pub trait HeaderListExt {
 
     fn set(&self, name: &str, value: &str, charset: &str);
 
-    //fn to_string<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P) -> String;
+    fn to_string<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P) -> String;
 
-    //fn write_to_stream<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>, Q: IsA<Stream>>(&self, options: P, stream: &Q) -> isize;
+    fn write_to_stream<'a, P: Into<Option<&'a FormatOptions>>, Q: IsA<Stream>>(&self, options: P, stream: &Q) -> isize;
 }
 
 impl<O: IsA<HeaderList>> HeaderListExt for O {
@@ -112,11 +114,17 @@ impl<O: IsA<HeaderList>> HeaderListExt for O {
         }
     }
 
-    //fn to_string<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P) -> String {
-    //    unsafe { TODO: call ffi::g_mime_header_list_to_string() }
-    //}
+    fn to_string<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P) -> String {
+        let options = options.into();
+        unsafe {
+            from_glib_full(ffi::g_mime_header_list_to_string(self.to_glib_none().0, mut_override(options.to_glib_none().0)))
+        }
+    }
 
-    //fn write_to_stream<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>, Q: IsA<Stream>>(&self, options: P, stream: &Q) -> isize {
-    //    unsafe { TODO: call ffi::g_mime_header_list_write_to_stream() }
-    //}
+    fn write_to_stream<'a, P: Into<Option<&'a FormatOptions>>, Q: IsA<Stream>>(&self, options: P, stream: &Q) -> isize {
+        let options = options.into();
+        unsafe {
+            ffi::g_mime_header_list_write_to_stream(self.to_glib_none().0, mut_override(options.to_glib_none().0), stream.to_glib_none().0)
+        }
+    }
 }

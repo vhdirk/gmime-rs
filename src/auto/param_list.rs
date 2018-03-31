@@ -40,7 +40,7 @@ impl Default for ParamList {
 pub trait ParamListExt {
     fn clear(&self);
 
-    //fn encode(&self, options: /*Ignored*/&mut FormatOptions, fold: bool, str: /*Ignored*/&mut glib::String);
+    //fn encode(&self, options: &mut FormatOptions, fold: bool, str: /*Ignored*/&mut glib::String);
 
     fn get_parameter(&self, name: &str) -> Option<Param>;
 
@@ -62,7 +62,7 @@ impl<O: IsA<ParamList>> ParamListExt for O {
         }
     }
 
-    //fn encode(&self, options: /*Ignored*/&mut FormatOptions, fold: bool, str: /*Ignored*/&mut glib::String) {
+    //fn encode(&self, options: &mut FormatOptions, fold: bool, str: /*Ignored*/&mut glib::String) {
     //    unsafe { TODO: call ffi::g_mime_param_list_encode() }
     //}
 

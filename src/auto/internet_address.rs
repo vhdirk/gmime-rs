@@ -2,6 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ b215ee8)
 // DO NOT EDIT
 
+use FormatOptions;
 use ffi;
 use glib::object::IsA;
 use glib::translate::*;
@@ -27,7 +28,7 @@ pub trait InternetAddressExt {
 
     fn set_name(&self, name: &str);
 
-    //fn to_string<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, encode: bool) -> String;
+    fn to_string<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, encode: bool) -> String;
 }
 
 impl<O: IsA<InternetAddress>> InternetAddressExt for O {
@@ -57,7 +58,10 @@ impl<O: IsA<InternetAddress>> InternetAddressExt for O {
         }
     }
 
-    //fn to_string<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P, encode: bool) -> String {
-    //    unsafe { TODO: call ffi::internet_address_to_string() }
-    //}
+    fn to_string<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P, encode: bool) -> String {
+        let options = options.into();
+        unsafe {
+            from_glib_full(ffi::internet_address_to_string(self.to_glib_none().0, mut_override(options.to_glib_none().0), encode.to_glib()))
+        }
+    }
 }

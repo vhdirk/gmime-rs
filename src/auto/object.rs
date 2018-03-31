@@ -6,8 +6,10 @@ use AutocryptHeaderList;
 use ContentDisposition;
 use ContentType;
 use EncodingConstraint;
+use FormatOptions;
 use HeaderList;
 use InternetAddressList;
+use Stream;
 use ffi;
 use glib;
 use glib::object::IsA;
@@ -76,7 +78,7 @@ pub trait ObjectExt {
 
     fn get_header_list(&self) -> Option<HeaderList>;
 
-    //fn get_headers<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P) -> Option<String>;
+    fn get_headers<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P) -> Option<String>;
 
     fn prepend_header(&self, header: &str, value: &str, charset: &str);
 
@@ -96,9 +98,9 @@ pub trait ObjectExt {
 
     fn set_header(&self, header: &str, value: &str, charset: &str);
 
-    //fn to_string<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P) -> String;
+    fn to_string<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P) -> String;
 
-    //fn write_to_stream<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>, Q: IsA<Stream>>(&self, options: P, stream: &Q) -> isize;
+    fn write_to_stream<'a, P: Into<Option<&'a FormatOptions>>, Q: IsA<Stream>>(&self, options: P, stream: &Q) -> isize;
 }
 
 impl<O: IsA<Object>> ObjectExt for O {
@@ -168,9 +170,12 @@ impl<O: IsA<Object>> ObjectExt for O {
         }
     }
 
-    //fn get_headers<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P) -> Option<String> {
-    //    unsafe { TODO: call ffi::g_mime_object_get_headers() }
-    //}
+    fn get_headers<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P) -> Option<String> {
+        let options = options.into();
+        unsafe {
+            from_glib_full(ffi::g_mime_object_get_headers(self.to_glib_none().0, mut_override(options.to_glib_none().0)))
+        }
+    }
 
     fn prepend_header(&self, header: &str, value: &str, charset: &str) {
         unsafe {
@@ -226,11 +231,17 @@ impl<O: IsA<Object>> ObjectExt for O {
         }
     }
 
-    //fn to_string<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P) -> String {
-    //    unsafe { TODO: call ffi::g_mime_object_to_string() }
-    //}
+    fn to_string<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P) -> String {
+        let options = options.into();
+        unsafe {
+            from_glib_full(ffi::g_mime_object_to_string(self.to_glib_none().0, mut_override(options.to_glib_none().0)))
+        }
+    }
 
-    //fn write_to_stream<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>, Q: IsA<Stream>>(&self, options: P, stream: &Q) -> isize {
-    //    unsafe { TODO: call ffi::g_mime_object_write_to_stream() }
-    //}
+    fn write_to_stream<'a, P: Into<Option<&'a FormatOptions>>, Q: IsA<Stream>>(&self, options: P, stream: &Q) -> isize {
+        let options = options.into();
+        unsafe {
+            ffi::g_mime_object_write_to_stream(self.to_glib_none().0, mut_override(options.to_glib_none().0), stream.to_glib_none().0)
+        }
+    }
 }

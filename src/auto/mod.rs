@@ -213,6 +213,9 @@ mod text_part;
 pub use self::text_part::TextPart;
 pub use self::text_part::TextPartExt;
 
+mod format_options;
+pub use self::format_options::FormatOptions;
+
 mod part_iter;
 pub use self::part_iter::PartIter;
 

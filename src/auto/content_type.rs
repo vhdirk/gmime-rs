@@ -2,6 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files @ b215ee8)
 // DO NOT EDIT
 
+use FormatOptions;
 use ParamList;
 use ffi;
 use glib::object::IsA;
@@ -32,7 +33,7 @@ impl ContentType {
 }
 
 pub trait ContentTypeExt {
-    //fn encode<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P) -> Option<String>;
+    fn encode<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P) -> Option<String>;
 
     fn get_media_subtype(&self) -> Option<String>;
 
@@ -54,9 +55,12 @@ pub trait ContentTypeExt {
 }
 
 impl<O: IsA<ContentType>> ContentTypeExt for O {
-    //fn encode<'a, P: Into<Option<&'a /*Ignored*/FormatOptions>>>(&self, options: P) -> Option<String> {
-    //    unsafe { TODO: call ffi::g_mime_content_type_encode() }
-    //}
+    fn encode<'a, P: Into<Option<&'a FormatOptions>>>(&self, options: P) -> Option<String> {
+        let options = options.into();
+        unsafe {
+            from_glib_full(ffi::g_mime_content_type_encode(self.to_glib_none().0, mut_override(options.to_glib_none().0)))
+        }
+    }
 
     fn get_media_subtype(&self) -> Option<String> {
         unsafe {
