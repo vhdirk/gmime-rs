@@ -10,5 +10,5 @@ services:
   - docker
 
 script:
-  - docker -t rust-buster build .
+  - docker build -t rust-buster .
   - docker run rust-buster -it --rm -v $(pwd):/opt/rust/src cargo build --release
