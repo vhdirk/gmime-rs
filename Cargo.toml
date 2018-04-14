@@ -7,10 +7,13 @@ keywords = ["gmime", "gtk-rs", "gnome"]
 categories = ["email", "parsing", "encoding", "cryptography"]
 license = "MIT"
 version = "0.0.4"
+readme = "README.md"
 exclude = [
     "gir-files/*",
 ]
 
+[badges]
+travis-ci = { repository = "vhdirk/gmime-rs" }
 
 [lib]
 name = "gmime"
