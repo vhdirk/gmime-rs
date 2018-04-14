@@ -3,7 +3,12 @@ rust:
   - nightly
   - beta
   - stable
-addons:
-  apt:
-    packages:
-    - libgmime-3.0-dev
+
+sudo: required
+
+services:
+  - docker
+
+script:
+  - docker -t rust-buster build .
+  - docker run rust-buster -it --rm -v $(pwd):/opt/rust/src cargo build --release
