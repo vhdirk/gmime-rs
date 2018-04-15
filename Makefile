@@ -23,6 +23,9 @@ src/auto/mod.rs : Gir.toml $(GIR) $(GIR_FILES)
 # 	$(GIR) -c $< -o $(abspath $*-sys) -d ../gir-files --doc-target-path ../docs.md -m doc
 # 	rustdoc-stripper -g -o docs.md
 
+doc:
+	$(GIR)	-m doc -o doc
+
 $(GIR) : $(GIR_SRC)
 	rm -f gir/target/bin/gir
 	cargo install --path gir --root gir/target
