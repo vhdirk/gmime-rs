@@ -7,7 +7,7 @@ Rust ffi-bindings for [GMime 3](http://spruce.sourceforge.net/gmime/).
 [![Download statistics](https://img.shields.io/crates/d/gmime-sys.svg)](https://crates.io/crates/gmime-sys)
 [![License](https://img.shields.io/crates/l/gmime-sys.svg)](https://crates.io/crates/gmime-sys)
 
-[Documentation](https://vhdirk.github.io/gmime-rs/gmime-sys/)
+[Documentation](https://vhdirk.github.io/gmime-rs/gmime_sys/)
 
 ## Building
 **gmime-sys** expects libgmime development files to be installed on your system.
