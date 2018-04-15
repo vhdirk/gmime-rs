@@ -49,4 +49,4 @@ rustdoc-stripper = "^0.1.5"
 [build-dependencies.gtk-rs-lgpl-docs]
 version = "^0.1.3"
 optional = true
-git = "https://github.com/vhdirk/gtk-rs-lgpl-docs"
+path = "lgpl-docs"

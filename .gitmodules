@@ -4,3 +4,6 @@
 [submodule "gir"]
 	path = gir
 	url = https://github.com/gtk-rs/gir.git
+[submodule "lgpl-docs"]
+	path = lgpl-docs
+	url = https://github.com/vhdirk/gtk-rs-lgpl-docs
