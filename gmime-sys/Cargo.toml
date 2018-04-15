@@ -28,5 +28,5 @@ keywords = ["gmime", "glib", "ffi", "gtk-rs", "gnome"]
 license = "MIT"
 links = "gmime"
 name = "gmime-sys"
-version = "0.6.2"
+version = "0.6.3"
 documentation = "https://vhdirk.github.io/gmime-rs/gmime-sys/"
