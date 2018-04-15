@@ -6,8 +6,9 @@ authors = ["Dirk Van Haerenborgh <vhdirk@gmail.com>"]
 keywords = ["gmime", "gtk-rs", "gnome"]
 categories = ["email", "parsing", "encoding", "cryptography"]
 license = "MIT"
-version = "0.0.4"
+version = "0.0.5"
 readme = "README.md"
+documentation = "https://vhdirk.github.io/gmime-rs/gmime/"
 exclude = [
     "gir-files/*",
 ]
@@ -37,3 +38,6 @@ gio-sys     = "^0.6.0"
 glib        = "^0.5.0"
 glib-sys    = "^0.6.0"
 gobject-sys = "^0.6.0"
+
+[dev-dependencies]
+rustdoc-stripper = "*"

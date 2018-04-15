@@ -8,6 +8,8 @@ Rust bindings and wrappers for [GMime 3](http://spruce.sourceforge.net/gmime/).
 [![Download statistics](https://img.shields.io/crates/d/gmime.svg)](https://crates.io/crates/gmime)
 [![License](https://img.shields.io/crates/l/gmime.svg)](https://crates.io/crates/gmime)
 
+[Documentation](https://vhdirk.github.io/gmime-rs/gmime/)
+
 ## Building
 **gmime-rs** expects libgmime development files to be installed on your system.
 
