@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `MessageExt` trait in crate `gmime`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, MessageExt">
+
+    <title>gmime::MessageExt - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css"
+          id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../dark.css">
+    <link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle">
+    <script src="../storage.js"></script>
+    
+
+    
+    
+</head>
+<body class="rustdoc trait">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
+        
+        <p class='location'>Trait MessageExt</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.add_mailbox">add_mailbox</a><a href="#tymethod.get_addresses">get_addresses</a><a href="#tymethod.get_all_recipients">get_all_recipients</a><a href="#tymethod.get_autocrypt_gossip_headers">get_autocrypt_gossip_headers</a><a href="#tymethod.get_autocrypt_gossip_headers_from_inner_part">get_autocrypt_gossip_headers_from_inner_part</a><a href="#tymethod.get_autocrypt_header">get_autocrypt_header</a><a href="#tymethod.get_bcc">get_bcc</a><a href="#tymethod.get_body">get_body</a><a href="#tymethod.get_cc">get_cc</a><a href="#tymethod.get_date">get_date</a><a href="#tymethod.get_from">get_from</a><a href="#tymethod.get_message_id">get_message_id</a><a href="#tymethod.get_mime_part">get_mime_part</a><a href="#tymethod.get_reply_to">get_reply_to</a><a href="#tymethod.get_sender">get_sender</a><a href="#tymethod.get_subject">get_subject</a><a href="#tymethod.get_to">get_to</a><a href="#tymethod.split">split</a><a href="#tymethod.set_date">set_date</a><a href="#tymethod.set_message_id">set_message_id</a><a href="#tymethod.set_mime_part">set_mime_part</a><a href="#tymethod.set_subject">set_subject</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='index.html'>gmime</a></p><script>window.sidebarCurrent = {name: 'MessageExt', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+    </nav>
+
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../theme.js"></script>
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>MessageExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/message.rs.html#33-79' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait MessageExt {
+    fn <a href='#tymethod.add_mailbox' class='fnname'>add_mailbox</a>(&amp;self, type_: <a class="enum" href="../gmime/enum.AddressType.html" title="enum gmime::AddressType">AddressType</a>, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, addr: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>);
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_addresses' class='fnname'>get_addresses</a>(&amp;self, type_: <a class="enum" href="../gmime/enum.AddressType.html" title="enum gmime::AddressType">AddressType</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.InternetAddressList.html" title="struct gmime::InternetAddressList">InternetAddressList</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_all_recipients' class='fnname'>get_all_recipients</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.InternetAddressList.html" title="struct gmime::InternetAddressList">InternetAddressList</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_autocrypt_gossip_headers' class='fnname'>get_autocrypt_gossip_headers</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;now: &amp;<a class="struct" href="../gmime/struct.DateTime.html" title="struct gmime::DateTime">DateTime</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="../gmime/struct.DecryptFlags.html" title="struct gmime::DecryptFlags">DecryptFlags</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session_key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a><br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../gmime/struct.AutocryptHeaderList.html" title="struct gmime::AutocryptHeaderList">AutocryptHeaderList</a>, <a class="struct" href="../gmime/struct.Error.html" title="struct gmime::Error">Error</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_autocrypt_gossip_headers_from_inner_part' class='fnname'>get_autocrypt_gossip_headers_from_inner_part</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Object.html" title="struct gmime::Object">Object</a>&gt;&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;now: &amp;<a class="struct" href="../gmime/struct.DateTime.html" title="struct gmime::DateTime">DateTime</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inner_part: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.AutocryptHeaderList.html" title="struct gmime::AutocryptHeaderList">AutocryptHeaderList</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_autocrypt_header' class='fnname'>get_autocrypt_header</a>(&amp;self, now: &amp;<a class="struct" href="../gmime/struct.DateTime.html" title="struct gmime::DateTime">DateTime</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.AutocryptHeader.html" title="struct gmime::AutocryptHeader">AutocryptHeader</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_bcc' class='fnname'>get_bcc</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.InternetAddressList.html" title="struct gmime::InternetAddressList">InternetAddressList</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_body' class='fnname'>get_body</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Object.html" title="struct gmime::Object">Object</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_cc' class='fnname'>get_cc</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.InternetAddressList.html" title="struct gmime::InternetAddressList">InternetAddressList</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_date' class='fnname'>get_date</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.DateTime.html" title="struct gmime::DateTime">DateTime</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_from' class='fnname'>get_from</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.InternetAddressList.html" title="struct gmime::InternetAddressList">InternetAddressList</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_message_id' class='fnname'>get_message_id</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_mime_part' class='fnname'>get_mime_part</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Object.html" title="struct gmime::Object">Object</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_reply_to' class='fnname'>get_reply_to</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.InternetAddressList.html" title="struct gmime::InternetAddressList">InternetAddressList</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_sender' class='fnname'>get_sender</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.InternetAddressList.html" title="struct gmime::InternetAddressList">InternetAddressList</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_subject' class='fnname'>get_subject</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_to' class='fnname'>get_to</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.InternetAddressList.html" title="struct gmime::InternetAddressList">InternetAddressList</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.split' class='fnname'>split</a>(&amp;self, max_size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../gmime/struct.Message.html" title="struct gmime::Message">Message</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.set_date' class='fnname'>set_date</a>(&amp;self, date: &amp;<a class="struct" href="../gmime/struct.DateTime.html" title="struct gmime::DateTime">DateTime</a>);
+<div class='item-spacer'></div>    fn <a href='#tymethod.set_message_id' class='fnname'>set_message_id</a>(&amp;self, message_id: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>);
+<div class='item-spacer'></div>    fn <a href='#tymethod.set_mime_part' class='fnname'>set_mime_part</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Object.html" title="struct gmime::Object">Object</a>&gt;&gt;(&amp;self, mime_part: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P);
+<div class='item-spacer'></div>    fn <a href='#tymethod.set_subject' class='fnname'>set_subject</a>(&amp;self, subject: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, charset: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>);
+}</pre></div>
+            <h2 id='required-methods' class='small-section-header'>
+              Required Methods<a href='#required-methods' class='anchor'></a>
+            </h2>
+            <div class='methods'>
+        <h3 id='tymethod.add_mailbox' class='method'><span id='add_mailbox.v' class='invisible'><code>fn <a href='#tymethod.add_mailbox' class='fnname'>add_mailbox</a>(&amp;self, type_: <a class="enum" href="../gmime/enum.AddressType.html" title="enum gmime::AddressType">AddressType</a>, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, addr: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>)</code></span></h3><h3 id='tymethod.get_addresses' class='method'><span id='get_addresses.v' class='invisible'><code>fn <a href='#tymethod.get_addresses' class='fnname'>get_addresses</a>(&amp;self, type_: <a class="enum" href="../gmime/enum.AddressType.html" title="enum gmime::AddressType">AddressType</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.InternetAddressList.html" title="struct gmime::InternetAddressList">InternetAddressList</a>&gt;</code></span></h3><h3 id='tymethod.get_all_recipients' class='method'><span id='get_all_recipients.v' class='invisible'><code>fn <a href='#tymethod.get_all_recipients' class='fnname'>get_all_recipients</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.InternetAddressList.html" title="struct gmime::InternetAddressList">InternetAddressList</a>&gt;</code></span></h3><h3 id='tymethod.get_autocrypt_gossip_headers' class='method'><span id='get_autocrypt_gossip_headers.v' class='invisible'><code>fn <a href='#tymethod.get_autocrypt_gossip_headers' class='fnname'>get_autocrypt_gossip_headers</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;now: &amp;<a class="struct" href="../gmime/struct.DateTime.html" title="struct gmime::DateTime">DateTime</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="../gmime/struct.DecryptFlags.html" title="struct gmime::DecryptFlags">DecryptFlags</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;session_key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../gmime/struct.AutocryptHeaderList.html" title="struct gmime::AutocryptHeaderList">AutocryptHeaderList</a>, <a class="struct" href="../gmime/struct.Error.html" title="struct gmime::Error">Error</a>&gt;</code></span></h3><h3 id='tymethod.get_autocrypt_gossip_headers_from_inner_part' class='method'><span id='get_autocrypt_gossip_headers_from_inner_part.v' class='invisible'><code>fn <a href='#tymethod.get_autocrypt_gossip_headers_from_inner_part' class='fnname'>get_autocrypt_gossip_headers_from_inner_part</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Object.html" title="struct gmime::Object">Object</a>&gt;&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;now: &amp;<a class="struct" href="../gmime/struct.DateTime.html" title="struct gmime::DateTime">DateTime</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;inner_part: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.AutocryptHeaderList.html" title="struct gmime::AutocryptHeaderList">AutocryptHeaderList</a>&gt;</code></span></h3><h3 id='tymethod.get_autocrypt_header' class='method'><span id='get_autocrypt_header.v' class='invisible'><code>fn <a href='#tymethod.get_autocrypt_header' class='fnname'>get_autocrypt_header</a>(&amp;self, now: &amp;<a class="struct" href="../gmime/struct.DateTime.html" title="struct gmime::DateTime">DateTime</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.AutocryptHeader.html" title="struct gmime::AutocryptHeader">AutocryptHeader</a>&gt;</code></span></h3><h3 id='tymethod.get_bcc' class='method'><span id='get_bcc.v' class='invisible'><code>fn <a href='#tymethod.get_bcc' class='fnname'>get_bcc</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.InternetAddressList.html" title="struct gmime::InternetAddressList">InternetAddressList</a>&gt;</code></span></h3><h3 id='tymethod.get_body' class='method'><span id='get_body.v' class='invisible'><code>fn <a href='#tymethod.get_body' class='fnname'>get_body</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Object.html" title="struct gmime::Object">Object</a>&gt;</code></span></h3><h3 id='tymethod.get_cc' class='method'><span id='get_cc.v' class='invisible'><code>fn <a href='#tymethod.get_cc' class='fnname'>get_cc</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.InternetAddressList.html" title="struct gmime::InternetAddressList">InternetAddressList</a>&gt;</code></span></h3><h3 id='tymethod.get_date' class='method'><span id='get_date.v' class='invisible'><code>fn <a href='#tymethod.get_date' class='fnname'>get_date</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.DateTime.html" title="struct gmime::DateTime">DateTime</a>&gt;</code></span></h3><h3 id='tymethod.get_from' class='method'><span id='get_from.v' class='invisible'><code>fn <a href='#tymethod.get_from' class='fnname'>get_from</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.InternetAddressList.html" title="struct gmime::InternetAddressList">InternetAddressList</a>&gt;</code></span></h3><h3 id='tymethod.get_message_id' class='method'><span id='get_message_id.v' class='invisible'><code>fn <a href='#tymethod.get_message_id' class='fnname'>get_message_id</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;</code></span></h3><h3 id='tymethod.get_mime_part' class='method'><span id='get_mime_part.v' class='invisible'><code>fn <a href='#tymethod.get_mime_part' class='fnname'>get_mime_part</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Object.html" title="struct gmime::Object">Object</a>&gt;</code></span></h3><h3 id='tymethod.get_reply_to' class='method'><span id='get_reply_to.v' class='invisible'><code>fn <a href='#tymethod.get_reply_to' class='fnname'>get_reply_to</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.InternetAddressList.html" title="struct gmime::InternetAddressList">InternetAddressList</a>&gt;</code></span></h3><h3 id='tymethod.get_sender' class='method'><span id='get_sender.v' class='invisible'><code>fn <a href='#tymethod.get_sender' class='fnname'>get_sender</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.InternetAddressList.html" title="struct gmime::InternetAddressList">InternetAddressList</a>&gt;</code></span></h3><h3 id='tymethod.get_subject' class='method'><span id='get_subject.v' class='invisible'><code>fn <a href='#tymethod.get_subject' class='fnname'>get_subject</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;</code></span></h3><h3 id='tymethod.get_to' class='method'><span id='get_to.v' class='invisible'><code>fn <a href='#tymethod.get_to' class='fnname'>get_to</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.InternetAddressList.html" title="struct gmime::InternetAddressList">InternetAddressList</a>&gt;</code></span></h3><div class="important-traits"><div class='tooltip'>ⓘ<span class='tooltiptext'>Important traits for <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;</span></div><div class="content hidden"><h3 class="important">Important traits for <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;</h3><code class="content"><span class="where fmt-newline">impl <a class="trait" href="https://doc.rust-lang.org/nightly/std/io/trait.Write.html" title="trait std::io::Write">Write</a> for <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;</span></code></div></div><h3 id='tymethod.split' class='method'><span id='split.v' class='invisible'><code>fn <a href='#tymethod.split' class='fnname'>split</a>(&amp;self, max_size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../gmime/struct.Message.html" title="struct gmime::Message">Message</a>&gt;</code></span></h3><h3 id='tymethod.set_date' class='method'><span id='set_date.v' class='invisible'><code>fn <a href='#tymethod.set_date' class='fnname'>set_date</a>(&amp;self, date: &amp;<a class="struct" href="../gmime/struct.DateTime.html" title="struct gmime::DateTime">DateTime</a>)</code></span></h3><h3 id='tymethod.set_message_id' class='method'><span id='set_message_id.v' class='invisible'><code>fn <a href='#tymethod.set_message_id' class='fnname'>set_message_id</a>(&amp;self, message_id: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>)</code></span></h3><h3 id='tymethod.set_mime_part' class='method'><span id='set_mime_part.v' class='invisible'><code>fn <a href='#tymethod.set_mime_part' class='fnname'>set_mime_part</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Object.html" title="struct gmime::Object">Object</a>&gt;&gt;(&amp;self, mime_part: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P)</code></span></h3><h3 id='tymethod.set_subject' class='method'><span id='set_subject.v' class='invisible'><code>fn <a href='#tymethod.set_subject' class='fnname'>set_subject</a>(&amp;self, subject: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, charset: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>)</code></span></h3></div>
+        <h2 id='implementors' class='small-section-header'>
+          Implementors<a href='#implementors' class='anchor'></a>
+        </h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Message.html" title="struct gmime::Message">Message</a>&gt;&gt; MessageExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/message.rs.html#81-221' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+</ul><script type="text/javascript">window.inlined_types=new Set([]);</script><script type="text/javascript" async
+                         src="../implementors/gmime/trait.MessageExt.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt><kbd>?</kbd></dt>
+                    <dd>Show this help dialog</dd>
+                    <dt><kbd>S</kbd></dt>
+                    <dd>Focus the search field</dd>
+                    <dt><kbd>↑</kbd></dt>
+                    <dd>Move up in search results</dd>
+                    <dt><kbd>↓</kbd></dt>
+                    <dd>Move down in search results</dd>
+                    <dt><kbd>↹</kbd></dt>
+                    <dd>Switch tab</dd>
+                    <dt><kbd>&#9166;</kbd></dt>
+                    <dd>Go to active search result</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "gmime";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
