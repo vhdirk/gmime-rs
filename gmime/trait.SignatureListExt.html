@@ -55,7 +55,7 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>SignatureListExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/auto/signature_list.rs.html#36-56' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait SignatureListExt {
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>SignatureListExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/auto/signature_list.rs.html#51-138' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait SignatureListExt {
     fn <a href='#tymethod.add' class='fnname'>add</a>(&amp;self, sig: &amp;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>;
 <div class='item-spacer'></div>    fn <a href='#tymethod.clear' class='fnname'>clear</a>(&amp;self);
 <div class='item-spacer'></div>    fn <a href='#tymethod.contains' class='fnname'>contains</a>(&amp;self, sig: &amp;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>;
@@ -66,17 +66,73 @@
 <div class='item-spacer'></div>    fn <a href='#tymethod.remove' class='fnname'>remove</a>(&amp;self, sig: &amp;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>;
 <div class='item-spacer'></div>    fn <a href='#tymethod.remove_at' class='fnname'>remove_at</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>;
 <div class='item-spacer'></div>    fn <a href='#tymethod.set_signature' class='fnname'>set_signature</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, sig: &amp;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>);
-}</pre></div>
+}</pre></div><div class='docblock'><p>Trait containing all <code>SignatureList</code> methods.</p>
+<h1 id="implementors-1" class="section-header"><a href="#implementors-1">Implementors</a></h1>
+<p><a href="struct.SignatureList.html"><code>SignatureList</code></a></p>
+</div>
             <h2 id='required-methods' class='small-section-header'>
               Required Methods<a href='#required-methods' class='anchor'></a>
             </h2>
             <div class='methods'>
-        <h3 id='tymethod.add' class='method'><span id='add.v' class='invisible'><code>fn <a href='#tymethod.add' class='fnname'>add</a>(&amp;self, sig: &amp;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></h3><h3 id='tymethod.clear' class='method'><span id='clear.v' class='invisible'><code>fn <a href='#tymethod.clear' class='fnname'>clear</a>(&amp;self)</code></span></h3><h3 id='tymethod.contains' class='method'><span id='contains.v' class='invisible'><code>fn <a href='#tymethod.contains' class='fnname'>contains</a>(&amp;self, sig: &amp;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><h3 id='tymethod.get_signature' class='method'><span id='get_signature.v' class='invisible'><code>fn <a href='#tymethod.get_signature' class='fnname'>get_signature</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>&gt;</code></span></h3><h3 id='tymethod.index_of' class='method'><span id='index_of.v' class='invisible'><code>fn <a href='#tymethod.index_of' class='fnname'>index_of</a>(&amp;self, sig: &amp;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></h3><h3 id='tymethod.insert' class='method'><span id='insert.v' class='invisible'><code>fn <a href='#tymethod.insert' class='fnname'>insert</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, sig: &amp;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>)</code></span></h3><h3 id='tymethod.length' class='method'><span id='length.v' class='invisible'><code>fn <a href='#tymethod.length' class='fnname'>length</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></h3><h3 id='tymethod.remove' class='method'><span id='remove.v' class='invisible'><code>fn <a href='#tymethod.remove' class='fnname'>remove</a>(&amp;self, sig: &amp;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><h3 id='tymethod.remove_at' class='method'><span id='remove_at.v' class='invisible'><code>fn <a href='#tymethod.remove_at' class='fnname'>remove_at</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><h3 id='tymethod.set_signature' class='method'><span id='set_signature.v' class='invisible'><code>fn <a href='#tymethod.set_signature' class='fnname'>set_signature</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, sig: &amp;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>)</code></span></h3></div>
+        <h3 id='tymethod.add' class='method'><span id='add.v' class='invisible'><code>fn <a href='#tymethod.add' class='fnname'>add</a>(&amp;self, sig: &amp;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></h3><div class='docblock'><p>Adds a <code>Signature</code> to the <code>SignatureList</code>.</p>
+<h2 id="sig" class="section-header"><a href="#sig"><code>sig</code></a></h2>
+<p>a <code>Signature</code></p>
+<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<p>the index of the added <code>Signature</code>.</p>
+</div><h3 id='tymethod.clear' class='method'><span id='clear.v' class='invisible'><code>fn <a href='#tymethod.clear' class='fnname'>clear</a>(&amp;self)</code></span></h3><div class='docblock'><p>Clears the list of addresses.</p>
+</div><h3 id='tymethod.contains' class='method'><span id='contains.v' class='invisible'><code>fn <a href='#tymethod.contains' class='fnname'>contains</a>(&amp;self, sig: &amp;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><div class='docblock'><p>Checks whether or not the specified <code>Signature</code> is contained within
+the <code>SignatureList</code>.</p>
+<h2 id="sig-1" class="section-header"><a href="#sig-1"><code>sig</code></a></h2>
+<p>a <code>Signature</code></p>
+<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<p><code>true</code> if the specified <code>Signature</code> is contained within the
+specified <code>SignatureList</code> or <code>false</code> otherwise.</p>
+</div><h3 id='tymethod.get_signature' class='method'><span id='get_signature.v' class='invisible'><code>fn <a href='#tymethod.get_signature' class='fnname'>get_signature</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>&gt;</code></span></h3><div class='docblock'><p>Gets the <code>Signature</code> at the specified index.</p>
+<h2 id="index" class="section-header"><a href="#index"><code>index</code></a></h2>
+<p>index of <code>Signature</code> to get</p>
+<h1 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h1>
+<p>the <code>Signature</code> at the specified
+index or <code>None</code> if the index is out of range.</p>
+</div><h3 id='tymethod.index_of' class='method'><span id='index_of.v' class='invisible'><code>fn <a href='#tymethod.index_of' class='fnname'>index_of</a>(&amp;self, sig: &amp;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></h3><div class='docblock'><p>Gets the index of the specified <code>Signature</code> inside the
+<code>SignatureList</code>.</p>
+<h2 id="sig-2" class="section-header"><a href="#sig-2"><code>sig</code></a></h2>
+<p>a <code>Signature</code></p>
+<h1 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h1>
+<p>the index of the requested <code>Signature</code> within the
+<code>SignatureList</code> or %-1 if it is not contained within the
+<code>SignatureList</code>.</p>
+</div><h3 id='tymethod.insert' class='method'><span id='insert.v' class='invisible'><code>fn <a href='#tymethod.insert' class='fnname'>insert</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, sig: &amp;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>)</code></span></h3><div class='docblock'><p>Inserts a <code>Signature</code> into the <code>SignatureList</code> at the specified
+index.</p>
+<h2 id="index-1" class="section-header"><a href="#index-1"><code>index</code></a></h2>
+<p>index to insert at</p>
+<h2 id="sig-3" class="section-header"><a href="#sig-3"><code>sig</code></a></h2>
+<p>a <code>Signature</code></p>
+</div><h3 id='tymethod.length' class='method'><span id='length.v' class='invisible'><code>fn <a href='#tymethod.length' class='fnname'>length</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></h3><div class='docblock'><p>Gets the length of the list.</p>
+<h1 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h1>
+<p>the number of <code>Signature</code> objects in the list.</p>
+</div><h3 id='tymethod.remove' class='method'><span id='remove.v' class='invisible'><code>fn <a href='#tymethod.remove' class='fnname'>remove</a>(&amp;self, sig: &amp;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><div class='docblock'><p>Removes a <code>Signature</code> from the <code>SignatureList</code>.</p>
+<h2 id="sig-4" class="section-header"><a href="#sig-4"><code>sig</code></a></h2>
+<p>a <code>Signature</code></p>
+<h1 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h1>
+<p><code>true</code> if the specified <code>Signature</code> was removed or <code>false</code>
+otherwise.</p>
+</div><h3 id='tymethod.remove_at' class='method'><span id='remove_at.v' class='invisible'><code>fn <a href='#tymethod.remove_at' class='fnname'>remove_at</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><div class='docblock'><p>Removes a <code>Signature</code> from the <code>SignatureList</code> at the specified
+index.</p>
+<h2 id="index-2" class="section-header"><a href="#index-2"><code>index</code></a></h2>
+<p>index to remove</p>
+<h1 id="returns-6" class="section-header"><a href="#returns-6">Returns</a></h1>
+<p><code>true</code> if an <code>Signature</code> was removed or <code>false</code> otherwise.</p>
+</div><h3 id='tymethod.set_signature' class='method'><span id='set_signature.v' class='invisible'><code>fn <a href='#tymethod.set_signature' class='fnname'>set_signature</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, sig: &amp;<a class="struct" href="../gmime/struct.Signature.html" title="struct gmime::Signature">Signature</a>)</code></span></h3><div class='docblock'><p>Sets the <code>Signature</code> at the specified index to <code>sig</code>.</p>
+<h2 id="index-3" class="section-header"><a href="#index-3"><code>index</code></a></h2>
+<p>index of <code>Signature</code> to set</p>
+<h2 id="sig-5" class="section-header"><a href="#sig-5"><code>sig</code></a></h2>
+<p>a <code>Signature</code></p>
+</div></div>
         <h2 id='implementors' class='small-section-header'>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.SignatureList.html" title="struct gmime::SignatureList">SignatureList</a>&gt;&gt; SignatureListExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/auto/signature_list.rs.html#58-118' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.SignatureList.html" title="struct gmime::SignatureList">SignatureList</a>&gt;&gt; SignatureListExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/auto/signature_list.rs.html#140-200' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
 </ul><script type="text/javascript">window.inlined_types=new Set([]);</script><script type="text/javascript" async
                          src="../implementors/gmime/trait.SignatureListExt.js">
                  </script></section>

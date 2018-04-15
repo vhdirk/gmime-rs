@@ -55,11 +55,21 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>gmime</a>::<wbr><a class="struct" href=''>FilterGZip</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span></span></h1><div class="docblock type-decl"><pre class='rust struct'>pub struct FilterGZip(_, _);</pre></div>
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>gmime</a>::<wbr><a class="struct" href=''>FilterGZip</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span></span></h1><div class="docblock type-decl"><pre class='rust struct'>pub struct FilterGZip(_, _);</pre></div><div class='docblock'><p>A filter for compresing or decompressing a gzip stream.</p>
+<h1 id="implements" class="section-header"><a href="#implements">Implements</a></h1>
+<p><a href="trait.FilterGZipExt.html"><code>FilterGZipExt</code></a>, <a href="trait.FilterExt.html"><code>FilterExt</code></a></p>
+</div>
                     <h2 id='methods' class='small-section-header'>
                       Methods<a href='#methods' class='anchor'></a>
                     </h2>
-                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="struct" href="../gmime/struct.FilterGZip.html" title="struct gmime::FilterGZip">FilterGZip</a></code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/filter_g_zip.rs.html#24-30' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new' class='fnname'>new</a>(mode: <a class="enum" href="../gmime/enum.FilterGZipMode.html" title="enum gmime::FilterGZipMode">FilterGZipMode</a>, level: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="struct" href="../gmime/struct.FilterGZip.html" title="struct gmime::FilterGZip">FilterGZip</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/filter_g_zip.rs.html#25-29' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4></div>
+                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="struct" href="../gmime/struct.FilterGZip.html" title="struct gmime::FilterGZip">FilterGZip</a></code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/filter_g_zip.rs.html#29-44' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new' class='fnname'>new</a>(mode: <a class="enum" href="../gmime/enum.FilterGZipMode.html" title="enum gmime::FilterGZipMode">FilterGZipMode</a>, level: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="struct" href="../gmime/struct.FilterGZip.html" title="struct gmime::FilterGZip">FilterGZip</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/filter_g_zip.rs.html#39-43' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Creates a new gzip (or gunzip) filter.</p>
+<h2 id="mode" class="section-header"><a href="#mode"><code>mode</code></a></h2>
+<p>zip or unzip</p>
+<h2 id="level" class="section-header"><a href="#level"><code>level</code></a></h2>
+<p>compression level</p>
+<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<p>a new gzip (or gunzip) filter.</p>
+</div></div>
                 <h2 id='implementations' class='small-section-header'>
                   Trait Implementations<a href='#implementations' class='anchor'></a>
                 </h2>

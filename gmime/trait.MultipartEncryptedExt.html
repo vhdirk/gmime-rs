@@ -55,19 +55,42 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>MultipartEncryptedExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/auto/multipart_encrypted.rs.html#44-46' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait MultipartEncryptedExt {
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>MultipartEncryptedExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/auto/multipart_encrypted.rs.html#59-85' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait MultipartEncryptedExt {
     fn <a href='#tymethod.decrypt' class='fnname'>decrypt</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="../gmime/struct.DecryptFlags.html" title="struct gmime::DecryptFlags">DecryptFlags</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session_key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a><br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Object.html" title="struct gmime::Object">Object</a>&gt;, <a class="struct" href="../gmime/struct.DecryptResult.html" title="struct gmime::DecryptResult">DecryptResult</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>, <a class="struct" href="../gmime/struct.Error.html" title="struct gmime::Error">Error</a>&gt;;
-}</pre></div>
+}</pre></div><div class='docblock'><p>Trait containing all <code>MultipartEncrypted</code> methods.</p>
+<h1 id="implementors-1" class="section-header"><a href="#implementors-1">Implementors</a></h1>
+<p><a href="struct.MultipartEncrypted.html"><code>MultipartEncrypted</code></a></p>
+</div>
             <h2 id='required-methods' class='small-section-header'>
               Required Methods<a href='#required-methods' class='anchor'></a>
             </h2>
             <div class='methods'>
-        <h3 id='tymethod.decrypt' class='method'><span id='decrypt.v' class='invisible'><code>fn <a href='#tymethod.decrypt' class='fnname'>decrypt</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="../gmime/struct.DecryptFlags.html" title="struct gmime::DecryptFlags">DecryptFlags</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;session_key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Object.html" title="struct gmime::Object">Object</a>&gt;, <a class="struct" href="../gmime/struct.DecryptResult.html" title="struct gmime::DecryptResult">DecryptResult</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>, <a class="struct" href="../gmime/struct.Error.html" title="struct gmime::Error">Error</a>&gt;</code></span></h3></div>
+        <h3 id='tymethod.decrypt' class='method'><span id='decrypt.v' class='invisible'><code>fn <a href='#tymethod.decrypt' class='fnname'>decrypt</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="../gmime/struct.DecryptFlags.html" title="struct gmime::DecryptFlags">DecryptFlags</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;session_key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Object.html" title="struct gmime::Object">Object</a>&gt;, <a class="struct" href="../gmime/struct.DecryptResult.html" title="struct gmime::DecryptResult">DecryptResult</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>, <a class="struct" href="../gmime/struct.Error.html" title="struct gmime::Error">Error</a>&gt;</code></span></h3><div class='docblock'><p>Attempts to decrypt the encrypted MIME part contained within the
+multipart/encrypted object <code>self</code>.</p>
+<p>When non-<code>None</code>, <code>session_key</code> should be a <code>None</code>-terminated string,
+such as the one returned by <code>DecryptResultExt::get_session_key</code>
+from a previous decryption. If the <code>session_key</code> is not valid, decryption
+will fail.</p>
+<p>If <code>result</code> is non-<code>None</code>, then on a successful decrypt operation, it will be
+updated to point to a newly-allocated <code>DecryptResult</code> with signature
+status information as well as a list of recipients that the part was
+encrypted to.</p>
+<h2 id="flags" class="section-header"><a href="#flags"><code>flags</code></a></h2>
+<p>a <code>DecryptFlags</code></p>
+<h2 id="session_key" class="section-header"><a href="#session_key"><code>session_key</code></a></h2>
+<p>session key to use or <code>None</code></p>
+<h2 id="result" class="section-header"><a href="#result"><code>result</code></a></h2>
+<p>a <code>DecryptResult</code></p>
+<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<p>the decrypted MIME part on success or
+<code>None</code> on fail. If the decryption fails, an exception will be set on
+<code>err</code> to provide information as to why the failure occurred.</p>
+</div></div>
         <h2 id='implementors' class='small-section-header'>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.MultipartEncrypted.html" title="struct gmime::MultipartEncrypted">MultipartEncrypted</a>&gt;&gt; MultipartEncryptedExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/auto/multipart_encrypted.rs.html#48-57' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.MultipartEncrypted.html" title="struct gmime::MultipartEncrypted">MultipartEncrypted</a>&gt;&gt; MultipartEncryptedExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/auto/multipart_encrypted.rs.html#87-96' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
 </ul><script type="text/javascript">window.inlined_types=new Set([]);</script><script type="text/javascript" async
                          src="../implementors/gmime/trait.MultipartEncryptedExt.js">
                  </script></section>

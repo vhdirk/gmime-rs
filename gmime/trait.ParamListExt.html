@@ -55,7 +55,7 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>ParamListExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/auto/param_list.rs.html#43-59' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait ParamListExt {
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>ParamListExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/auto/param_list.rs.html#67-122' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait ParamListExt {
     fn <a href='#tymethod.clear' class='fnname'>clear</a>(&amp;self);
 <div class='item-spacer'></div>    fn <a href='#tymethod.get_parameter' class='fnname'>get_parameter</a>(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Param.html" title="struct gmime::Param">Param</a>&gt;;
 <div class='item-spacer'></div>    fn <a href='#tymethod.get_parameter_at' class='fnname'>get_parameter_at</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Param.html" title="struct gmime::Param">Param</a>&gt;;
@@ -63,17 +63,49 @@
 <div class='item-spacer'></div>    fn <a href='#tymethod.remove' class='fnname'>remove</a>(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>;
 <div class='item-spacer'></div>    fn <a href='#tymethod.remove_at' class='fnname'>remove_at</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>;
 <div class='item-spacer'></div>    fn <a href='#tymethod.set_parameter' class='fnname'>set_parameter</a>(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>);
-}</pre></div>
+}</pre></div><div class='docblock'><p>Trait containing all <code>ParamList</code> methods.</p>
+<h1 id="implementors-1" class="section-header"><a href="#implementors-1">Implementors</a></h1>
+<p><a href="struct.ParamList.html"><code>ParamList</code></a></p>
+</div>
             <h2 id='required-methods' class='small-section-header'>
               Required Methods<a href='#required-methods' class='anchor'></a>
             </h2>
             <div class='methods'>
-        <h3 id='tymethod.clear' class='method'><span id='clear.v' class='invisible'><code>fn <a href='#tymethod.clear' class='fnname'>clear</a>(&amp;self)</code></span></h3><h3 id='tymethod.get_parameter' class='method'><span id='get_parameter.v' class='invisible'><code>fn <a href='#tymethod.get_parameter' class='fnname'>get_parameter</a>(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Param.html" title="struct gmime::Param">Param</a>&gt;</code></span></h3><h3 id='tymethod.get_parameter_at' class='method'><span id='get_parameter_at.v' class='invisible'><code>fn <a href='#tymethod.get_parameter_at' class='fnname'>get_parameter_at</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Param.html" title="struct gmime::Param">Param</a>&gt;</code></span></h3><h3 id='tymethod.length' class='method'><span id='length.v' class='invisible'><code>fn <a href='#tymethod.length' class='fnname'>length</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></h3><h3 id='tymethod.remove' class='method'><span id='remove.v' class='invisible'><code>fn <a href='#tymethod.remove' class='fnname'>remove</a>(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><h3 id='tymethod.remove_at' class='method'><span id='remove_at.v' class='invisible'><code>fn <a href='#tymethod.remove_at' class='fnname'>remove_at</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><h3 id='tymethod.set_parameter' class='method'><span id='set_parameter.v' class='invisible'><code>fn <a href='#tymethod.set_parameter' class='fnname'>set_parameter</a>(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>)</code></span></h3></div>
+        <h3 id='tymethod.clear' class='method'><span id='clear.v' class='invisible'><code>fn <a href='#tymethod.clear' class='fnname'>clear</a>(&amp;self)</code></span></h3><div class='docblock'><p>Clears the list of parameters.</p>
+</div><h3 id='tymethod.get_parameter' class='method'><span id='get_parameter.v' class='invisible'><code>fn <a href='#tymethod.get_parameter' class='fnname'>get_parameter</a>(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Param.html" title="struct gmime::Param">Param</a>&gt;</code></span></h3><div class='docblock'><p>Gets the <code>Param</code> with the given <code>name</code>.</p>
+<h2 id="name" class="section-header"><a href="#name"><code>name</code></a></h2>
+<p>the name of the parameter</p>
+<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<p>the requested <code>Param</code>.</p>
+</div><h3 id='tymethod.get_parameter_at' class='method'><span id='get_parameter_at.v' class='invisible'><code>fn <a href='#tymethod.get_parameter_at' class='fnname'>get_parameter_at</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Param.html" title="struct gmime::Param">Param</a>&gt;</code></span></h3><div class='docblock'><p>Gets the <code>Param</code> at the specified <code>index</code>.</p>
+<h2 id="index" class="section-header"><a href="#index"><code>index</code></a></h2>
+<p>the index of the requested parameter</p>
+<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<p>the <code>Param</code> at the specified index.</p>
+</div><h3 id='tymethod.length' class='method'><span id='length.v' class='invisible'><code>fn <a href='#tymethod.length' class='fnname'>length</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></h3><div class='docblock'><p>Gets the length of the list.</p>
+<h1 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h1>
+<p>the number of <code>Param</code> items in the list.</p>
+</div><h3 id='tymethod.remove' class='method'><span id='remove.v' class='invisible'><code>fn <a href='#tymethod.remove' class='fnname'>remove</a>(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><div class='docblock'><p>Removes a parameter from the <code>ParamList</code>.</p>
+<h2 id="name-1" class="section-header"><a href="#name-1"><code>name</code></a></h2>
+<p>the name of the parameter</p>
+<h1 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h1>
+<p><code>true</code> if the specified parameter was removed or <code>false</code> otherwise.</p>
+</div><h3 id='tymethod.remove_at' class='method'><span id='remove_at.v' class='invisible'><code>fn <a href='#tymethod.remove_at' class='fnname'>remove_at</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><div class='docblock'><p>Removes a <code>Param</code> from the <code>ParamList</code> at the specified index.</p>
+<h2 id="index-1" class="section-header"><a href="#index-1"><code>index</code></a></h2>
+<p>index of the param to remove</p>
+<h1 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h1>
+<p><code>true</code> if a <code>Param</code> was removed or <code>false</code> otherwise.</p>
+</div><h3 id='tymethod.set_parameter' class='method'><span id='set_parameter.v' class='invisible'><code>fn <a href='#tymethod.set_parameter' class='fnname'>set_parameter</a>(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>)</code></span></h3><div class='docblock'><p>Sets the specified parameter to <code>value</code>.</p>
+<h2 id="name-2" class="section-header"><a href="#name-2"><code>name</code></a></h2>
+<p>The name of the parameter</p>
+<h2 id="value" class="section-header"><a href="#value"><code>value</code></a></h2>
+<p>The parameter value</p>
+</div></div>
         <h2 id='implementors' class='small-section-header'>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.ParamList.html" title="struct gmime::ParamList">ParamList</a>&gt;&gt; ParamListExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/auto/param_list.rs.html#61-107' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.ParamList.html" title="struct gmime::ParamList">ParamList</a>&gt;&gt; ParamListExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/auto/param_list.rs.html#124-170' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
 </ul><script type="text/javascript">window.inlined_types=new Set([]);</script><script type="text/javascript" async
                          src="../implementors/gmime/trait.ParamListExt.js">
                  </script></section>

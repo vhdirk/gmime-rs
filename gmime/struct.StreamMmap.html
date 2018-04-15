@@ -55,11 +55,37 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>gmime</a>::<wbr><a class="struct" href=''>StreamMmap</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span></span></h1><div class="docblock type-decl"><pre class='rust struct'>pub struct StreamMmap(_, _);</pre></div>
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>gmime</a>::<wbr><a class="struct" href=''>StreamMmap</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span></span></h1><div class="docblock type-decl"><pre class='rust struct'>pub struct StreamMmap(_, _);</pre></div><div class='docblock'><p>A memory-mapped <code>Stream</code>.</p>
+<h1 id="implements" class="section-header"><a href="#implements">Implements</a></h1>
+<p><a href="trait.StreamMmapExt.html"><code>StreamMmapExt</code></a>, <a href="trait.StreamExt.html"><code>StreamExt</code></a></p>
+</div>
                     <h2 id='methods' class='small-section-header'>
                       Methods<a href='#methods' class='anchor'></a>
                     </h2>
-                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="struct" href="../gmime/struct.StreamMmap.html" title="struct gmime::StreamMmap">StreamMmap</a></code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/stream_mmap.rs.html#23-35' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new' class='fnname'>new</a>(fd: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, prot: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, flags: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="struct" href="../gmime/struct.StreamMmap.html" title="struct gmime::StreamMmap">StreamMmap</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/stream_mmap.rs.html#24-28' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><h4 id='method.new_with_bounds' class="method"><span id='new_with_bounds.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new_with_bounds' class='fnname'>new_with_bounds</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;fd: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;prot: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;start: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;end: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a><br>) -&gt; <a class="struct" href="../gmime/struct.StreamMmap.html" title="struct gmime::StreamMmap">StreamMmap</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/stream_mmap.rs.html#30-34' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4></div>
+                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="struct" href="../gmime/struct.StreamMmap.html" title="struct gmime::StreamMmap">StreamMmap</a></code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/stream_mmap.rs.html#28-67' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new' class='fnname'>new</a>(fd: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, prot: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, flags: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="struct" href="../gmime/struct.StreamMmap.html" title="struct gmime::StreamMmap">StreamMmap</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/stream_mmap.rs.html#40-44' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Creates a new <code>StreamMmap</code> object around <code>fd</code>.</p>
+<h2 id="fd" class="section-header"><a href="#fd"><code>fd</code></a></h2>
+<p>file descriptor</p>
+<h2 id="prot" class="section-header"><a href="#prot"><code>prot</code></a></h2>
+<p>protection flags</p>
+<h2 id="flags" class="section-header"><a href="#flags"><code>flags</code></a></h2>
+<p>map flags</p>
+<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<p>a stream using <code>fd</code>.</p>
+</div><h4 id='method.new_with_bounds' class="method"><span id='new_with_bounds.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new_with_bounds' class='fnname'>new_with_bounds</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;fd: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;prot: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;start: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;end: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a><br>) -&gt; <a class="struct" href="../gmime/struct.StreamMmap.html" title="struct gmime::StreamMmap">StreamMmap</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/stream_mmap.rs.html#62-66' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Creates a new <code>StreamMmap</code> object around <code>fd</code> with bounds <code>start</code>
+and <code>end</code>.</p>
+<h2 id="fd-1" class="section-header"><a href="#fd-1"><code>fd</code></a></h2>
+<p>file descriptor</p>
+<h2 id="prot-1" class="section-header"><a href="#prot-1"><code>prot</code></a></h2>
+<p>protection flags</p>
+<h2 id="flags-1" class="section-header"><a href="#flags-1"><code>flags</code></a></h2>
+<p>map flags</p>
+<h2 id="start" class="section-header"><a href="#start"><code>start</code></a></h2>
+<p>start boundary</p>
+<h2 id="end" class="section-header"><a href="#end"><code>end</code></a></h2>
+<p>end boundary</p>
+<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<p>a stream using <code>fd</code> with bounds <code>start</code> and <code>end</code>.</p>
+</div></div>
                 <h2 id='implementations' class='small-section-header'>
                   Trait Implementations<a href='#implementations' class='anchor'></a>
                 </h2>

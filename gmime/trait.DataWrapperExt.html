@@ -55,23 +55,47 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>DataWrapperExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/auto/data_wrapper.rs.html#43-53' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait DataWrapperExt {
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>DataWrapperExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/auto/data_wrapper.rs.html#69-107' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait DataWrapperExt {
     fn <a href='#tymethod.get_encoding' class='fnname'>get_encoding</a>(&amp;self) -&gt; <a class="enum" href="../gmime/enum.ContentEncoding.html" title="enum gmime::ContentEncoding">ContentEncoding</a>;
 <div class='item-spacer'></div>    fn <a href='#tymethod.get_stream' class='fnname'>get_stream</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;;
 <div class='item-spacer'></div>    fn <a href='#tymethod.set_encoding' class='fnname'>set_encoding</a>(&amp;self, encoding: <a class="enum" href="../gmime/enum.ContentEncoding.html" title="enum gmime::ContentEncoding">ContentEncoding</a>);
 <div class='item-spacer'></div>    fn <a href='#tymethod.set_stream' class='fnname'>set_stream</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;&gt;(&amp;self, stream: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P);
 <div class='item-spacer'></div>    fn <a href='#tymethod.write_to_stream' class='fnname'>write_to_stream</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;&gt;(&amp;self, stream: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>;
-}</pre></div>
+}</pre></div><div class='docblock'><p>Trait containing all <code>DataWrapper</code> methods.</p>
+<h1 id="implementors-1" class="section-header"><a href="#implementors-1">Implementors</a></h1>
+<p><a href="struct.DataWrapper.html"><code>DataWrapper</code></a></p>
+</div>
             <h2 id='required-methods' class='small-section-header'>
               Required Methods<a href='#required-methods' class='anchor'></a>
             </h2>
             <div class='methods'>
-        <h3 id='tymethod.get_encoding' class='method'><span id='get_encoding.v' class='invisible'><code>fn <a href='#tymethod.get_encoding' class='fnname'>get_encoding</a>(&amp;self) -&gt; <a class="enum" href="../gmime/enum.ContentEncoding.html" title="enum gmime::ContentEncoding">ContentEncoding</a></code></span></h3><h3 id='tymethod.get_stream' class='method'><span id='get_stream.v' class='invisible'><code>fn <a href='#tymethod.get_stream' class='fnname'>get_stream</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;</code></span></h3><h3 id='tymethod.set_encoding' class='method'><span id='set_encoding.v' class='invisible'><code>fn <a href='#tymethod.set_encoding' class='fnname'>set_encoding</a>(&amp;self, encoding: <a class="enum" href="../gmime/enum.ContentEncoding.html" title="enum gmime::ContentEncoding">ContentEncoding</a>)</code></span></h3><h3 id='tymethod.set_stream' class='method'><span id='set_stream.v' class='invisible'><code>fn <a href='#tymethod.set_stream' class='fnname'>set_stream</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;&gt;(&amp;self, stream: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P)</code></span></h3><h3 id='tymethod.write_to_stream' class='method'><span id='write_to_stream.v' class='invisible'><code>fn <a href='#tymethod.write_to_stream' class='fnname'>write_to_stream</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;&gt;(&amp;self, stream: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a></code></span></h3></div>
+        <h3 id='tymethod.get_encoding' class='method'><span id='get_encoding.v' class='invisible'><code>fn <a href='#tymethod.get_encoding' class='fnname'>get_encoding</a>(&amp;self) -&gt; <a class="enum" href="../gmime/enum.ContentEncoding.html" title="enum gmime::ContentEncoding">ContentEncoding</a></code></span></h3><div class='docblock'><p>Gets the encoding type of the stream wrapped by <code>self</code>.</p>
+<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<p>the encoding type of the internal stream.</p>
+</div><h3 id='tymethod.get_stream' class='method'><span id='get_stream.v' class='invisible'><code>fn <a href='#tymethod.get_stream' class='fnname'>get_stream</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;</code></span></h3><div class='docblock'><p>Gets a reference to the stream wrapped by <code>self</code>.</p>
+<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<p>a reference to the internal stream.</p>
+</div><h3 id='tymethod.set_encoding' class='method'><span id='set_encoding.v' class='invisible'><code>fn <a href='#tymethod.set_encoding' class='fnname'>set_encoding</a>(&amp;self, encoding: <a class="enum" href="../gmime/enum.ContentEncoding.html" title="enum gmime::ContentEncoding">ContentEncoding</a>)</code></span></h3><div class='docblock'><p>Sets the encoding type of the internal stream.</p>
+<h2 id="encoding" class="section-header"><a href="#encoding"><code>encoding</code></a></h2>
+<p>encoding</p>
+</div><h3 id='tymethod.set_stream' class='method'><span id='set_stream.v' class='invisible'><code>fn <a href='#tymethod.set_stream' class='fnname'>set_stream</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;&gt;(&amp;self, stream: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P)</code></span></h3><div class='docblock'><p>Replaces the wrapper's internal stream with <code>stream</code>. Don't forget,
+if <code>stream</code> is not of the same encoding as the old stream, you'll
+want to call <code>DataWrapperExt::set_encoding</code> as well.</p>
+<p>Note: caller is responsible for its own reference on
+<code>stream</code>.</p>
+<h2 id="stream" class="section-header"><a href="#stream"><code>stream</code></a></h2>
+<p>a <code>Stream</code></p>
+</div><h3 id='tymethod.write_to_stream' class='method'><span id='write_to_stream.v' class='invisible'><code>fn <a href='#tymethod.write_to_stream' class='fnname'>write_to_stream</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;&gt;(&amp;self, stream: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a></code></span></h3><div class='docblock'><p>Writes the raw (decoded) data to the output stream.</p>
+<h2 id="stream-1" class="section-header"><a href="#stream-1"><code>stream</code></a></h2>
+<p>output stream</p>
+<h1 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h1>
+<p>the number of bytes written or %-1 on failure.</p>
+</div></div>
         <h2 id='implementors' class='small-section-header'>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.DataWrapper.html" title="struct gmime::DataWrapper">DataWrapper</a>&gt;&gt; DataWrapperExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/auto/data_wrapper.rs.html#55-85' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.DataWrapper.html" title="struct gmime::DataWrapper">DataWrapper</a>&gt;&gt; DataWrapperExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/auto/data_wrapper.rs.html#109-139' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
 </ul><script type="text/javascript">window.inlined_types=new Set([]);</script><script type="text/javascript" async
                          src="../implementors/gmime/trait.DataWrapperExt.js">
                  </script></section>

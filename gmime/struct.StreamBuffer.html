@@ -55,11 +55,21 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>gmime</a>::<wbr><a class="struct" href=''>StreamBuffer</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span></span></h1><div class="docblock type-decl"><pre class='rust struct'>pub struct StreamBuffer(_, _);</pre></div>
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>gmime</a>::<wbr><a class="struct" href=''>StreamBuffer</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span></span></h1><div class="docblock type-decl"><pre class='rust struct'>pub struct StreamBuffer(_, _);</pre></div><div class='docblock'><p>A buffered stream wrapper around any <code>Stream</code> object.</p>
+<h1 id="implements" class="section-header"><a href="#implements">Implements</a></h1>
+<p><a href="trait.StreamExt.html"><code>StreamExt</code></a></p>
+</div>
                     <h2 id='methods' class='small-section-header'>
                       Methods<a href='#methods' class='anchor'></a>
                     </h2>
-                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="struct" href="../gmime/struct.StreamBuffer.html" title="struct gmime::StreamBuffer">StreamBuffer</a></code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/stream_buffer.rs.html#24-30' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new' class='fnname'>new</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;&gt;(source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P, mode: <a class="enum" href="../gmime/enum.StreamBufferMode.html" title="enum gmime::StreamBufferMode">StreamBufferMode</a>) -&gt; <a class="struct" href="../gmime/struct.StreamBuffer.html" title="struct gmime::StreamBuffer">StreamBuffer</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/stream_buffer.rs.html#25-29' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4></div>
+                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="struct" href="../gmime/struct.StreamBuffer.html" title="struct gmime::StreamBuffer">StreamBuffer</a></code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/stream_buffer.rs.html#29-44' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new' class='fnname'>new</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;&gt;(source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P, mode: <a class="enum" href="../gmime/enum.StreamBufferMode.html" title="enum gmime::StreamBufferMode">StreamBufferMode</a>) -&gt; <a class="struct" href="../gmime/struct.StreamBuffer.html" title="struct gmime::StreamBuffer">StreamBuffer</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/stream_buffer.rs.html#39-43' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Creates a new GMimeStreamBuffer object.</p>
+<h2 id="source" class="section-header"><a href="#source"><code>source</code></a></h2>
+<p>source stream</p>
+<h2 id="mode" class="section-header"><a href="#mode"><code>mode</code></a></h2>
+<p>buffering mode</p>
+<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<p>a new buffer stream with source <code>source</code> and mode <code>mode</code>.</p>
+</div></div>
                 <h2 id='implementations' class='small-section-header'>
                   Trait Implementations<a href='#implementations' class='anchor'></a>
                 </h2>

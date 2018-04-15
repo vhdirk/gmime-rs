@@ -55,20 +55,33 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>FilterWindowsExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/auto/filter_windows.rs.html#31-35' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait FilterWindowsExt {
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>FilterWindowsExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/auto/filter_windows.rs.html#52-70' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait FilterWindowsExt {
     fn <a href='#tymethod.is_windows_charset' class='fnname'>is_windows_charset</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>;
 <div class='item-spacer'></div>    fn <a href='#tymethod.real_charset' class='fnname'>real_charset</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;;
-}</pre></div>
+}</pre></div><div class='docblock'><p>Trait containing all <code>FilterWindows</code> methods.</p>
+<h1 id="implementors-1" class="section-header"><a href="#implementors-1">Implementors</a></h1>
+<p><a href="struct.FilterWindows.html"><code>FilterWindows</code></a></p>
+</div>
             <h2 id='required-methods' class='small-section-header'>
               Required Methods<a href='#required-methods' class='anchor'></a>
             </h2>
             <div class='methods'>
-        <h3 id='tymethod.is_windows_charset' class='method'><span id='is_windows_charset.v' class='invisible'><code>fn <a href='#tymethod.is_windows_charset' class='fnname'>is_windows_charset</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><h3 id='tymethod.real_charset' class='method'><span id='real_charset.v' class='invisible'><code>fn <a href='#tymethod.real_charset' class='fnname'>real_charset</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;</code></span></h3></div>
+        <h3 id='tymethod.is_windows_charset' class='method'><span id='is_windows_charset.v' class='invisible'><code>fn <a href='#tymethod.is_windows_charset' class='fnname'>is_windows_charset</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><div class='docblock'><p>Determines whether or not a Windows-CP125# charset has been
+detected so far.</p>
+<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<p><code>true</code> if the filtered stream has been detected to contain
+Windows-CP125# characters or <code>false</code> otherwise.</p>
+</div><h3 id='tymethod.real_charset' class='method'><span id='real_charset.v' class='invisible'><code>fn <a href='#tymethod.real_charset' class='fnname'>real_charset</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;</code></span></h3><div class='docblock'><p>Figures out the real charset that the text is encoded in based on whether or not Windows-CP125# characters were found.</p>
+<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<p>a const string pointer to the claimed charset if filtered
+text stream was found not to contain any Windows-CP125# characters
+or the proper Windows-CP125# charset.</p>
+</div></div>
         <h2 id='implementors' class='small-section-header'>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.FilterWindows.html" title="struct gmime::FilterWindows">FilterWindows</a>&gt;&gt; FilterWindowsExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/auto/filter_windows.rs.html#37-49' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.FilterWindows.html" title="struct gmime::FilterWindows">FilterWindows</a>&gt;&gt; FilterWindowsExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/auto/filter_windows.rs.html#72-84' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
 </ul><script type="text/javascript">window.inlined_types=new Set([]);</script><script type="text/javascript" async
                          src="../implementors/gmime/trait.FilterWindowsExt.js">
                  </script></section>

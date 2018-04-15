@@ -55,20 +55,29 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>MessagePartExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/auto/message_part.rs.html#37-41' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait MessagePartExt {
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>MessagePartExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/auto/message_part.rs.html#67-79' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait MessagePartExt {
     fn <a href='#tymethod.get_message' class='fnname'>get_message</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Message.html" title="struct gmime::Message">Message</a>&gt;;
 <div class='item-spacer'></div>    fn <a href='#tymethod.set_message' class='fnname'>set_message</a>(&amp;self, message: &amp;<a class="struct" href="../gmime/struct.Message.html" title="struct gmime::Message">Message</a>);
-}</pre></div>
+}</pre></div><div class='docblock'><p>Trait containing all <code>MessagePart</code> methods.</p>
+<h1 id="implementors-1" class="section-header"><a href="#implementors-1">Implementors</a></h1>
+<p><a href="struct.MessagePart.html"><code>MessagePart</code></a></p>
+</div>
             <h2 id='required-methods' class='small-section-header'>
               Required Methods<a href='#required-methods' class='anchor'></a>
             </h2>
             <div class='methods'>
-        <h3 id='tymethod.get_message' class='method'><span id='get_message.v' class='invisible'><code>fn <a href='#tymethod.get_message' class='fnname'>get_message</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Message.html" title="struct gmime::Message">Message</a>&gt;</code></span></h3><h3 id='tymethod.set_message' class='method'><span id='set_message.v' class='invisible'><code>fn <a href='#tymethod.set_message' class='fnname'>set_message</a>(&amp;self, message: &amp;<a class="struct" href="../gmime/struct.Message.html" title="struct gmime::Message">Message</a>)</code></span></h3></div>
+        <h3 id='tymethod.get_message' class='method'><span id='get_message.v' class='invisible'><code>fn <a href='#tymethod.get_message' class='fnname'>get_message</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Message.html" title="struct gmime::Message">Message</a>&gt;</code></span></h3><div class='docblock'><p>Gets the message object on the message part object <code>self</code>.</p>
+<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<p>the message part contained within <code>self</code>.</p>
+</div><h3 id='tymethod.set_message' class='method'><span id='set_message.v' class='invisible'><code>fn <a href='#tymethod.set_message' class='fnname'>set_message</a>(&amp;self, message: &amp;<a class="struct" href="../gmime/struct.Message.html" title="struct gmime::Message">Message</a>)</code></span></h3><div class='docblock'><p>Sets the <code>message</code> object on the message part object <code>self</code>.</p>
+<h2 id="message" class="section-header"><a href="#message"><code>message</code></a></h2>
+<p>message</p>
+</div></div>
         <h2 id='implementors' class='small-section-header'>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.MessagePart.html" title="struct gmime::MessagePart">MessagePart</a>&gt;&gt; MessagePartExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/auto/message_part.rs.html#43-55' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.MessagePart.html" title="struct gmime::MessagePart">MessagePart</a>&gt;&gt; MessagePartExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/auto/message_part.rs.html#81-93' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
 </ul><script type="text/javascript">window.inlined_types=new Set([]);</script><script type="text/javascript" async
                          src="../implementors/gmime/trait.MessagePartExt.js">
                  </script></section>

@@ -55,7 +55,7 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>ParserExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/auto/parser.rs.html#46-78' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait ParserExt {
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>ParserExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/auto/parser.rs.html#68-218' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait ParserExt {
     fn <a href='#tymethod.construct_message' class='fnname'>construct_message</a>&lt;'a, P:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'a <a class="struct" href="../gmime/struct.ParserOptions.html" title="struct gmime::ParserOptions">ParserOptions</a>&gt;&gt;&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;options: P<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Message.html" title="struct gmime::Message">Message</a>&gt;;
 <div class='item-spacer'></div>    fn <a href='#tymethod.construct_part' class='fnname'>construct_part</a>&lt;'a, P:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'a <a class="struct" href="../gmime/struct.ParserOptions.html" title="struct gmime::ParserOptions">ParserOptions</a>&gt;&gt;&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;options: P<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Object.html" title="struct gmime::Object">Object</a>&gt;;
 <div class='item-spacer'></div>    fn <a href='#tymethod.eos' class='fnname'>eos</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>;
@@ -71,17 +71,108 @@
 <div class='item-spacer'></div>    fn <a href='#tymethod.set_persist_stream' class='fnname'>set_persist_stream</a>(&amp;self, persist: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>);
 <div class='item-spacer'></div>    fn <a href='#tymethod.set_respect_content_length' class='fnname'>set_respect_content_length</a>(&amp;self, respect_content_length: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>);
 <div class='item-spacer'></div>    fn <a href='#tymethod.tell' class='fnname'>tell</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>;
-}</pre></div>
+}</pre></div><div class='docblock'><p>Trait containing all <code>Parser</code> methods.</p>
+<h1 id="implementors-1" class="section-header"><a href="#implementors-1">Implementors</a></h1>
+<p><a href="struct.Parser.html"><code>Parser</code></a></p>
+</div>
             <h2 id='required-methods' class='small-section-header'>
               Required Methods<a href='#required-methods' class='anchor'></a>
             </h2>
             <div class='methods'>
-        <h3 id='tymethod.construct_message' class='method'><span id='construct_message.v' class='invisible'><code>fn <a href='#tymethod.construct_message' class='fnname'>construct_message</a>&lt;'a, P:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'a <a class="struct" href="../gmime/struct.ParserOptions.html" title="struct gmime::ParserOptions">ParserOptions</a>&gt;&gt;&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;options: P<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Message.html" title="struct gmime::Message">Message</a>&gt;</code></span></h3><h3 id='tymethod.construct_part' class='method'><span id='construct_part.v' class='invisible'><code>fn <a href='#tymethod.construct_part' class='fnname'>construct_part</a>&lt;'a, P:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'a <a class="struct" href="../gmime/struct.ParserOptions.html" title="struct gmime::ParserOptions">ParserOptions</a>&gt;&gt;&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;options: P<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Object.html" title="struct gmime::Object">Object</a>&gt;</code></span></h3><h3 id='tymethod.eos' class='method'><span id='eos.v' class='invisible'><code>fn <a href='#tymethod.eos' class='fnname'>eos</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><h3 id='tymethod.get_format' class='method'><span id='get_format.v' class='invisible'><code>fn <a href='#tymethod.get_format' class='fnname'>get_format</a>(&amp;self) -&gt; <a class="enum" href="../gmime/enum.Format.html" title="enum gmime::Format">Format</a></code></span></h3><h3 id='tymethod.get_headers_begin' class='method'><span id='get_headers_begin.v' class='invisible'><code>fn <a href='#tymethod.get_headers_begin' class='fnname'>get_headers_begin</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></h3><h3 id='tymethod.get_headers_end' class='method'><span id='get_headers_end.v' class='invisible'><code>fn <a href='#tymethod.get_headers_end' class='fnname'>get_headers_end</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></h3><h3 id='tymethod.get_mbox_marker' class='method'><span id='get_mbox_marker.v' class='invisible'><code>fn <a href='#tymethod.get_mbox_marker' class='fnname'>get_mbox_marker</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;</code></span></h3><h3 id='tymethod.get_mbox_marker_offset' class='method'><span id='get_mbox_marker_offset.v' class='invisible'><code>fn <a href='#tymethod.get_mbox_marker_offset' class='fnname'>get_mbox_marker_offset</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></h3><h3 id='tymethod.get_persist_stream' class='method'><span id='get_persist_stream.v' class='invisible'><code>fn <a href='#tymethod.get_persist_stream' class='fnname'>get_persist_stream</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><h3 id='tymethod.get_respect_content_length' class='method'><span id='get_respect_content_length.v' class='invisible'><code>fn <a href='#tymethod.get_respect_content_length' class='fnname'>get_respect_content_length</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><h3 id='tymethod.init_with_stream' class='method'><span id='init_with_stream.v' class='invisible'><code>fn <a href='#tymethod.init_with_stream' class='fnname'>init_with_stream</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;&gt;(&amp;self, stream: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P)</code></span></h3><h3 id='tymethod.set_format' class='method'><span id='set_format.v' class='invisible'><code>fn <a href='#tymethod.set_format' class='fnname'>set_format</a>(&amp;self, format: <a class="enum" href="../gmime/enum.Format.html" title="enum gmime::Format">Format</a>)</code></span></h3><h3 id='tymethod.set_persist_stream' class='method'><span id='set_persist_stream.v' class='invisible'><code>fn <a href='#tymethod.set_persist_stream' class='fnname'>set_persist_stream</a>(&amp;self, persist: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</code></span></h3><h3 id='tymethod.set_respect_content_length' class='method'><span id='set_respect_content_length.v' class='invisible'><code>fn <a href='#tymethod.set_respect_content_length' class='fnname'>set_respect_content_length</a>(&amp;self, respect_content_length: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</code></span></h3><h3 id='tymethod.tell' class='method'><span id='tell.v' class='invisible'><code>fn <a href='#tymethod.tell' class='fnname'>tell</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></h3></div>
+        <h3 id='tymethod.construct_message' class='method'><span id='construct_message.v' class='invisible'><code>fn <a href='#tymethod.construct_message' class='fnname'>construct_message</a>&lt;'a, P:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'a <a class="struct" href="../gmime/struct.ParserOptions.html" title="struct gmime::ParserOptions">ParserOptions</a>&gt;&gt;&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;options: P<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Message.html" title="struct gmime::Message">Message</a>&gt;</code></span></h3><div class='docblock'><p>Constructs a MIME message from <code>self</code>.</p>
+<h2 id="options" class="section-header"><a href="#options"><code>options</code></a></h2>
+<p>a <code>ParserOptions</code> or <code>None</code></p>
+<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<p>a MIME message or <code>None</code> on fail.</p>
+</div><h3 id='tymethod.construct_part' class='method'><span id='construct_part.v' class='invisible'><code>fn <a href='#tymethod.construct_part' class='fnname'>construct_part</a>&lt;'a, P:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'a <a class="struct" href="../gmime/struct.ParserOptions.html" title="struct gmime::ParserOptions">ParserOptions</a>&gt;&gt;&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;options: P<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Object.html" title="struct gmime::Object">Object</a>&gt;</code></span></h3><div class='docblock'><p>Constructs a MIME part from <code>self</code>.</p>
+<h2 id="options-1" class="section-header"><a href="#options-1"><code>options</code></a></h2>
+<p>a <code>ParserOptions</code> or <code>None</code></p>
+<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<p>a MIME part based on <code>self</code> or <code>None</code> on
+fail.</p>
+</div><h3 id='tymethod.eos' class='method'><span id='eos.v' class='invisible'><code>fn <a href='#tymethod.eos' class='fnname'>eos</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><div class='docblock'><p>Tests the end-of-stream indicator for <code>self</code>'s internal stream.</p>
+<h1 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h1>
+<p><code>true</code> on EOS or <code>false</code> otherwise.</p>
+</div><h3 id='tymethod.get_format' class='method'><span id='get_format.v' class='invisible'><code>fn <a href='#tymethod.get_format' class='fnname'>get_format</a>(&amp;self) -&gt; <a class="enum" href="../gmime/enum.Format.html" title="enum gmime::Format">Format</a></code></span></h3><div class='docblock'><p>Gets the format that the parser is set to parse.</p>
+<h1 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h1>
+<p>the format that the parser is set to parse.</p>
+</div><h3 id='tymethod.get_headers_begin' class='method'><span id='get_headers_begin.v' class='invisible'><code>fn <a href='#tymethod.get_headers_begin' class='fnname'>get_headers_begin</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></h3><div class='docblock'><p>Gets the stream offset of the beginning of the headers of the most
+recently parsed message.</p>
+<h1 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h1>
+<p>the offset of the beginning of the headers of the most
+recently parsed message or %-1 on error.</p>
+</div><h3 id='tymethod.get_headers_end' class='method'><span id='get_headers_end.v' class='invisible'><code>fn <a href='#tymethod.get_headers_end' class='fnname'>get_headers_end</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></h3><div class='docblock'><p>Gets the stream offset of the end of the headers of the most
+recently parsed message.</p>
+<h1 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h1>
+<p>the offset of the end of the headers of the most recently
+parsed message or %-1 on error.</p>
+</div><h3 id='tymethod.get_mbox_marker' class='method'><span id='get_mbox_marker.v' class='invisible'><code>fn <a href='#tymethod.get_mbox_marker' class='fnname'>get_mbox_marker</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;</code></span></h3><div class='docblock'><p>Gets the mbox-style From-line of the most recently parsed message
+(gotten from <code>ParserExt::construct_message</code>).</p>
+<h1 id="returns-6" class="section-header"><a href="#returns-6">Returns</a></h1>
+<p>the mbox-style From-line of the most recently parsed
+message or <code>None</code> on error.</p>
+</div><h3 id='tymethod.get_mbox_marker_offset' class='method'><span id='get_mbox_marker_offset.v' class='invisible'><code>fn <a href='#tymethod.get_mbox_marker_offset' class='fnname'>get_mbox_marker_offset</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></h3><div class='docblock'><p>Gets the offset of the most recently parsed mbox-style From-line
+(gotten from <code>ParserExt::construct_message</code>).</p>
+<h1 id="returns-7" class="section-header"><a href="#returns-7">Returns</a></h1>
+<p>the offset of the most recently parsed mbox-style From-line
+or %-1 on error.</p>
+</div><h3 id='tymethod.get_persist_stream' class='method'><span id='get_persist_stream.v' class='invisible'><code>fn <a href='#tymethod.get_persist_stream' class='fnname'>get_persist_stream</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><div class='docblock'><p>Gets whether or not the underlying stream is persistent.</p>
+<h1 id="returns-8" class="section-header"><a href="#returns-8">Returns</a></h1>
+<p><code>true</code> if the <code>self</code> will leave the content on disk or
+<code>false</code> if it will load the content into memory.</p>
+</div><h3 id='tymethod.get_respect_content_length' class='method'><span id='get_respect_content_length.v' class='invisible'><code>fn <a href='#tymethod.get_respect_content_length' class='fnname'>get_respect_content_length</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><div class='docblock'><p>Gets whether or not <code>self</code> is set to use Content-Length for
+determining the offset of the end of the message.</p>
+<h1 id="returns-9" class="section-header"><a href="#returns-9">Returns</a></h1>
+<p>whether or not <code>self</code> is set to use Content-Length for
+determining the offset of the end of the message.</p>
+</div><h3 id='tymethod.init_with_stream' class='method'><span id='init_with_stream.v' class='invisible'><code>fn <a href='#tymethod.init_with_stream' class='fnname'>init_with_stream</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;&gt;(&amp;self, stream: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P)</code></span></h3><div class='docblock'><p>Initializes <code>self</code> to use <code>stream</code>.</p>
+<p>WARNING: Initializing a parser with a stream is comparable to
+selling your soul (<code>stream</code>) to the devil (<code>self</code>). You are
+basically giving the parser complete control of the stream, this
+means that you had better not touch the stream so long as the
+parser is still using it. This means no reading, writing, seeking,
+or resetting of the stream. Anything that will/could change the
+current stream's offset is PROHIBITED.</p>
+<p>It is also recommended that you not use <code>StreamExt::tell</code>
+because it will not necessarily give you the current <code>self</code> offset
+since <code>self</code> handles its own internal read-ahead buffer. Instead,
+it is recommended that you use <code>ParserExt::tell</code> if you have a
+reason to need the current offset of the <code>self</code>.</p>
+<h2 id="stream" class="section-header"><a href="#stream"><code>stream</code></a></h2>
+<p>raw message or part stream</p>
+</div><h3 id='tymethod.set_format' class='method'><span id='set_format.v' class='invisible'><code>fn <a href='#tymethod.set_format' class='fnname'>set_format</a>(&amp;self, format: <a class="enum" href="../gmime/enum.Format.html" title="enum gmime::Format">Format</a>)</code></span></h3><div class='docblock'><p>Sets the format that the parser should expect the stream to be in.</p>
+<h2 id="format" class="section-header"><a href="#format"><code>format</code></a></h2>
+<p>a <code>Format</code></p>
+</div><h3 id='tymethod.set_persist_stream' class='method'><span id='set_persist_stream.v' class='invisible'><code>fn <a href='#tymethod.set_persist_stream' class='fnname'>set_persist_stream</a>(&amp;self, persist: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</code></span></h3><div class='docblock'><p>Sets whether or not the <code>self</code>'s underlying stream is persistent.</p>
+<p>If <code>persist</code> is <code>true</code>, the <code>self</code> will attempt to construct
+messages/parts whose content will remain on disk rather than being
+loaded into memory so as to reduce memory usage. This is the default.</p>
+<p>If <code>persist</code> is <code>false</code>, the <code>self</code> will always load message content
+into memory.</p>
+<p>Note: This attribute only serves as a hint to the <code>self</code>. If the
+underlying stream does not support seeking, then this attribute
+will be ignored.</p>
+<p>By default, this feature is enabled if the underlying stream is seekable.</p>
+<h2 id="persist" class="section-header"><a href="#persist"><code>persist</code></a></h2>
+<p>persist attribute</p>
+</div><h3 id='tymethod.set_respect_content_length' class='method'><span id='set_respect_content_length.v' class='invisible'><code>fn <a href='#tymethod.set_respect_content_length' class='fnname'>set_respect_content_length</a>(&amp;self, respect_content_length: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</code></span></h3><div class='docblock'><p>Sets whether or not <code>self</code> should respect Content-Length headers
+when deciding where to look for the start of the next message. Only
+used when the parser is also set to scan for From-lines.</p>
+<p>Most notably useful when parsing broken Solaris mbox files (See
+http://www.jwz.org/doc/content-length.html for details).</p>
+<p>By default, this feature is disabled.</p>
+<h2 id="respect_content_length" class="section-header"><a href="#respect_content_length"><code>respect_content_length</code></a></h2>
+<p><code>true</code> if the parser should use Content-Length headers or <code>false</code> otherwise.</p>
+</div><h3 id='tymethod.tell' class='method'><span id='tell.v' class='invisible'><code>fn <a href='#tymethod.tell' class='fnname'>tell</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></h3><div class='docblock'><p>Gets the current stream offset from the parser's internal stream.</p>
+<h1 id="returns-10" class="section-header"><a href="#returns-10">Returns</a></h1>
+<p>the current stream offset from the parser's internal stream
+or %-1 on error.</p>
+</div></div>
         <h2 id='implementors' class='small-section-header'>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Parser.html" title="struct gmime::Parser">Parser</a>&gt;&gt; ParserExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/auto/parser.rs.html#80-176' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Parser.html" title="struct gmime::Parser">Parser</a>&gt;&gt; ParserExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/auto/parser.rs.html#220-316' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
 </ul><script type="text/javascript">window.inlined_types=new Set([]);</script><script type="text/javascript" async
                          src="../implementors/gmime/trait.ParserExt.js">
                  </script></section>

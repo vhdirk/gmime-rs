@@ -55,11 +55,22 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>gmime</a>::<wbr><a class="struct" href=''>Message</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span></span></h1><div class="docblock type-decl"><pre class='rust struct'>pub struct Message(_, _);</pre></div>
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>gmime</a>::<wbr><a class="struct" href=''>Message</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span></span></h1><div class="docblock type-decl"><pre class='rust struct'>pub struct Message(_, _);</pre></div><div class='docblock'><p>A MIME Message object.</p>
+<h1 id="implements" class="section-header"><a href="#implements">Implements</a></h1>
+<p><a href="trait.MessageExt.html"><code>MessageExt</code></a>, <a href="trait.ObjectExt.html"><code>ObjectExt</code></a></p>
+</div>
                     <h2 id='methods' class='small-section-header'>
                       Methods<a href='#methods' class='anchor'></a>
                     </h2>
-                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="struct" href="../gmime/struct.Message.html" title="struct gmime::Message">Message</a></code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/message.rs.html#25-31' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new' class='fnname'>new</a>(pretty_headers: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="struct" href="../gmime/struct.Message.html" title="struct gmime::Message">Message</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/message.rs.html#26-30' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4></div>
+                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="struct" href="../gmime/struct.Message.html" title="struct gmime::Message">Message</a></code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/message.rs.html#30-46' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new' class='fnname'>new</a>(pretty_headers: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="struct" href="../gmime/struct.Message.html" title="struct gmime::Message">Message</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/message.rs.html#41-45' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>If <code>pretty_headers</code> is <code>true</code>, then the standard rfc822 headers are
+initialized so as to put headers in a nice friendly order. This is
+strictly a cosmetic thing, so if you are unsure, it is safe to say
+no (<code>false</code>).</p>
+<h2 id="pretty_headers" class="section-header"><a href="#pretty_headers"><code>pretty_headers</code></a></h2>
+<p>make pretty headers</p>
+<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<p>an empty <code>Message</code> object.</p>
+</div></div>
                 <h2 id='implementations' class='small-section-header'>
                   Trait Implementations<a href='#implementations' class='anchor'></a>
                 </h2>

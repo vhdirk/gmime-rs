@@ -55,7 +55,7 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>StreamExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/auto/stream.rs.html#22-58' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait StreamExt {
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>gmime</a>::<wbr><a class="trait" href=''>StreamExt</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/gmime/auto/stream.rs.html#32-184' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'>pub trait StreamExt {
     fn <a href='#tymethod.buffer_gets' class='fnname'>buffer_gets</a>(&amp;self, buf: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, max: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>;
 <div class='item-spacer'></div>    fn <a href='#tymethod.close' class='fnname'>close</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>;
 <div class='item-spacer'></div>    fn <a href='#tymethod.construct' class='fnname'>construct</a>(&amp;self, start: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>, end: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>);
@@ -71,17 +71,107 @@
 <div class='item-spacer'></div>    fn <a href='#tymethod.write' class='fnname'>write</a>(&amp;self, buf: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>;
 <div class='item-spacer'></div>    fn <a href='#tymethod.write_string' class='fnname'>write_string</a>(&amp;self, str: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>;
 <div class='item-spacer'></div>    fn <a href='#tymethod.write_to_stream' class='fnname'>write_to_stream</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;&gt;(&amp;self, dest: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>;
-}</pre></div>
+}</pre></div><div class='docblock'><p>Trait containing all <code>Stream</code> methods.</p>
+<h1 id="implementors-1" class="section-header"><a href="#implementors-1">Implementors</a></h1>
+<p><a href="struct.StreamBuffer.html"><code>StreamBuffer</code></a>, <a href="struct.StreamCat.html"><code>StreamCat</code></a>, <a href="struct.StreamFile.html"><code>StreamFile</code></a>, <a href="struct.StreamFilter.html"><code>StreamFilter</code></a>, <a href="struct.StreamFs.html"><code>StreamFs</code></a>, <a href="struct.StreamGIO.html"><code>StreamGIO</code></a>, <a href="struct.StreamMem.html"><code>StreamMem</code></a>, <a href="struct.StreamMmap.html"><code>StreamMmap</code></a>, <a href="struct.StreamNull.html"><code>StreamNull</code></a>, <a href="struct.StreamPipe.html"><code>StreamPipe</code></a>, <a href="struct.Stream.html"><code>Stream</code></a></p>
+</div>
             <h2 id='required-methods' class='small-section-header'>
               Required Methods<a href='#required-methods' class='anchor'></a>
             </h2>
             <div class='methods'>
-        <h3 id='tymethod.buffer_gets' class='method'><span id='buffer_gets.v' class='invisible'><code>fn <a href='#tymethod.buffer_gets' class='fnname'>buffer_gets</a>(&amp;self, buf: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, max: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a></code></span></h3><h3 id='tymethod.close' class='method'><span id='close.v' class='invisible'><code>fn <a href='#tymethod.close' class='fnname'>close</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></h3><h3 id='tymethod.construct' class='method'><span id='construct.v' class='invisible'><code>fn <a href='#tymethod.construct' class='fnname'>construct</a>(&amp;self, start: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>, end: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>)</code></span></h3><h3 id='tymethod.eos' class='method'><span id='eos.v' class='invisible'><code>fn <a href='#tymethod.eos' class='fnname'>eos</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><h3 id='tymethod.flush' class='method'><span id='flush.v' class='invisible'><code>fn <a href='#tymethod.flush' class='fnname'>flush</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></h3><h3 id='tymethod.length' class='method'><span id='length.v' class='invisible'><code>fn <a href='#tymethod.length' class='fnname'>length</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></h3><h3 id='tymethod.read' class='method'><span id='read.v' class='invisible'><code>fn <a href='#tymethod.read' class='fnname'>read</a>(&amp;self, buf: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a></code></span></h3><h3 id='tymethod.reset' class='method'><span id='reset.v' class='invisible'><code>fn <a href='#tymethod.reset' class='fnname'>reset</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></h3><h3 id='tymethod.seek' class='method'><span id='seek.v' class='invisible'><code>fn <a href='#tymethod.seek' class='fnname'>seek</a>(&amp;self, offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>, whence: <a class="enum" href="../gmime/enum.SeekWhence.html" title="enum gmime::SeekWhence">SeekWhence</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></h3><h3 id='tymethod.set_bounds' class='method'><span id='set_bounds.v' class='invisible'><code>fn <a href='#tymethod.set_bounds' class='fnname'>set_bounds</a>(&amp;self, start: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>, end: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>)</code></span></h3><h3 id='tymethod.substream' class='method'><span id='substream.v' class='invisible'><code>fn <a href='#tymethod.substream' class='fnname'>substream</a>(&amp;self, start: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>, end: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;</code></span></h3><h3 id='tymethod.tell' class='method'><span id='tell.v' class='invisible'><code>fn <a href='#tymethod.tell' class='fnname'>tell</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></h3><h3 id='tymethod.write' class='method'><span id='write.v' class='invisible'><code>fn <a href='#tymethod.write' class='fnname'>write</a>(&amp;self, buf: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a></code></span></h3><h3 id='tymethod.write_string' class='method'><span id='write_string.v' class='invisible'><code>fn <a href='#tymethod.write_string' class='fnname'>write_string</a>(&amp;self, str: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a></code></span></h3><h3 id='tymethod.write_to_stream' class='method'><span id='write_to_stream.v' class='invisible'><code>fn <a href='#tymethod.write_to_stream' class='fnname'>write_to_stream</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;&gt;(&amp;self, dest: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></h3></div>
+        <h3 id='tymethod.buffer_gets' class='method'><span id='buffer_gets.v' class='invisible'><code>fn <a href='#tymethod.buffer_gets' class='fnname'>buffer_gets</a>(&amp;self, buf: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, max: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a></code></span></h3><div class='docblock'><p>Reads in at most one less than <code>max</code> characters from <code>self</code> and
+stores them into the buffer pointed to by <code>buf</code>. Reading stops after
+an EOS or newline ('\n'). If a newline is read, it is stored into
+the buffer. A '\0' is stored after the last character in the
+buffer.</p>
+<h2 id="buf" class="section-header"><a href="#buf"><code>buf</code></a></h2>
+<p>line buffer</p>
+<h2 id="max" class="section-header"><a href="#max"><code>max</code></a></h2>
+<p>max length of a line</p>
+<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<p>the number of characters read into <code>buf</code> on success or %-1
+on fail.</p>
+</div><h3 id='tymethod.close' class='method'><span id='close.v' class='invisible'><code>fn <a href='#tymethod.close' class='fnname'>close</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></h3><div class='docblock'><p>Closes the stream.</p>
+<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<p><code>0</code> on success or %-1 on fail.</p>
+</div><h3 id='tymethod.construct' class='method'><span id='construct.v' class='invisible'><code>fn <a href='#tymethod.construct' class='fnname'>construct</a>(&amp;self, start: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>, end: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>)</code></span></h3><div class='docblock'><p>Initializes a new stream with bounds <code>start</code> and <code>end</code>.</p>
+<h2 id="start" class="section-header"><a href="#start"><code>start</code></a></h2>
+<p>start boundary</p>
+<h2 id="end" class="section-header"><a href="#end"><code>end</code></a></h2>
+<p>end boundary</p>
+</div><h3 id='tymethod.eos' class='method'><span id='eos.v' class='invisible'><code>fn <a href='#tymethod.eos' class='fnname'>eos</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h3><div class='docblock'><p>Tests the end-of-stream indicator for <code>self</code>.</p>
+<h1 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h1>
+<p><code>true</code> on EOS or <code>false</code> otherwise.</p>
+</div><h3 id='tymethod.flush' class='method'><span id='flush.v' class='invisible'><code>fn <a href='#tymethod.flush' class='fnname'>flush</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></h3><div class='docblock'><p>Sync's the stream to disk.</p>
+<h1 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h1>
+<p><code>0</code> on success or %-1 on fail.</p>
+</div><h3 id='tymethod.length' class='method'><span id='length.v' class='invisible'><code>fn <a href='#tymethod.length' class='fnname'>length</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></h3><div class='docblock'><p>Gets the length of the stream.</p>
+<h1 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h1>
+<p>the length of the stream or %-1 if unknown.</p>
+</div><h3 id='tymethod.read' class='method'><span id='read.v' class='invisible'><code>fn <a href='#tymethod.read' class='fnname'>read</a>(&amp;self, buf: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a></code></span></h3><div class='docblock'><p>Attempts to read up to <code>len</code> bytes from <code>self</code> into <code>buf</code>.</p>
+<h2 id="buf-1" class="section-header"><a href="#buf-1"><code>buf</code></a></h2>
+<p>buffer</p>
+<h2 id="len" class="section-header"><a href="#len"><code>len</code></a></h2>
+<p>buffer length</p>
+<h1 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h1>
+<p>the number of bytes read or %-1 on fail.</p>
+</div><h3 id='tymethod.reset' class='method'><span id='reset.v' class='invisible'><code>fn <a href='#tymethod.reset' class='fnname'>reset</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></h3><div class='docblock'><p>Resets the stream.</p>
+<h1 id="returns-6" class="section-header"><a href="#returns-6">Returns</a></h1>
+<p><code>0</code> on success or %-1 on fail.</p>
+</div><h3 id='tymethod.seek' class='method'><span id='seek.v' class='invisible'><code>fn <a href='#tymethod.seek' class='fnname'>seek</a>(&amp;self, offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>, whence: <a class="enum" href="../gmime/enum.SeekWhence.html" title="enum gmime::SeekWhence">SeekWhence</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></h3><div class='docblock'><p>Repositions the offset of the stream <code>self</code> to
+the argument <code>offset</code> according to the
+directive <code>whence</code> as follows:</p>
+<p><code>SeekWhence::Set</code>: Seek <code>offset</code> bytes relative to
+the beginning (bound_start) of the stream.</p>
+<p><code>SeekWhence::Cur</code>: Seek <code>offset</code> bytes relative to the
+current offset of the stream.</p>
+<p><code>SeekWhence::End</code>: Seek <code>offset</code> bytes relative to the
+end of the stream (bound_end if non-negative).</p>
+<h2 id="offset" class="section-header"><a href="#offset"><code>offset</code></a></h2>
+<p>positional offset</p>
+<h2 id="whence" class="section-header"><a href="#whence"><code>whence</code></a></h2>
+<p>seek directive</p>
+<h1 id="returns-7" class="section-header"><a href="#returns-7">Returns</a></h1>
+<p>the resultant position on success or %-1 on fail.</p>
+</div><h3 id='tymethod.set_bounds' class='method'><span id='set_bounds.v' class='invisible'><code>fn <a href='#tymethod.set_bounds' class='fnname'>set_bounds</a>(&amp;self, start: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>, end: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>)</code></span></h3><div class='docblock'><p>Set the bounds on a stream.</p>
+<h2 id="start-1" class="section-header"><a href="#start-1"><code>start</code></a></h2>
+<p>start boundary</p>
+<h2 id="end-1" class="section-header"><a href="#end-1"><code>end</code></a></h2>
+<p>end boundary</p>
+</div><h3 id='tymethod.substream' class='method'><span id='substream.v' class='invisible'><code>fn <a href='#tymethod.substream' class='fnname'>substream</a>(&amp;self, start: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>, end: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;</code></span></h3><div class='docblock'><p>Creates a new substream of <code>self</code> with bounds <code>start</code> and <code>end</code>.</p>
+<h2 id="start-2" class="section-header"><a href="#start-2"><code>start</code></a></h2>
+<p>start boundary</p>
+<h2 id="end-2" class="section-header"><a href="#end-2"><code>end</code></a></h2>
+<p>end boundary</p>
+<h1 id="returns-8" class="section-header"><a href="#returns-8">Returns</a></h1>
+<p>a substream of <code>self</code> with bounds <code>start</code>
+and <code>end</code>.</p>
+</div><h3 id='tymethod.tell' class='method'><span id='tell.v' class='invisible'><code>fn <a href='#tymethod.tell' class='fnname'>tell</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></h3><div class='docblock'><p>Gets the current offset within the stream.</p>
+<h1 id="returns-9" class="section-header"><a href="#returns-9">Returns</a></h1>
+<p>the current position within the stream or %-1 on fail.</p>
+</div><h3 id='tymethod.write' class='method'><span id='write.v' class='invisible'><code>fn <a href='#tymethod.write' class='fnname'>write</a>(&amp;self, buf: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a></code></span></h3><div class='docblock'><p>Attempts to write up to <code>len</code> bytes of <code>buf</code> to <code>self</code>.</p>
+<h2 id="buf-2" class="section-header"><a href="#buf-2"><code>buf</code></a></h2>
+<p>buffer</p>
+<h2 id="len-1" class="section-header"><a href="#len-1"><code>len</code></a></h2>
+<p>buffer length</p>
+<h1 id="returns-10" class="section-header"><a href="#returns-10">Returns</a></h1>
+<p>the number of bytes written or %-1 on fail.</p>
+</div><h3 id='tymethod.write_string' class='method'><span id='write_string.v' class='invisible'><code>fn <a href='#tymethod.write_string' class='fnname'>write_string</a>(&amp;self, str: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a></code></span></h3><div class='docblock'><p>Writes <code>string</code> to <code>self</code>.</p>
+<h2 id="str" class="section-header"><a href="#str"><code>str</code></a></h2>
+<p>string to write</p>
+<h1 id="returns-11" class="section-header"><a href="#returns-11">Returns</a></h1>
+<p>the number of bytes written or %-1 on fail.</p>
+</div><h3 id='tymethod.write_to_stream' class='method'><span id='write_to_stream.v' class='invisible'><code>fn <a href='#tymethod.write_to_stream' class='fnname'>write_to_stream</a>&lt;P:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;&gt;(&amp;self, dest: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></h3><div class='docblock'><p>Attempts to write the source stream to the destination stream.</p>
+<h2 id="dest" class="section-header"><a href="#dest"><code>dest</code></a></h2>
+<p>destination stream</p>
+<h1 id="returns-12" class="section-header"><a href="#returns-12">Returns</a></h1>
+<p>the number of bytes written or %-1 on fail.</p>
+</div></div>
         <h2 id='implementors' class='small-section-header'>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;&gt; StreamExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/auto/stream.rs.html#60-164' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+    <li><table class='table-display'><tbody><tr><td><code>impl&lt;O:&nbsp;IsA&lt;<a class="struct" href="../gmime/struct.Stream.html" title="struct gmime::Stream">Stream</a>&gt;&gt; StreamExt for O</code><td><div class='out-of-band'><a class='srclink' href='../src/gmime/auto/stream.rs.html#186-290' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
 </ul><script type="text/javascript">window.inlined_types=new Set([]);</script><script type="text/javascript" async
                          src="../implementors/gmime/trait.StreamExt.js">
                  </script></section>

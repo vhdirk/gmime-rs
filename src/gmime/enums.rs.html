@@ -211,10 +211,17 @@
 <span id="154">154</span>
 <span id="155">155</span>
 <span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
 </pre><pre class="rust ">
 <span class="kw">use</span> <span class="ident">ffi</span>;
 <span class="kw">use</span> <span class="ident">glib</span>::<span class="ident">translate</span>::<span class="kw-2">*</span>;
 
+<span class="doccomment">/// A hash algorithm.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Hash</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">DigestAlgo</span> {
     <span class="ident">AlgoDefault</span>,
@@ -287,6 +294,7 @@
 }
 
 
+<span class="doccomment">/// A Content-Transfer-Encoding enumeration.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Hash</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ContentEncoding</span> {
     <span class="ident">EncodeDefault</span>,
@@ -334,6 +342,10 @@
     }
 }
 
+<span class="doccomment">/// Used with functions like `FilterBestExt::encoding` and</span>
+<span class="doccomment">/// `ObjectExt::encode` as the &#39;constraint&#39; argument. These values</span>
+<span class="doccomment">/// provide a means of letting the filter know what the encoding</span>
+<span class="doccomment">/// constraints are for the stream.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Hash</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">EncodingConstraint</span> {
     <span class="ident">Encode7bit</span>,

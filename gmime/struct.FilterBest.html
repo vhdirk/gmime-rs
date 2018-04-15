@@ -55,11 +55,28 @@
         </form>
     </nav>
 
-    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>gmime</a>::<wbr><a class="struct" href=''>FilterBest</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span></span></h1><div class="docblock type-decl"><pre class='rust struct'>pub struct FilterBest(_, _);</pre></div>
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>gmime</a>::<wbr><a class="struct" href=''>FilterBest</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span></span></h1><div class="docblock type-decl"><pre class='rust struct'>pub struct FilterBest(_, _);</pre></div><div class='docblock'><p>A filter for calculating the best encoding and/or charset to encode
+the data passed through it.</p>
+<h1 id="implements" class="section-header"><a href="#implements">Implements</a></h1>
+<p><a href="trait.FilterBestExt.html"><code>FilterBestExt</code></a>, <a href="trait.FilterExt.html"><code>FilterExt</code></a></p>
+</div>
                     <h2 id='methods' class='small-section-header'>
                       Methods<a href='#methods' class='anchor'></a>
                     </h2>
-                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="struct" href="../gmime/struct.FilterBest.html" title="struct gmime::FilterBest">FilterBest</a></code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/filter_best.rs.html#26-32' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new' class='fnname'>new</a>(flags: <a class="struct" href="../gmime/struct.FilterBestFlags.html" title="struct gmime::FilterBestFlags">FilterBestFlags</a>) -&gt; <a class="struct" href="../gmime/struct.FilterBest.html" title="struct gmime::FilterBest">FilterBest</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/filter_best.rs.html#27-31' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4></div>
+                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="struct" href="../gmime/struct.FilterBest.html" title="struct gmime::FilterBest">FilterBest</a></code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/filter_best.rs.html#32-54' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new' class='fnname'>new</a>(flags: <a class="struct" href="../gmime/struct.FilterBestFlags.html" title="struct gmime::FilterBestFlags">FilterBestFlags</a>) -&gt; <a class="struct" href="../gmime/struct.FilterBest.html" title="struct gmime::FilterBest">FilterBest</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gmime/auto/filter_best.rs.html#49-53' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Creates a new GMimeFilterBest filter. <code>flags</code> are used to determine
+which information to keep statistics of. If the
+<code>FilterBestFlags::Charset</code> bit is set, the filter will be able to
+compute the best charset for encoding the stream of data
+filtered. If the <code>FilterBestFlags::Encoding</code> bit is set, the filter
+will be able to compute the best Content-Transfer-Encoding for use
+with the stream being filtered.</p>
+<p>Note: In order for the <code>FilterBestExt::charset</code> function to
+work, the stream being filtered MUST already be encoded in UTF-8.</p>
+<h2 id="flags" class="section-header"><a href="#flags"><code>flags</code></a></h2>
+<p>filter flags</p>
+<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<p>a new best filter with flags <code>flags</code>.</p>
+</div></div>
                 <h2 id='implementations' class='small-section-header'>
                   Trait Implementations<a href='#implementations' class='anchor'></a>
                 </h2>
