@@ -20,7 +20,7 @@ use libc::{c_int, c_char, c_uchar, c_float, c_uint, c_double,
     c_void, size_t, ssize_t, intptr_t, uintptr_t, time_t, FILE};
 
 #[allow(unused_imports)]
-use glib::{gboolean, gconstpointer, gpointer, GType, Volatile};
+use glib::{gboolean, gconstpointer, gpointer, GType};
 
 // Enums
 pub type GMimeAddressType = c_int;
