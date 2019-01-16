@@ -1,33 +1,39 @@
-[package]
-authors = ["Dirk Van Haerenborgh <vhdirk@gmail.com>"]
-build = "build.rs"
-description = "FFI bindings to gmime-3.0, generated with gtk-rs' gir tool"
-homepage = "https://github.com/vhdirk/gmime-rs"
-keywords = ["gmime", "glib", "ffi", "gtk-rs", "gnome"]
-license = "MIT"
-links = "gmime"
-name = "gmime-sys"
-version = "0.6.4"
-documentation = "https://vhdirk.github.io/gmime-rs/gmime_sys/"
-readme = "README.md"
+[build-dependencies]
+pkg-config = "0.3.7"
 
-[lib]
-name = "gmime_sys"
+[dependencies]
+bitflags = "1.0"
+libc = "0.2"
+
+[dependencies.gio-sys]
+git = "https://github.com/gtk-rs/sys"
+
+[dependencies.glib-sys]
+git = "https://github.com/gtk-rs/sys"
+
+[dependencies.gobject-sys]
+git = "https://github.com/gtk-rs/sys"
+
+[dev-dependencies]
+shell-words = "0.1.0"
+tempdir = "0.3"
 
 [features]
 dox = []
 v3_2 = []
 
-[dependencies]
-libc = "0.2"
-bitflags = "1.0"
-glib-sys = { git = "https://github.com/gtk-rs/sys" }
-gobject-sys = { git = "https://github.com/gtk-rs/sys" }
-gio-sys = { git = "https://github.com/gtk-rs/sys" }
+[lib]
+name = "gmime_sys"
 
-[build-dependencies]
-pkg-config = "0.3.7"
-
-[dev-dependencies]
-shell-words = "0.1.0"
-tempdir = "0.3"
+[package]
+authors = ["Dirk Van Haerenborgh <vhdirk@gmail.com>"]
+build = "build.rs"
+description = "FFI bindings to gmime-3.0, generated with gtk-rs' gir tool"
+documentation = "https://vhdirk.github.io/gmime-rs/gmime_sys/"
+homepage = "https://github.com/vhdirk/gmime-rs"
+keywords = ["gmime", "glib", "ffi", "gtk-rs", "gnome"]
+license = "MIT"
+links = "gmime"
+name = "gmime-sys"
+readme = "README.md"
+version = "0.6.4"

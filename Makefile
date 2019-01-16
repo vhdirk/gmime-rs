@@ -13,18 +13,16 @@ libs : $(LIBS)
 # Run `gir` generating the bindings
 gir : src/auto/mod.rs
 
+not_bound: $(GIR) $(GIR_FILES)
+	$(GIR) -m not_bound -c Gir.toml
+
+regen_check: $(GIR) $(GIR_FILES)
+	rm src/auto/*
+	$(GIR) -c Gir.toml
+	git diff -R --exit-code
+
 src/auto/mod.rs : Gir.toml $(GIR) $(GIR_FILES)
 	$(GIR) -c Gir.toml
-#
-# $(GIR) : $(GIR_SRC)
-# 	cd gir && cargo build --release
-
-# doc: conf/gir-gmime.toml $(GIR) $(GIR_FILES)
-# 	$(GIR) -c $< -o $(abspath $*-sys) -d ../gir-files --doc-target-path ../docs.md -m doc
-# 	rustdoc-stripper -g -o docs.md
-
-doc:
-	$(GIR)	-m doc -o doc
 
 $(GIR) : $(GIR_SRC)
 	rm -f gir/target/bin/gir
@@ -33,3 +31,7 @@ $(GIR) : $(GIR_SRC)
 
 $(GIR_SRC) $(GIR_FILES) :
 	git submodule update --init
+
+
+
+
