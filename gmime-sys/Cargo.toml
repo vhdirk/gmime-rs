@@ -19,8 +19,8 @@ shell-words = "0.1.0"
 tempdir = "0.3"
 
 [features]
-dox = []
 v3_2 = []
+dox = []
 
 [lib]
 name = "gmime_sys"
@@ -37,3 +37,6 @@ links = "gmime"
 name = "gmime-sys"
 readme = "README.md"
 version = "0.6.4"
+
+["package.metadata.docs.rs"]
+features = ["dox", "v3_2"]

@@ -1,4 +1,4 @@
-use ffi;
+use gmime_sys;
 use glib::translate::*;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
@@ -24,33 +24,33 @@ pub enum DigestAlgo {
 
 #[doc(hidden)]
 impl ToGlib for DigestAlgo {
-    type GlibType = ffi::GMimeDigestAlgo;
+    type GlibType = gmime_sys::GMimeDigestAlgo;
 
-    fn to_glib(&self) -> ffi::GMimeDigestAlgo {
+    fn to_glib(&self) -> gmime_sys::GMimeDigestAlgo {
         match *self {
-            DigestAlgo::AlgoDefault => ffi::GMIME_DIGEST_ALGO_DEFAULT,
-            DigestAlgo::AlgoMd5 => ffi::GMIME_DIGEST_ALGO_MD5,
-            DigestAlgo::AlgoSha1 => ffi::GMIME_DIGEST_ALGO_SHA1,
-            DigestAlgo::AlgoRipemd160 => ffi::GMIME_DIGEST_ALGO_RIPEMD160,
-            DigestAlgo::AlgoMd2 => ffi::GMIME_DIGEST_ALGO_MD2,
-            DigestAlgo::AlgoTiger192 => ffi::GMIME_DIGEST_ALGO_TIGER192,
-            DigestAlgo::AlgoHaval5160 => ffi::GMIME_DIGEST_ALGO_HAVAL5160,
-            DigestAlgo::AlgoSha256 => ffi::GMIME_DIGEST_ALGO_SHA256,
-            DigestAlgo::AlgoSha384 => ffi::GMIME_DIGEST_ALGO_SHA384,
-            DigestAlgo::AlgoSha512 => ffi::GMIME_DIGEST_ALGO_SHA512,
-            DigestAlgo::AlgoSha224 => ffi::GMIME_DIGEST_ALGO_SHA224,
-            DigestAlgo::AlgoMd4 => ffi::GMIME_DIGEST_ALGO_MD4,
-            DigestAlgo::AlgoCrc32 => ffi::GMIME_DIGEST_ALGO_CRC32,
-            DigestAlgo::AlgoCrc32Rfc1510 => ffi::GMIME_DIGEST_ALGO_CRC32_RFC1510,
-            DigestAlgo::AlgoCrc32Rfc2440 => ffi::GMIME_DIGEST_ALGO_CRC32_RFC2440,
+            DigestAlgo::AlgoDefault => gmime_sys::GMIME_DIGEST_ALGO_DEFAULT,
+            DigestAlgo::AlgoMd5 => gmime_sys::GMIME_DIGEST_ALGO_MD5,
+            DigestAlgo::AlgoSha1 => gmime_sys::GMIME_DIGEST_ALGO_SHA1,
+            DigestAlgo::AlgoRipemd160 => gmime_sys::GMIME_DIGEST_ALGO_RIPEMD160,
+            DigestAlgo::AlgoMd2 => gmime_sys::GMIME_DIGEST_ALGO_MD2,
+            DigestAlgo::AlgoTiger192 => gmime_sys::GMIME_DIGEST_ALGO_TIGER192,
+            DigestAlgo::AlgoHaval5160 => gmime_sys::GMIME_DIGEST_ALGO_HAVAL5160,
+            DigestAlgo::AlgoSha256 => gmime_sys::GMIME_DIGEST_ALGO_SHA256,
+            DigestAlgo::AlgoSha384 => gmime_sys::GMIME_DIGEST_ALGO_SHA384,
+            DigestAlgo::AlgoSha512 => gmime_sys::GMIME_DIGEST_ALGO_SHA512,
+            DigestAlgo::AlgoSha224 => gmime_sys::GMIME_DIGEST_ALGO_SHA224,
+            DigestAlgo::AlgoMd4 => gmime_sys::GMIME_DIGEST_ALGO_MD4,
+            DigestAlgo::AlgoCrc32 => gmime_sys::GMIME_DIGEST_ALGO_CRC32,
+            DigestAlgo::AlgoCrc32Rfc1510 => gmime_sys::GMIME_DIGEST_ALGO_CRC32_RFC1510,
+            DigestAlgo::AlgoCrc32Rfc2440 => gmime_sys::GMIME_DIGEST_ALGO_CRC32_RFC2440,
             DigestAlgo::__Unknown(value) => value
         }
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<ffi::GMimeDigestAlgo> for DigestAlgo {
-    fn from_glib(value: ffi::GMimeDigestAlgo) -> Self {
+impl FromGlib<gmime_sys::GMimeDigestAlgo> for DigestAlgo {
+    fn from_glib(value: gmime_sys::GMimeDigestAlgo) -> Self {
         match value {
             0 => DigestAlgo::AlgoDefault,
             1 => DigestAlgo::AlgoMd5,
@@ -88,25 +88,25 @@ pub enum ContentEncoding {
 
 #[doc(hidden)]
 impl ToGlib for ContentEncoding {
-    type GlibType = ffi::GMimeContentEncoding;
+    type GlibType = gmime_sys::GMimeContentEncoding;
 
-    fn to_glib(&self) -> ffi::GMimeContentEncoding {
+    fn to_glib(&self) -> gmime_sys::GMimeContentEncoding {
         match *self {
-            ContentEncoding::EncodeDefault => ffi::GMIME_CONTENT_ENCODING_DEFAULT,
-            ContentEncoding::Encode7bit => ffi::GMIME_CONTENT_ENCODING_7BIT,
-            ContentEncoding::Encode8bit => ffi::GMIME_CONTENT_ENCODING_8BIT,
-            ContentEncoding::EncodeBinary => ffi::GMIME_CONTENT_ENCODING_BINARY,
-            ContentEncoding::EncodeBase64 => ffi::GMIME_CONTENT_ENCODING_BASE64,
-            ContentEncoding::EncodeQuotedprintable => ffi::GMIME_CONTENT_ENCODING_QUOTEDPRINTABLE,
-            ContentEncoding::EncodeUuencode => ffi::GMIME_CONTENT_ENCODING_UUENCODE,
+            ContentEncoding::EncodeDefault => gmime_sys::GMIME_CONTENT_ENCODING_DEFAULT,
+            ContentEncoding::Encode7bit => gmime_sys::GMIME_CONTENT_ENCODING_7BIT,
+            ContentEncoding::Encode8bit => gmime_sys::GMIME_CONTENT_ENCODING_8BIT,
+            ContentEncoding::EncodeBinary => gmime_sys::GMIME_CONTENT_ENCODING_BINARY,
+            ContentEncoding::EncodeBase64 => gmime_sys::GMIME_CONTENT_ENCODING_BASE64,
+            ContentEncoding::EncodeQuotedprintable => gmime_sys::GMIME_CONTENT_ENCODING_QUOTEDPRINTABLE,
+            ContentEncoding::EncodeUuencode => gmime_sys::GMIME_CONTENT_ENCODING_UUENCODE,
             ContentEncoding::__Unknown(value) => value
         }
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<ffi::GMimeContentEncoding> for ContentEncoding {
-    fn from_glib(value: ffi::GMimeContentEncoding) -> Self {
+impl FromGlib<gmime_sys::GMimeContentEncoding> for ContentEncoding {
+    fn from_glib(value: gmime_sys::GMimeContentEncoding) -> Self {
         match value {
             0 => ContentEncoding::EncodeDefault,
             1 => ContentEncoding::Encode7bit,
@@ -131,21 +131,21 @@ pub enum EncodingConstraint {
 
 #[doc(hidden)]
 impl ToGlib for EncodingConstraint {
-    type GlibType = ffi::GMimeEncodingConstraint;
+    type GlibType = gmime_sys::GMimeEncodingConstraint;
 
-    fn to_glib(&self) -> ffi::GMimeEncodingConstraint {
+    fn to_glib(&self) -> gmime_sys::GMimeEncodingConstraint {
         match *self {
-            EncodingConstraint::Encode7bit => ffi::GMIME_ENCODING_CONSTRAINT_7BIT,
-            EncodingConstraint::Encode8bit => ffi::GMIME_ENCODING_CONSTRAINT_8BIT,
-            EncodingConstraint::EncodeBinary => ffi::GMIME_ENCODING_CONSTRAINT_BINARY,
+            EncodingConstraint::Encode7bit => gmime_sys::GMIME_ENCODING_CONSTRAINT_7BIT,
+            EncodingConstraint::Encode8bit => gmime_sys::GMIME_ENCODING_CONSTRAINT_8BIT,
+            EncodingConstraint::EncodeBinary => gmime_sys::GMIME_ENCODING_CONSTRAINT_BINARY,
             EncodingConstraint::__Unknown(value) => value
         }
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<ffi::GMimeEncodingConstraint> for EncodingConstraint {
-    fn from_glib(value: ffi::GMimeEncodingConstraint) -> Self {
+impl FromGlib<gmime_sys::GMimeEncodingConstraint> for EncodingConstraint {
+    fn from_glib(value: gmime_sys::GMimeEncodingConstraint) -> Self {
         match value {
             0 => EncodingConstraint::Encode7bit,
             1 => EncodingConstraint::Encode8bit,
