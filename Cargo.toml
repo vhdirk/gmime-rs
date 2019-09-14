@@ -36,13 +36,15 @@ purge-lgpl-docs = ["gtk-rs-lgpl-docs"]
 libc = "0.2"
 bitflags = "1.0"
 
-gmime-sys   = { path = "./gmime-sys" }
-
 glib-sys = { version = "0.9.0" }
 gobject-sys = { version = "0.9.0" }
 gio-sys = { version = "0.9.0" }
 glib = { version = "0.8.0" }
 gio = {version = "0.7.0" }
+
+[dependencies.gmime-sys]
+path = "./gmime-sys"
+version = "0.0.7"
 
 [dev-dependencies]
 rustdoc-stripper = "^0.1.5"
