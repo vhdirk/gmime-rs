@@ -36,11 +36,25 @@ purge-lgpl-docs = ["gtk-rs-lgpl-docs"]
 libc = "0.2"
 bitflags = "1.0"
 
-glib-sys = { version = "0.9.0" }
-gobject-sys = { version = "0.9.0" }
-gio-sys = { version = "0.9.0" }
-glib = { version = "0.8.0" }
-gio = {version = "0.7.0" }
+[dependencies.glib-sys]
+# version = "0.9.0"
+git = "https://github.com/gtk-rs/sys"
+
+[dependencies.gobject-sys]
+git = "https://github.com/gtk-rs/sys"
+# version = "0.9.0"
+
+[dependencies.gio-sys]
+git = "https://github.com/gtk-rs/sys"
+# version = "0.9.0"
+
+[dependencies.glib]
+# version = "0.8.0"
+git = "https://github.com/gtk-rs/glib"
+
+[dependencies.gio]
+# version = "0.7.0"
+git = "https://github.com/gtk-rs/gio"
 
 [dependencies.gmime-sys]
 path = "./gmime-sys"
