@@ -58,7 +58,7 @@ git = "https://github.com/gtk-rs/gio"
 
 [dependencies.gmime-sys]
 path = "./gmime-sys"
-version = "0.0.7"
+version = "0.7.0"
 
 [dev-dependencies]
 rustdoc-stripper = "^0.1.5"
