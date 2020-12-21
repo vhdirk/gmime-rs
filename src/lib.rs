@@ -1,4 +1,5 @@
 #![allow(deprecated)]
+#![feature(doc_alias)]
 
 extern crate gmime_sys;
 extern crate glib_sys;

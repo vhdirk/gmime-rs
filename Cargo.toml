@@ -6,7 +6,7 @@ authors = ["Dirk Van Haerenborgh <vhdirk@gmail.com>"]
 keywords = ["gmime", "gtk-rs", "gnome"]
 categories = ["email", "parsing", "encoding", "cryptography"]
 license = "MIT"
-version = "0.1.0"
+version = "0.2.0"
 readme = "README.md"
 documentation = "https://vhdirk.github.io/gmime-rs/gmime/"
 exclude = [
@@ -35,6 +35,7 @@ purge-lgpl-docs = ["gtk-rs-lgpl-docs"]
 [dependencies]
 libc = "0.2"
 bitflags = "1.0"
+once_cell = "1.0"
 
 [dependencies.glib-sys]
 git = "https://github.com/gtk-rs/sys"
@@ -58,12 +59,12 @@ git = "https://github.com/gtk-rs/gio"
 
 [dependencies.gmime-sys]
 path = "./gmime-sys"
-version = "0.7.0"
+version = "0.8.0"
 
 [dev-dependencies]
 rustdoc-stripper = "^0.1.5"
 
 [build-dependencies.gtk-rs-lgpl-docs]
-version = "^0.1.3"
+version = "0.1"
 optional = true
 path = "lgpl-docs"
