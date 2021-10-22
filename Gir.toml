@@ -1,10 +1,12 @@
 [options]
-girs_dir = "gir-files"
+girs_directories = ["./gir-files"]
 library = "GMime"
 version = "3.0"
 target_path = "."
 work_mode = "normal"
-generate_safety_asserts = false
+generate_safety_asserts = true
+deprecate_by_min_version = true
+single_version_file = true
 min_cfg_version = "1.30"
 
 generate = [
@@ -13,20 +15,18 @@ generate = [
     "GMime.AutocryptPreferEncrypt",
     "GMime.Certificate",
     "GMime.CertificateList",
-    "GMime.Charset",
+    # "GMime.Charset",
     "GMime.CipherAlgo",
-    "GMime.CryptoContext",
     "GMime.DataWrapper",
     "GMime.DecryptFlags",
     "GMime.DecryptResult",
-    "GMime.Encoding",
+    # "GMime.Encoding",
     "GMime.EncryptFlags",
     "GMime.Filter",
     "GMime.FilterBasic",
     "GMime.FilterBest",
     "GMime.FilterBestFlags",
     "GMime.FilterCharset",
-    "GMime.FilterChecksum",
     "GMime.FilterDos2Unix",
     "GMime.FilterEnriched",
     "GMime.FilterFrom",
@@ -44,8 +44,6 @@ generate = [
     "GMime.FormatOptions",
     "GMime.GpgContext",
     "GMime.HeaderRawValueFormatter",
-    "GMime.InternetAddressGroup",
-    "GMime.InternetAddressMailbox",
     "GMime.MessagePart",
     "GMime.Multipart",
     "GMime.MultipartEncrypted",
@@ -53,7 +51,7 @@ generate = [
     "GMime.NewLineFormat",
     "GMime.ObjectForeachFunc",
     "GMime.OpenPGPData",
-    "GMime.OpenPGPMarker",
+    # "GMime.OpenPGPMarker",
     "GMime.OpenPGPState",
     "GMime.Param",
     "GMime.ParamEncodingMethod",
@@ -63,7 +61,6 @@ generate = [
     "GMime.PartIter",
     "GMime.Pkcs7Context",
     "GMime.PubKeyAlgo",
-    "GMime.References",
     "GMime.RfcComplianceMode",
     "GMime.SecureMimeType",
     "GMime.SeekWhence",
@@ -78,7 +75,7 @@ generate = [
     "GMime.StreamFilter",
     "GMime.StreamFs",
     "GMime.StreamGIO",
-    "GMime.StreamIOVector",
+    # "GMime.StreamIOVector",
     "GMime.StreamMem",
     "GMime.StreamMmap",
     "GMime.StreamNull",
@@ -88,8 +85,9 @@ generate = [
     "GMime.UrlScanner",
     "GMime.Validity",
     "GMime.VerifyFlags",
-    # "GMime.FilterChecksum",
-    #"GMime.ApplicationPkcs7Mime",
+    "GMime.DigestAlgo",
+    "GMime.ContentEncoding",
+    "GMime.EncodingConstraint",
 ]
 
 manual = [
@@ -106,18 +104,7 @@ manual = [
     "GLib.DateTime",
     "GLib.ChecksumType",
     "Gio.File",
-    "GMime.Message", # partial_split_message has wrong annotations
-    "GMime.MessagePartial", # reconstruct_message has wrong annotations
-    "GMime.DigestAlgo", # enum items start with digit
-    "GMime.ContentEncoding",  # enum items start with digit
-    "GMime.EncodingConstraint",  # enum items start with digit
-    "GMime.ParserOptions" # incompatibel function definition
-
-    # "GMime.CryptoContextNewFunc",
-    # "GMime.ParserHeaderRegexFunc",
-    # "GMime.ParserWarningFunc"
 ]
-
 
 
 [[object]]
@@ -129,11 +116,18 @@ status = "generate"
     name = "decrypt"
     ignore = true
 
+[[object]]
+name = "GMime.CryptoContext"
+status = "generate"
+manual_traits = ["MessageExtManual"]
+    [[object.function]]
+    name = "export_keys"
+    manual = true
+    doc_trait_name = "MessageExtManual"
 
 [[object]]
 name = "GMime.AutocryptHeader"
 status = "generate"
-
     [[object.function]]
     name = "compare"
     # conflicting implementations
@@ -185,7 +179,8 @@ status = "generate"
 
 [[object]]
 name = "GMime.InternetAddress"
-status = "generate"
+# c type misses GMime prefix
+status = "manual"
     [[object.function]]
     name = "to_string"
         [[object.function.parameter]]
@@ -196,7 +191,8 @@ status = "generate"
 
 [[object]]
 name = "GMime.InternetAddressList"
-status = "generate"
+# c type misses GMime prefix
+status = "manual"
     [[object.function]]
     pattern = "(to_string|parse)"
         [[object.function.parameter]]
@@ -204,6 +200,16 @@ status = "generate"
         name = "options"
         const = true
         nullable = true
+
+[[object]]
+name = "GMime.InternetAddressGroup"
+# c type misses GMime prefix
+status = "manual"
+
+[[object]]
+name = "GMime.InternetAddressMailbox"
+# c type misses GMime prefix
+status = "manual"
 
 [[object]]
 name = "GMime.Object"
@@ -226,3 +232,48 @@ status = "generate"
         name = "options"
         const = true
         nullable = true
+
+[[object]]
+name = "GMime.References"
+status = "generate"
+    [[object.function]]
+    pattern = "parse"
+        [[object.function.parameter]]
+        # optional and thus immutable
+        name = "options"
+        const = true
+        nullable = true
+
+[[object]]
+name = "GMime.ParserOptions"
+status = "manual"
+
+[[object]]
+name = "GMime.MessagePartial"
+status = "generate"
+manual_traits = ["MessagePartialExtManual"]
+    [[object.function]]
+    # reconstruct_message has wrong annotations
+    name = "reconstruct_message"
+    manual = true
+    doc_trait_name = "MessagePartialExtManual"
+
+[[object]]
+name = "GMime.Message"
+status = "generate"
+manual_traits = ["MessageExtManual"]
+    [[object.function]]
+    # partial_split_message has wrong annotations
+    name = "partial_split_message"
+    rename = "split"
+    manual = true
+    doc_trait_name = "MessageExtManual"
+
+[[object]]
+name = "GMime.FilterChecksum"
+status = "generate"
+manual_traits = ["FilterChecksumExtManual"]
+    [[object.function]]
+    name = "get_digest"
+    manual = true
+    doc_trait_name = "FilterChecksumExtManual"
