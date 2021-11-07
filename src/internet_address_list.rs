@@ -8,6 +8,7 @@ use crate::ParserOptions;
 use glib::object::IsA;
 use glib::translate::*;
 use std::fmt;
+use std::ptr;
 
 glib::wrapper! {
     #[doc(alias = "GMimeInternetAddressList")]
@@ -59,7 +60,7 @@ pub trait InternetAddressListExt: 'static {
     fn contains(&self, ia: &impl IsA<InternetAddress>) -> bool;
 
     #[doc(alias = "internet_address_list_encode")]
-    fn encode(&self, options: Option<&FormatOptions>, str: &mut glib::String);
+    fn encode(&self, options: Option<&FormatOptions>) -> String;
 
     #[doc(alias = "internet_address_list_get_address")]
     #[doc(alias = "get_address")]
@@ -124,13 +125,15 @@ impl<O: IsA<InternetAddressList>> InternetAddressListExt for O {
         }
     }
 
-    fn encode(&self, options: Option<&FormatOptions>, str: &mut glib::String) {
+    fn encode(&self, options: Option<&FormatOptions>) -> String {
         unsafe {
+            let s = glib::ffi::g_string_new(ptr::null());
             ffi::internet_address_list_encode(
                 self.as_ref().to_glib_none().0,
                 options.to_glib_none().0 as *mut _,
-                str.to_glib_none_mut().0,
+                s,
             );
+            from_glib_full(glib::ffi::g_string_free(s, glib::ffi::GFALSE))
         }
     }
 

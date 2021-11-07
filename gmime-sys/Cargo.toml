@@ -26,15 +26,9 @@ name = "gmime_sys"
 
 [dependencies]
 libc = "0.2"
-
-[dependencies.gio-sys]
-git = "https://github.com/gtk-rs/gtk-rs-core"
-
-[dependencies.glib-sys]
-git = "https://github.com/gtk-rs/gtk-rs-core"
-
-[dependencies.gobject-sys]
-git = "https://github.com/gtk-rs/gtk-rs-core"
+gio-sys = { git = "https://github.com/gtk-rs/gtk-rs-core" }
+glib-sys = { git = "https://github.com/gtk-rs/gtk-rs-core" }
+gobject-sys = { git = "https://github.com/gtk-rs/gtk-rs-core" }
 
 [build-dependencies]
 pkg-config = "0.3.7"
